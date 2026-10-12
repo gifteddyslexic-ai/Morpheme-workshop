@@ -13,6 +13,7 @@
   --base:#2B4C9E; --base-bg:#DDE5F8;
   --suf:#9E540F; --suf-bg:#F6E4CF;
   --good:#24724A; --good-bg:#D9EEE0; --bad:#AE372D; --bad-bg:#F6DCD8;
+  --vow:#8A2B7C; --vow-bg:#F4DEF0; --con:#5E5C10; --con-bg:#EEEDCB;
   --display:"Bricolage Grotesque","Lexend",system-ui,sans-serif;
   --body:"Lexend",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"Atkinson Hyperlegible Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
@@ -21,11 +22,13 @@
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
   --bg:#11171E; --surface:#19212B; --ink:#E4EAF0; --muted:#98A6B4; --line:#2D3946;
   --pre:#6CC6B1; --pre-bg:#1C3732; --base:#93ABF2; --base-bg:#222E4B; --suf:#E8A867; --suf-bg:#3B2A1A;
-  --good:#7FD3A2; --good-bg:#1B3427; --bad:#F19389; --bad-bg:#3D211F; color-scheme:dark }}
+  --good:#7FD3A2; --good-bg:#1B3427; --bad:#F19389; --bad-bg:#3D211F;
+  --vow:#E79BD9; --vow-bg:#3A1F36; --con:#D8D46E; --con-bg:#33321A; color-scheme:dark }}
 :root[data-theme="dark"]{
   --bg:#11171E; --surface:#19212B; --ink:#E4EAF0; --muted:#98A6B4; --line:#2D3946;
   --pre:#6CC6B1; --pre-bg:#1C3732; --base:#93ABF2; --base-bg:#222E4B; --suf:#E8A867; --suf-bg:#3B2A1A;
-  --good:#7FD3A2; --good-bg:#1B3427; --bad:#F19389; --bad-bg:#3D211F; color-scheme:dark }
+  --good:#7FD3A2; --good-bg:#1B3427; --bad:#F19389; --bad-bg:#3D211F;
+  --vow:#E79BD9; --vow-bg:#3A1F36; --con:#D8D46E; --con-bg:#33321A; color-scheme:dark }
 
 html,body{height:100%}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
@@ -68,8 +71,11 @@ section{display:flex;flex-direction:column;gap:18px}
 .tile.prefix{color:var(--pre);background:var(--pre-bg);border-color:var(--pre)}
 .tile.base{color:var(--base);background:var(--base-bg);border-color:var(--base)}
 .tile.suffix{color:var(--suf);background:var(--suf-bg);border-color:var(--suf)}
-.tile.dbl{color:var(--bad);background:transparent;border:1.5px dashed var(--bad)}
+.tile.dbl{color:var(--con);background:transparent;border:1.5px dashed var(--con)}
 .mark{color:var(--bad);font-weight:700;padding-left:2px}
+.mark.y{color:var(--vow)}
+.chg{display:inline-block;border-radius:4px;padding:0 .08em;color:var(--surface)}
+.chg.e{background:var(--bad)} .chg.y{background:var(--vow)} .chg.d{background:var(--con)}
 .op{color:var(--muted);font-weight:700}
 .arrow{padding-inline:4px}
 .result{font-weight:700;font-size:1.3rem;padding:.1em .5em;border-radius:9px;background:var(--bg);border:1.5px solid var(--ink)}
@@ -84,6 +90,61 @@ section{display:flex;flex-direction:column;gap:18px}
 .def{display:flex;flex-direction:column;gap:4px;padding:12px 14px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg)}
 .def .pos{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;font-weight:600;color:var(--muted)}
 .def p{max-width:60ch}
+.letters{display:inline-flex;gap:4px;flex-wrap:wrap}
+.lt{font-family:var(--mono);font-weight:700;font-size:1.25rem;min-width:1.7em;text-align:center;padding:.15em .2em;border-radius:7px;border:1.5px solid var(--line);background:var(--surface)}
+.lt.v{background:var(--vow);color:var(--surface);border-color:var(--vow)}
+.fl{display:inline-block;border-radius:5px;padding:0 .12em;margin-right:1px}
+.fl.v{background:var(--vow);color:var(--surface)}
+.fl.c{background:var(--con);color:var(--surface)}
+.vc{display:grid;gap:14px}
+.vc>div{display:flex;flex-direction:column;gap:6px}
+.wordgrid{display:grid;gap:14px}
+.wordgrid>div{display:flex;flex-direction:column;gap:6px}
+.wordgrid .cap{font-size:.88rem;color:var(--muted)}
+.vs-ans{display:inline-flex;align-items:center;gap:6px;font-size:.88rem;font-weight:600;padding:4px 10px 4px 4px;border-radius:10px}
+.vs-ans.v{background:var(--vow-bg);color:var(--vow);border:1.5px solid var(--vow)}
+.vs-ans.c{background:var(--con-bg);color:var(--con);border:1.5px solid var(--con)}
+@media (min-width:560px){.wordgrid,.vc{grid-template-columns:1fr 1fr}}
+.anim{display:flex;flex-direction:column;gap:8px}
+.sec-title{font-size:1.35rem;font-weight:800}
+.stage{display:flex;flex-wrap:wrap;align-items:center;row-gap:8px;font-family:var(--mono);font-weight:700;font-size:1.2rem;min-height:2.4rem}
+.grp{display:inline-flex;padding:.18em .45em;border:1.5px solid;border-radius:9px;line-height:1.3;transition:border-radius .5s}
+.grp.prefix{color:var(--pre);background:var(--pre-bg);border-color:var(--pre)}
+.grp.base{color:var(--base);background:var(--base-bg);border-color:var(--base)}
+.grp.suffix{color:var(--suf);background:var(--suf-bg);border-color:var(--suf)}
+.grp.dblg{color:var(--con);border:1.5px dashed var(--con);transition:border-color .5s,padding .5s}
+.grp.dblg.merged{border-color:transparent;padding-inline:0}
+.br{display:inline-block;max-width:1em;overflow:hidden;transition:max-width .5s,opacity .4s}
+.dblg.merged .br{max-width:0;opacity:0}
+.al{display:inline-block;max-width:1em;overflow:hidden;border-radius:4px;transition:max-width .5s ease,opacity .5s ease,padding .5s}
+.al.pulse{animation:pulse .8s ease}
+@keyframes pulse{50%{transform:scale(1.4)}}
+.al.gone{max-width:0;opacity:0;padding:0!important}
+.al.swap{animation:flip .55s ease}
+@keyframes flip{0%{transform:rotateX(90deg)}100%{transform:none}}
+.mk{display:inline-block;max-width:2em;overflow:hidden;color:var(--bad);padding-left:2px;transition:max-width .5s,opacity .4s,padding .5s}
+.mk.y{color:var(--vow)}
+.mk.gone{max-width:0;opacity:0;padding:0}
+.plus{display:inline-block;max-width:2em;margin:0 .4em;overflow:hidden;color:var(--muted);transition:max-width .5s ease,margin .5s ease,opacity .4s}
+.plus.gone{max-width:0;margin:0;opacity:0}
+.tail{display:inline-flex;align-items:center;gap:6px;margin-left:.4em;max-width:22em;overflow:hidden;white-space:nowrap;transition:max-width .6s,opacity .4s,margin .6s}
+.stage.go .tail{max-width:0;opacity:0;margin:0}
+.stage.done{animation:pop .4s ease}
+.stage .grp{transition:border-radius .5s,background-color .6s,border-color .6s,color .6s,padding .6s}
+.stage .al{transition:max-width .5s ease,opacity .5s ease,padding .5s,background-color .6s,color .6s}
+.stage.plain .grp{background:transparent;border-color:transparent;color:var(--ink);padding-inline:0;border-radius:0}
+.stage.plain .al.chg{background:transparent;color:var(--ink);padding:0}
+.stage.plain{font-size:1.6rem;font-family:var(--body);font-weight:600}
+.stage.plain .grp{border-width:0}
+.anim-cap{font-size:.9rem;color:var(--muted);line-height:1.5}
+.ctl{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.ctl-end{display:inline-flex;gap:6px;margin-left:auto}
+.speak:disabled{opacity:.45;cursor:default}
+.verdict p{margin:0}
+.vw{font-family:var(--mono);font-size:1.05rem}
+.pos-inl{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;font-weight:600;opacity:.8;margin-left:4px}
+.newtag{font-size:.72rem;font-weight:600;border-radius:999px;padding:1px 8px;background:var(--good);color:var(--surface);margin-left:4px}
+.anim-cap .final{font-family:var(--mono);font-size:1.15rem;margin-right:6px}
 .speak{border:1.5px solid var(--line);background:transparent;border-radius:999px;padding:6px 14px;font-size:.88rem;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
 
 /* legend */
@@ -233,31 +294,35 @@ const g=x=>`<span class="gr">&lt;${x}&gt;</span>`;
 
 /* Join elements, applying the three suffixing changes. */
 function joinSum(parts){
-  let res='';const toks=[];const notes=[];
+  let res='';const toks=[];const notes=[];const ch=[];const hl={};
   parts.forEach((p,i)=>{
+    let c=null;
     if(i>0&&p.t==='suffix'){
       const vowel=/^[aeiouy]/.test(p.s), prevTok=toks[toks.length-1], prev=parts[i-1];
       if(/e$/.test(res)&&!/ee$/.test(res)&&vowel&&!(/[cg]e$/.test(res)&&/^[ao]/.test(p.s))){
-        res=res.slice(0,-1);prevTok.mark='/';notes.includes('e')||notes.push('e');
+        res=res.slice(0,-1);prevTok.mark='/';notes.includes('e')||notes.push('e');c='e';
       }else if(/[^aeiou]y$/.test(res)&&!/^i/.test(p.s)){
-        res=res.slice(0,-1)+'i';prevTok.mark='/i';notes.includes('y')||notes.push('y');
+        res=res.slice(0,-1)+'i';prevTok.mark='/i';notes.includes('y')||notes.push('y');c='y';hl[res.length-1]='y';
       }else if(prev.dbl&&vowel){
-        const c=res.slice(-1);res+=c;toks.push({dbl:c});notes.includes('d')||notes.push('d');
+        const d=res.slice(-1);hl[res.length-1]='d';res+=d;hl[res.length-1]='d';prevTok.dsrc=true;toks.push({dbl:d});notes.includes('d')||notes.push('d');c='d';
       }
     }
-    res+=p.s;toks.push({t:p.t,s:p.s});
+    ch.push(c);res+=p.s;toks.push({t:p.t,s:p.s});
   });
-  return {res,toks,notes};
+  return {res,toks,notes,ch,hl};
 }
 function sumHTML(parts,o={}){
   const j=joinSum(parts);const bits=[];
   j.toks.forEach((tk,i)=>{
     if(i>0)bits.push('<span class="op">+</span>');
-    bits.push(tk.dbl?`<span class="unit"><span class="tile dbl" title="doubled consonant">(${tk.dbl})</span></span>`
-      :`<span class="unit"><span class="tile ${tk.t}">${tk.s}</span>${tk.mark?`<span class="mark">${tk.mark}</span>`:''}</span>`);
+    const k=tk.mark==='/'?'e':tk.mark==='/i'?'y':tk.dsrc?'d':null;
+    const txt=k?`${tk.s.slice(0,-1)}<span class="chg ${k}">${tk.s.slice(-1)}</span>`:tk.s;
+    bits.push(tk.dbl?`<span class="unit"><span class="tile dbl" title="doubled consonant">(<span class="chg d">${tk.dbl}</span>)</span></span>`
+      :`<span class="unit"><span class="tile ${tk.t}">${txt}</span>${tk.mark?`<span class="mark ${k}">${tk.mark}</span>`:''}</span>`);
   });
   bits.push('<span class="op arrow">→</span>');
-  bits.push(o.hide?'<span class="result q">?</span>':`<span class="result">${j.res}</span>`);
+  const resTxt=j.res.split('').map((c,i)=>j.hl[i]?`<span class="chg ${j.hl[i]}">${c}</span>`:c).join('');
+  bits.push(o.hide?'<span class="result q">?</span>':`<span class="result">${resTxt}</span>`);
   return `<div class="sum">${bits.join('')}</div>`;
 }
 const NOTE={
@@ -273,6 +338,73 @@ function spellOut(key){
     const u=new SpeechSynthesisUtterance(parts.map(p=>L(p.s)).join(', plus, ')+', rewrites as, '+L(j.res)+'. '+j.res);
     u.rate=.8;u.lang='en-GB';speechSynthesis.cancel();speechSynthesis.speak(u);}catch(e){}
 }
+
+/* ---------- join animation (the word sum itself animates) ---------- */
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const ANIM=new WeakMap();
+const OPTS=new WeakMap();
+function animHTML(key,o={}){
+  const parts=parse(key),j=joinSum(parts);let h='',pi=-1;
+  j.toks.forEach(tk=>{
+    if(tk.dbl){h+=`<span class="plus" data-pd="${pi+1}">+</span><span class="grp dblg" data-d="${pi+1}"><span class="br">(</span><span class="al chg d">${tk.dbl}</span><span class="br">)</span></span>`;return;}
+    pi++;if(pi)h+=`<span class="plus" data-p="${pi}">+</span>`;
+    const k=tk.mark==='/'?'e':tk.mark==='/i'?'y':tk.dsrc?'d':null;
+    const ls=tk.s.split('').map((c,x)=>`<span class="al${k&&x===tk.s.length-1?' chg '+k:''}">${c}</span>`).join('');
+    h+=`<span class="grp ${tk.t}" data-g="${pi}">${ls}</span>${tk.mark?`<span class="mk ${k}" data-m="${pi}">${tk.mark}</span>`:''}`;
+  });
+  const resTxt=j.res.split('').map((c,i)=>j.hl[i]?`<span class="chg ${j.hl[i]}">${c}</span>`:c).join('');
+  h+=`<span class="tail"><span class="op arrow">→</span><span class="result">${resTxt}</span></span>`;
+  const play=o.play&&parts.length>1;
+  const cap=j.notes.length?j.notes.map(n=>NOTE[n]()).join(' '):(play?'Tap <b>Play</b> to watch the parts join.':'');
+  return `<div class="anim" data-anim="${key}" data-play="${play?1:0}" data-spell="${o.spell?1:0}">
+   <div class="stage" aria-label="Word sum">${h}</div>
+   ${cap?`<p class="anim-cap" aria-live="polite">${cap}</p>`:'<p class="anim-cap" aria-live="polite" hidden></p>'}
+   <div class="ctl">${play?'<button class="speak" data-playanim>▶ Play</button><button class="speak" data-stepanim>Step</button>':''}${o.spell?spellBtn(key):''}${o.extra||''}</div></div>`;
+}
+function animState(el){let s=ANIM.get(el);if(!s){const parts=parse(el.dataset.anim);s={parts,j:joinSum(parts),next:1,busy:false,run:0,started:false};ANIM.set(el,s);}return s;}
+function resetAnim(el){
+  const extra=el.querySelector('.ctl [data-extra]');const o={play:el.dataset.play==='1',spell:el.dataset.spell==='1',extra:extra?extra.outerHTML:''};
+  const tmp=document.createElement('div');tmp.innerHTML=animHTML(el.dataset.anim,o);const n=tmp.firstElementChild;el.replaceWith(n);return n;}
+async function animStep(el){
+  const s=animState(el),{parts,j}=s;if(s.busy)return;
+  const cap=el.querySelector('.anim-cap'),stage=el.querySelector('.stage');cap.hidden=true;
+  if(stage.classList.contains('done'))return;
+  s.busy=true;
+  if(!s.started){s.started=true;stage.classList.add('go');
+    await sleep(700);s.busy=false;return;}
+  if(s.next>=parts.length){stage.classList.add('done');
+    await sleep(900);
+    if(el.isConnected)stage.classList.add('plain');
+    s.busy=false;return;}
+  const i=s.next,p=parts[i],prev=parts[i-1],c=j.ch[i];
+  const pg=el.querySelector(`[data-g="${i-1}"]`),plus=el.querySelector(`[data-p="${i}"]`),mkEl=el.querySelector(`[data-m="${i-1}"]`);
+  const lastL=pg?[...pg.querySelectorAll('.al')].pop():null;
+  if(c==='e'){
+    
+    lastL.classList.add('pulse');await sleep(900);if(mkEl)mkEl.classList.add('gone');lastL.classList.add('gone');await sleep(500);
+  }else if(c==='y'){
+    
+    lastL.classList.add('pulse');await sleep(800);if(mkEl)mkEl.classList.add('gone');lastL.textContent='i';lastL.classList.remove('pulse');lastL.classList.add('swap');await sleep(600);
+  }else if(c==='d'){
+    
+    const dg=el.querySelector(`[data-d="${i}"]`);lastL.classList.add('pulse');dg.querySelector('.al').classList.add('pulse');await sleep(900);
+    const pd=el.querySelector(`[data-pd="${i}"]`);if(pd)pd.classList.add('gone');dg.classList.add('merged');await sleep(500);
+  }else{
+    await sleep(500);
+  }
+  if(plus)plus.classList.add('gone');
+  await sleep(550);s.next++;s.busy=false;
+}
+async function playAnim(el,delay=300){
+  if(!el||!el.isConnected)return;
+  const st0=ANIM.get(el);if(st0&&(st0.busy||st0.started))el=resetAnim(el);
+  const s=animState(el);const token=++s.run;
+  await sleep(delay);
+  while(el.isConnected&&s.run===token&&!el.querySelector('.stage.done')){await animStep(el);if(s.run!==token)break;await sleep(650);}
+}
+function autoAnim(sec){const el=document.querySelector(`#${sec} .anim[data-play="1"]`);if(el)playAnim(el,1400);}
+function wordBox(w,isNew){const d=DEFS[w];const [pos,text]=d?d.split('|'):['',''];
+  return `<div class="verdict good ${isNew?'toast':''}"><p><b class="vw">${w}</b>${pos?` <span class="pos-inl">${pos}</span>`:''}${isNew?' <span class="newtag">New word</span>':''}<br>${text||'A real word.'}</p></div>`;}
 
 /* ---------- matrices ---------- */
 const MATRICES=[
@@ -471,7 +603,34 @@ function defHTML(word){const d=DEFS[word];if(!d)return'';const [pos,text]=d.spli
 
 /* ---------- learn ---------- */
 const S=k=>sumHTML(parse(k));
+const VS=[['ing','v'],['ment','c'],['ed','v'],['ful','c'],['able','v'],['ness','c'],['y','v'],['ly','c']];
+let vsShown=new Set();
+const letters=(w,yv)=>`<span class="letters" aria-label="${w}">${w.split('').map(c=>{const v=/[aeiou]/.test(c)||(c==='y'&&yv);return `<span class="lt ${v?'v':''}">${c}</span>`;}).join('')}</span>`;
 const LESSONS=[
+ {k:'Before we start',t:'Vowels and consonants',h:()=>`
+  <p>Every word you say is made of two kinds of sound. Say “aaah” and notice your mouth: it stays open and the air flows out freely. That's a <b>vowel</b> sound.</p>
+  <p>Now say “b”, “t” and “s”. Your lips, tongue or teeth block or squeeze the air on its way out. Those are <b>consonant</b> sounds. The word comes from Latin for “sounding with”: consonants need a vowel next to them to be heard clearly.</p>
+  <div class="vc">
+   <div><span class="eyebrow">Vowel letters</span><div class="letters">${'aeiou'.split('').map(c=>`<span class="lt v">${c}</span>`).join('')}</div></div>
+   <div><span class="eyebrow">Consonant letters</span><p class="meta">The other 21 letters of the alphabet.</p></div>
+  </div>
+  <p>Every syllable needs a vowel sound, so every word needs a letter doing the vowel job. Look at these words, with the vowel letters shaded:</p>
+  <div class="wordgrid">
+   <div>${letters('struct')}<span class="cap">One vowel letter holding up five consonants.</span></div>
+   <div>${letters('yes',false)}<span class="cap">At the start of a word, ${g('y')} is a consonant.</span></div>
+   <div>${letters('busy',true)}<span class="cap">At the end, ${g('y')} does the vowel job.</span></div>
+   <div>${letters('rhythm',true)}<span class="cap">No a, e, i, o or u, so ${g('y')} steps in as the vowel.</span></div>
+  </div>
+  <p>So ${g('y')} can do both jobs, depending on where it sits in the word.</p>
+  <h3 style="font-size:1.2rem">Why this matters for spelling</h3>
+  <p>When you add a suffix, the first letter of the suffix decides what happens at the join. Compare:</p>
+  ${S('move+ing')}${S('move+ment')}
+  <p>${g('ing')} starts with a vowel letter, so the ${g('e')} of <i>move</i> drops. ${g('ment')} starts with a consonant letter, so it stays. You'll meet this rule properly in a later lesson.</p>
+  <div class="panel"><span class="eyebrow">Try it: tap each suffix to check your guess</span>
+   <p class="meta">Does it start with a vowel letter or a consonant letter?</p>
+   <div class="bank-tiles">${VS.map(([s,t])=>vsShown.has(s)?`<span class="vs-ans ${t}"><span class="tile suffix"><span class="fl ${t}">${s[0]}</span>${s.slice(1)}</span>starts with a ${t==='v'?'vowel':'consonant'}</span>`:`<button class="tile suffix" data-vs="${s}">${s}</button>`).join('')}</div>
+   ${vsShown.has('y')?`<p class="meta">The suffix ${g('y')} counts as a vowel suffix: nose/ + y → nosy.</p>`:''}
+  </div>`},
  {k:'Why it works',t:'Spelling carries meaning',h:()=>`
   <p>English spelling records meaning as well as sound. Words that share meaning usually share spelling, even when they sound different.</p>
   <p>Say <i>sign</i>, then <i>signal</i>. The ${g('g')} is silent in one and spoken in the other. It's spelled in both because they share the same base.</p>
@@ -523,10 +682,10 @@ const LESSONS=[
   <div class="row"><button class="btn primary" data-go="origins">Explore origins</button><button class="btn" data-go="practice">Practise</button></div>
   <p class="meta">This approach is known as Structured Word Inquiry.</p>`}
 ];
-let lessonIdx=store.get('lesson',0);if(lessonIdx>=LESSONS.length)lessonIdx=0;
-const seen=new Set(store.get('seen',[]));
+let lessonIdx=store.get('lesson2',0);if(lessonIdx>=LESSONS.length)lessonIdx=0;
+const seen=new Set(store.get('seen2',[]));
 function renderLearn(){
-  const L=LESSONS[lessonIdx];seen.add(lessonIdx);store.set('seen',[...seen]);store.set('lesson',lessonIdx);
+  const L=LESSONS[lessonIdx];seen.add(lessonIdx);store.set('seen2',[...seen]);store.set('lesson2',lessonIdx);
   document.getElementById('learn').innerHTML=`
    <div class="dots" role="group" aria-label="Lessons">${LESSONS.map((x,i)=>`<button class="dot ${i===lessonIdx?'on':seen.has(i)?'done':''}" data-lesson="${i}" aria-label="Lesson ${i+1}: ${x.t}"></button>`).join('')}</div>
    <div class="lesson-head"><span class="eyebrow">Lesson ${lessonIdx+1} of ${LESSONS.length} · ${L.k}</span><h2>${L.t}</h2></div>
@@ -539,28 +698,28 @@ function renderLearn(){
 let buildParts=store.get('build',['re','move','al']);
 function renderBuild(){
   const parts=buildParts.map(mk);const key=buildParts.join('+');
-  const bases=parts.filter(p=>p.t==='base');let verdict='',body='';
-  if(!parts.length){body=`<p class="empty">Tap tiles below to build a word sum.</p>`;verdict=`<div class="verdict info">Start with a prefix or a base.</div>`;}
+  const bases=parts.filter(p=>p.t==='base');let verdict='',body='',okShape=false;
+  const ctl=`<span data-extra class="ctl-end"><button class="speak" data-undo ${parts.length?'':'disabled'}>Undo</button><button class="speak" data-clear ${parts.length?'':'disabled'}>Clear</button></span>`;
+  if(!parts.length){body=`<p class="empty">Tap tiles below to build a word sum.</p><div class="ctl">${ctl}</div>`;}
   else{
-    body=sumHTML(parts);
     const bi=parts.findIndex(p=>p.t==='base');
     const badOrder=bi>=0&&(parts.slice(bi+1).some(p=>p.t==='prefix')||parts.slice(0,bi).some(p=>p.t==='suffix'));
+    okShape=bases.length===1&&!badOrder;
+    body=animHTML(key,{play:okShape,spell:okShape,extra:ctl});
     if(!bases.length)verdict=`<div class="verdict info">Add a base. Every word needs one.</div>`;
-    else if(bases.length>1)verdict=`<div class="verdict info">This builder uses one base at a time. Tap <b>Undo</b> to remove one.</div>`;
+    else if(bases.length>1)verdict=`<div class="verdict info">Use one base at a time. Tap <b>Undo</b> to remove one.</div>`;
     else if(badOrder)verdict=`<div class="verdict bad">Prefixes go before the base, and suffixes go after it.</div>`;
-    else if(KNOWN.has(key)){const w=joinSum(parts).res;verdict=`<div class="verdict good toast"><b>${w}</b>&nbsp;is a real word.</div>${defHTML(w)}`;}
+    else if(KNOWN.has(key))verdict=wordBox(joinSum(parts).res);
     else if(parts.length===1&&BASES[key]&&BASES[key].bound)verdict=`<div class="verdict info">${g(key)} is a bound base. It needs a prefix or suffix to make a word.</div>`;
-    else verdict=`<div class="verdict info">That isn't in this app's word list. It may not be a word. Check a dictionary, or try another combination.</div>`;
+    else verdict=`<div class="verdict info">Not in this app's word list, so it may not be a word. Try another combination.</div>`;
   }
   const bank=(label,items,t)=>`<div class="bank"><h3>${label}</h3><div class="bank-tiles">${items.map(s=>`<button class="tile ${t}" data-add="${s}">${s}</button>`).join('')}</div></div>`;
   document.getElementById('build').innerHTML=`
-   <div class="lesson-head"><span class="eyebrow">Word sums</span><h2 style="font-size:1.6rem">Build a word, piece by piece</h2></div>
-   <p class="lede">Tap tiles to add them. The app applies the three changes at each join and shows you what happened.</p>
-   <div class="panel" aria-live="polite">${body}${verdict}${parts.length?notesHTML(joinSum(parts).notes):''}
-    <div class="row">${parts.length&&bases.length===1?spellBtn(key):''}<span style="flex:1"></span>
-    <button class="btn" data-undo ${parts.length?'':'disabled'}>Undo</button><button class="btn" data-clear ${parts.length?'':'disabled'}>Clear</button></div></div>
+   <h2 class="sec-title">Build a word sum</h2>
+   <div class="panel">${body}<div aria-live="polite">${verdict}</div></div>
    ${bank('Prefixes',PREFIXES,'prefix')}${bank('Bases',Object.keys(BASES),'base')}${bank('Suffixes',SUFFIXES,'suffix')}
    <p class="tip">Try <i>hope + ing</i>, then <i>hop + ing</i>. Then try <i>carry + age</i>.</p>`;
+  autoAnim('build');
 }
 
 /* ---------- matrix explorer ---------- */
@@ -587,24 +746,24 @@ function renderMatrix(){
   const m=MATRICES[mxIdx];if(!mxSel)mxSel=selFromKey(m,m.start);
   const key=keyFromSel(m,mxSel),parts=parse(key),got=new Set(found[m.base]||[]);
   let verdict;
-  if(m.list.includes(key)){const w=joinSum(parts).res;verdict=`<div class="verdict good ${mxNew===key?'toast':''}"><b>${w}</b>&nbsp;${mxNew===key?'is a new word for your list!':'is a real word.'}</div>${defHTML(w)}`;}
+  if(m.list.includes(key))verdict=wordBox(joinSum(parts).res,mxNew===key);
   else if(key===m.base&&m.bound)verdict=`<div class="verdict info">${g(m.base)} is a bound base. Add a prefix or suffix to make a word.</div>`;
-  else verdict=`<div class="verdict info">That path doesn't make a word in this family. Try another column.</div>`;
+  else verdict=`<div class="verdict info">That path doesn't make a word in this family. Try another element.</div>`;
   const n=m.list.length,f=m.list.filter(w=>got.has(w)).length;
   const chips=m.list.filter(w=>reveal||got.has(w)).map(w=>`<button class="word ${got.has(w)?'':'hidden'}" data-load="${w}">${joinSum(parse(w)).res}</button>`).join('');
   document.getElementById('matrix').innerHTML=`
-   <div class="lesson-head"><span class="eyebrow">Matrix explorer</span><h2 style="font-size:1.6rem">Find every word in the family</h2></div>
+   <h2 class="sec-title">Find every word in the family</h2>
    <div class="chips" role="group" aria-label="Choose a base">${MATRICES.map((x,i)=>`<button class="chip" data-mx="${i}" aria-pressed="${i===mxIdx}">${x.base}</button>`).join('')}</div>
-   <p class="origin">Base ${g(m.base)}: from ${m.origin}.</p>
+   <p class="origin">Base ${g(m.base)}: from ${m.origin}. Tap up to one element per column, reading left to right.</p>
    ${matrixHTML(m,mxSel,true)}
-   <ol class="rules"><li>Tap one element per column, or none. Tap again to remove it.</li><li>Read left to right through the base.</li></ol>
-   <div class="panel" aria-live="polite">${sumHTML(parts)}${verdict}${notesHTML(joinSum(parts).notes)}<div class="row">${spellBtn(key)}</div></div>
+   <div class="panel">${animHTML(key,{play:true,spell:true})}<div aria-live="polite">${verdict}</div></div>
    <div class="panel">
     <div class="score"><span>Words found</span><b>${f} of ${n}</b></div>
     <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="${n}" aria-valuenow="${f}"><span style="width:${f/n*100}%"></span></div>
     <div class="found">${chips||'<span class="empty">Words you build will collect here.</span>'}</div>
     <div class="row"><button class="btn" data-reveal>${reveal?'Hide the words I haven\'t found':'Show all words'}</button></div>
    </div>`;
+  autoAnim('matrix');
 }
 
 /* ---------- origins ---------- */
@@ -722,6 +881,10 @@ document.addEventListener('click',e=>{
   if(d.tab)return show(d.tab);
   if(d.go)return show(d.go);
   if(d.spell!==undefined)return spellOut(d.spell);
+  if(d.playanim!==undefined)return playAnim(b.closest('.anim'));
+  if(d.stepanim!==undefined){let el=b.closest('.anim');const s=ANIM.get(el);
+    if(s)s.run++;if(el.querySelector('.stage.done'))return resetAnim(el);return animStep(el);}
+  if(d.vs){vsShown.add(d.vs);return renderLearn();}
   if(d.lesson!==undefined){const i=+d.lesson;if(i>=0&&i<LESSONS.length){lessonIdx=i;renderLearn();window.scrollTo({top:0});}return;}
   if(d.add){buildParts.push(d.add);store.set('build',buildParts);return renderBuild();}
   if(d.undo!==undefined){buildParts.pop();store.set('build',buildParts);return renderBuild();}
