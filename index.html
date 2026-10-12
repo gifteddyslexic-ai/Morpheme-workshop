@@ -179,9 +179,14 @@ button.tile:active{transform:translateY(1px)}
 .origin{font-size:.92rem;color:var(--muted)}
 .mx-scroll{overflow-x:auto;margin-inline:-6px;padding:6px}
 .mx{display:flex;align-items:stretch;gap:8px;width:max-content;margin:0 auto}
-.mx-col{display:flex;flex-direction:column;justify-content:center;gap:6px;padding:8px;border:1.5px solid var(--line);border-radius:12px;background:var(--bg)}
+.banks{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.25fr);gap:8px;align-items:start}
+.banks .bank{min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px}
+.banks .bank h3{margin-bottom:6px;font-size:.68rem;letter-spacing:.08em}
+.banks .bank-tiles{gap:5px}
+.banks button.tile{font-size:.88rem;min-height:36px;min-width:0;padding:.2em .45em}
+.mx-col{display:flex;flex-direction:column;justify-content:center;gap:1px;padding:4px;border:1.5px solid var(--line);border-radius:12px;background:var(--bg)}
 .mx-base{display:flex;align-items:center;justify-content:center;padding:10px 14px;border:2px solid var(--base);border-radius:12px;background:var(--base-bg);color:var(--base);font-family:var(--mono);font-weight:700;font-size:1.35rem}
-.mx-el{font-family:var(--mono);font-weight:700;font-size:.98rem;padding:6px 10px;min-height:38px;border-radius:8px;border:1.5px solid transparent;background:transparent;cursor:pointer;text-align:left;white-space:nowrap}
+.mx-el{font-family:var(--mono);font-weight:700;font-size:.98rem;line-height:1.2;padding:3px 9px;min-height:30px;border-radius:8px;border:1.5px solid transparent;background:transparent;cursor:pointer;text-align:left;white-space:nowrap}
 .mx-el.prefix{color:var(--pre)} .mx-el.suffix{color:var(--suf)}
 .mx-el[aria-pressed="true"].prefix{background:var(--pre-bg);border-color:var(--pre)}
 .mx-el[aria-pressed="true"].suffix{background:var(--suf-bg);border-color:var(--suf)}
@@ -332,12 +337,11 @@ const NOTE={
 };
 const notesHTML=n=>n.length?`<ul class="notes">${n.map(k=>`<li><span>${NOTE[k]()}</span></li>`).join('')}</ul>`:'';
 const canSpeak=('speechSynthesis' in window)&&typeof SpeechSynthesisUtterance!=='undefined';
-const spellBtn=key=>canSpeak?`<button class="speak" data-spell="${key}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>Spell it out</button>`:'';
-function spellOut(key){
-  try{const parts=parse(key),j=joinSum(parts),L=w=>w.split('').join(', ');
-    const u=new SpeechSynthesisUtterance(parts.map(p=>L(p.s)).join(', plus, ')+', rewrites as, '+L(j.res)+'. '+j.res);
-    u.rate=.8;u.lang='en-GB';speechSynthesis.cancel();speechSynthesis.speak(u);}catch(e){}
-}
+const SPK='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
+const spellBtn=key=>canSpeak?`<button class="speak" data-say="${key}">${SPK}Say</button><button class="speak" data-spell="${key}">${SPK}Spell</button>`:'';
+function speak(txt,rate){try{const u=new SpeechSynthesisUtterance(txt);u.rate=rate;u.lang='en-GB';speechSynthesis.cancel();speechSynthesis.speak(u);}catch(e){}}
+function spellOut(key){const w=joinSum(parse(key)).res;speak(w.split('').join(', '),.75);}
+function sayWord(key){speak(joinSum(parse(key)).res,.85);}
 
 /* ---------- join animation (the word sum itself animates) ---------- */
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
@@ -649,7 +653,7 @@ const LESSONS=[
   <p>A word sum shows how a word is built, piece by piece.</p>
   ${S('con+struct+ion')}
   <ul><li><b>+</b> joins the elements.</li><li><b>→</b> means “rewrites as”: the finished spelling.</li></ul>
-  <p>Read a word sum by naming the letters, not their sounds: “c‑o‑n plus s‑t‑r‑u‑c‑t plus i‑o‑n, rewrites as c‑o‑n‑s‑t‑r‑u‑c‑t‑i‑o‑n.”</p>
+  <p>When you check a spelling, name the letters, not their sounds. Tap <b>Say</b> to hear the finished word, then <b>Spell</b> to hear its letters: c‑o‑n‑s‑t‑r‑u‑c‑t‑i‑o‑n.</p>
   <div class="row">${spellBtn('con+struct+ion')}</div>
   <p class="tip">Most of the time you just join the pieces. Three changes can happen at the join. The next three lessons cover them.</p>`},
  {k:'Change 1 of 3',t:'Dropping the final e',h:()=>`
@@ -717,7 +721,7 @@ function renderBuild(){
   document.getElementById('build').innerHTML=`
    <h2 class="sec-title">Build a word sum</h2>
    <div class="panel">${body}<div aria-live="polite">${verdict}</div></div>
-   ${bank('Prefixes',PREFIXES,'prefix')}${bank('Bases',Object.keys(BASES),'base')}${bank('Suffixes',SUFFIXES,'suffix')}
+   <div class="banks">${bank('Prefixes',PREFIXES,'prefix')}${bank('Bases',Object.keys(BASES),'base')}${bank('Suffixes',SUFFIXES,'suffix')}</div>
    <p class="tip">Try <i>hope + ing</i>, then <i>hop + ing</i>. Then try <i>carry + age</i>.</p>`;
   autoAnim('build');
 }
@@ -881,6 +885,7 @@ document.addEventListener('click',e=>{
   if(d.tab)return show(d.tab);
   if(d.go)return show(d.go);
   if(d.spell!==undefined)return spellOut(d.spell);
+  if(d.say!==undefined)return sayWord(d.say);
   if(d.playanim!==undefined)return playAnim(b.closest('.anim'));
   if(d.stepanim!==undefined){let el=b.closest('.anim');const s=ANIM.get(el);
     if(s)s.run++;if(el.querySelector('.stage.done'))return resetAnim(el);return animStep(el);}
