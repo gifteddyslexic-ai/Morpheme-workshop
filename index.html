@@ -1,0 +1,755 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Morpheme Workshop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Lexend:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;700&display=swap">
+<style>
+/* Layout: one-column phone app. Sticky header, one scrolling panel per tab, fixed bottom tab bar.
+   Morpheme colours carry meaning everywhere: prefix = teal, base = blue, suffix = amber. */
+:root{
+  --bg:#EBF0F3; --surface:#F9FBFC; --ink:#1C2631; --muted:#556372; --line:#C8D3DC;
+  --pre:#1E7566; --pre-bg:#D8EEE8;
+  --base:#2B4C9E; --base-bg:#DDE5F8;
+  --suf:#9E540F; --suf-bg:#F6E4CF;
+  --good:#24724A; --good-bg:#D9EEE0; --bad:#AE372D; --bad-bg:#F6DCD8;
+  --display:"Bricolage Grotesque","Lexend",system-ui,sans-serif;
+  --body:"Lexend",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"Atkinson Hyperlegible Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#11171E; --surface:#19212B; --ink:#E4EAF0; --muted:#98A6B4; --line:#2D3946;
+  --pre:#6CC6B1; --pre-bg:#1C3732; --base:#93ABF2; --base-bg:#222E4B; --suf:#E8A867; --suf-bg:#3B2A1A;
+  --good:#7FD3A2; --good-bg:#1B3427; --bad:#F19389; --bad-bg:#3D211F; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#11171E; --surface:#19212B; --ink:#E4EAF0; --muted:#98A6B4; --line:#2D3946;
+  --pre:#6CC6B1; --pre-bg:#1C3732; --base:#93ABF2; --base-bg:#222E4B; --suf:#E8A867; --suf-bg:#3B2A1A;
+  --good:#7FD3A2; --good-bg:#1B3427; --bad:#F19389; --bad-bg:#3D211F; color-scheme:dark }
+
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+html.large body{font-size:19.5px}
+body.spaced{letter-spacing:.05em;word-spacing:.16em}
+*{box-sizing:border-box}
+button{font:inherit;color:inherit;letter-spacing:inherit}
+:focus-visible{outline:3px solid var(--base);outline-offset:2px;border-radius:6px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.15;margin:0}
+p{margin:0}
+i{font-style:normal;font-weight:600}
+.gr{font-family:var(--mono);font-weight:700;color:var(--base);white-space:nowrap}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.top-in{max-width:620px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
+.logo{display:flex;gap:2px;font-family:var(--mono);font-weight:700;font-size:.8rem}
+.logo span{padding:1px 5px;border-radius:5px}
+.logo .a{background:var(--pre-bg);color:var(--pre)} .logo .b{background:var(--base-bg);color:var(--base)} .logo .c{background:var(--suf-bg);color:var(--suf)}
+.brand h1{font-size:1.15rem;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.icon-btn{border:1.5px solid var(--line);background:var(--surface);border-radius:10px;min-width:44px;height:44px;font-weight:600;cursor:pointer}
+
+/* page */
+main{max-width:620px;margin:0 auto;padding-inline:16px;padding-block:18px calc(96px + env(safe-area-inset-bottom,0px))}
+section{display:flex;flex-direction:column;gap:18px}
+.eyebrow{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;font-weight:600;color:var(--muted)}
+.lede{color:var(--muted)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:10px 16px;min-height:46px;cursor:pointer;font-weight:500}
+.btn.primary{background:var(--base);border-color:var(--base);color:var(--surface)}
+.btn:disabled{opacity:.45;cursor:default}
+.tip{border-left:4px solid var(--suf);padding:4px 0 4px 12px;color:var(--muted)}
+
+/* tiles & word sums */
+.sum{display:flex;flex-wrap:wrap;align-items:center;gap:8px 6px;font-family:var(--mono);font-size:1.15rem}
+.unit{display:inline-flex;align-items:center;white-space:nowrap}
+.tile{display:inline-block;padding:.22em .55em;border-radius:9px;border:1.5px solid;font-family:var(--mono);font-weight:700;line-height:1.3}
+.tile.prefix{color:var(--pre);background:var(--pre-bg);border-color:var(--pre)}
+.tile.base{color:var(--base);background:var(--base-bg);border-color:var(--base)}
+.tile.suffix{color:var(--suf);background:var(--suf-bg);border-color:var(--suf)}
+.tile.dbl{color:var(--bad);background:transparent;border:1.5px dashed var(--bad)}
+.mark{color:var(--bad);font-weight:700;padding-left:2px}
+.op{color:var(--muted);font-weight:700}
+.arrow{padding-inline:4px}
+.result{font-weight:700;font-size:1.3rem;padding:.1em .5em;border-radius:9px;background:var(--bg);border:1.5px solid var(--ink)}
+.result.q{border-style:dashed;color:var(--muted);border-color:var(--muted)}
+.notes{display:flex;flex-direction:column;gap:6px;font-size:.92rem;color:var(--muted);margin:0;padding:0;list-style:none}
+.notes li{display:flex;gap:8px}
+.notes li::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--bad);margin-top:.6em}
+.verdict{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:10px;font-size:.95rem}
+.verdict.good{background:var(--good-bg);color:var(--good)}
+.verdict.bad{background:var(--bad-bg);color:var(--bad)}
+.verdict.info{background:var(--bg);color:var(--muted)}
+.def{display:flex;flex-direction:column;gap:4px;padding:12px 14px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg)}
+.def .pos{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;font-weight:600;color:var(--muted)}
+.def p{max-width:60ch}
+.speak{border:1.5px solid var(--line);background:transparent;border-radius:999px;padding:6px 14px;font-size:.88rem;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+
+/* legend */
+.legend{display:grid;gap:12px}
+.legend div{display:grid;grid-template-columns:5.5rem 1fr;gap:12px;align-items:start}
+.legend .tile{justify-self:start}
+
+/* lessons */
+.lesson-head{display:flex;flex-direction:column;gap:6px}
+.lesson-head h2{font-size:1.75rem;font-weight:800}
+.lesson-body{display:flex;flex-direction:column;gap:14px;max-width:65ch}
+.lesson-body ul,.lesson-body ol{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:6px}
+.dots{display:flex;gap:6px;flex-wrap:wrap}
+.dot{width:30px;height:8px;border-radius:4px;background:var(--line);border:0;padding:0;cursor:pointer}
+.dot.on{background:var(--base)}
+.dot.done{background:var(--pre)}
+.pair{display:grid;gap:10px}
+.pair .cap{font-size:.85rem;color:var(--muted)}
+.lesson-nav{display:flex;justify-content:space-between;gap:10px}
+
+/* builder */
+.bank h3{font-family:var(--body);font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;font-weight:600;color:var(--muted);margin-bottom:8px}
+.bank-tiles{display:flex;flex-wrap:wrap;gap:8px}
+button.tile{cursor:pointer;font-size:1rem;min-height:42px;min-width:44px}
+button.tile:active{transform:translateY(1px)}
+.empty{color:var(--muted);font-style:normal;font-size:.95rem}
+
+/* matrix */
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
+.chip{flex:none;border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px;font-family:var(--mono);font-weight:700;cursor:pointer;min-height:40px}
+.chip[aria-pressed="true"]{background:var(--base);border-color:var(--base);color:var(--surface)}
+.origin{font-size:.92rem;color:var(--muted)}
+.mx-scroll{overflow-x:auto;margin-inline:-6px;padding:6px}
+.mx{display:flex;align-items:stretch;gap:8px;width:max-content;margin:0 auto}
+.mx-col{display:flex;flex-direction:column;justify-content:center;gap:6px;padding:8px;border:1.5px solid var(--line);border-radius:12px;background:var(--bg)}
+.mx-base{display:flex;align-items:center;justify-content:center;padding:10px 14px;border:2px solid var(--base);border-radius:12px;background:var(--base-bg);color:var(--base);font-family:var(--mono);font-weight:700;font-size:1.35rem}
+.mx-el{font-family:var(--mono);font-weight:700;font-size:.98rem;padding:6px 10px;min-height:38px;border-radius:8px;border:1.5px solid transparent;background:transparent;cursor:pointer;text-align:left;white-space:nowrap}
+.mx-el.prefix{color:var(--pre)} .mx-el.suffix{color:var(--suf)}
+.mx-el[aria-pressed="true"].prefix{background:var(--pre-bg);border-color:var(--pre)}
+.mx-el[aria-pressed="true"].suffix{background:var(--suf-bg);border-color:var(--suf)}
+span.mx-el{cursor:default;display:block}
+.progress{height:8px;border-radius:4px;background:var(--line);overflow:hidden}
+.progress span{display:block;height:100%;background:var(--pre);transition:width .4s}
+.found{display:flex;flex-wrap:wrap;gap:6px}
+.word{font-family:var(--mono);font-weight:700;font-size:.92rem;border-radius:8px;padding:4px 10px;border:1.5px solid var(--pre);color:var(--pre);background:var(--pre-bg);cursor:pointer}
+.word.hidden{border-style:dashed;border-color:var(--line);color:var(--muted);background:transparent}
+.rules{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:4px;font-size:.95rem;color:var(--muted)}
+
+/* origins */
+.ocard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.ocard summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;align-items:center;gap:14px}
+.ocard summary::-webkit-details-marker{display:none}
+.ocard .big{font-family:var(--mono);font-weight:700;font-size:1.6rem;min-width:6.5rem}
+.ocard mark{background:var(--suf-bg);color:var(--suf);border-radius:4px;padding:0 2px;outline:1.5px solid var(--suf)}
+.ocard .q{color:var(--muted);font-size:.95rem;flex:1}
+.ocard .chev{transition:transform .2s;color:var(--muted)}
+.ocard[open] .chev{transform:rotate(90deg)}
+.obody{padding:0 16px 16px;display:flex;flex-direction:column;gap:12px}
+.rels{display:flex;flex-wrap:wrap;gap:8px}
+.rels span{font-family:var(--mono);font-weight:700;padding:4px 10px;border-radius:8px;background:var(--bg);border:1px solid var(--line)}
+.rels mark{background:var(--suf-bg);color:var(--suf);border-radius:3px;padding:0 1px}
+.meta{font-size:.9rem;color:var(--muted)}
+
+/* practice */
+.score{display:flex;justify-content:space-between;align-items:center;font-size:.9rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.target{font-family:var(--mono);font-weight:700;font-size:2rem;line-height:1.2}
+.slots{min-height:58px;border:2px dashed var(--line);border-radius:12px;padding:8px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.opts{display:grid;gap:10px}
+.opt{text-align:left;border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:12px 16px;min-height:52px;cursor:pointer}
+.opt.mono{font-family:var(--mono);font-weight:700;font-size:1.15rem}
+.opt.right{border-color:var(--good);background:var(--good-bg);color:var(--good)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-bg);color:var(--bad)}
+.bigscore{font-family:var(--display);font-weight:800;font-size:3.2rem;line-height:1;font-variant-numeric:tabular-nums}
+
+/* tab bar */
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+.tabs-in{max-width:620px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)}
+.tab{border:0;background:transparent;display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 2px 10px;font-size:.7rem;font-weight:500;color:var(--muted);cursor:pointer;letter-spacing:0;word-spacing:0}
+.tab svg{width:24px;height:24px}
+.tab[aria-selected="true"]{color:var(--base)}
+.tab[aria-selected="true"] svg{stroke-width:2.4}
+
+/* settings sheet */
+.sheet{position:fixed;inset:0;z-index:10;background:rgb(0 0 0 / .35);display:flex;align-items:flex-end;justify-content:center}
+.sheet-in{background:var(--surface);width:100%;max-width:620px;border-radius:18px 18px 0 0;padding:20px 16px calc(24px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:16px}
+.setting{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.seg{display:flex;border:1.5px solid var(--line);border-radius:10px;overflow:hidden}
+.seg button{border:0;background:transparent;padding:8px 14px;cursor:pointer;min-height:42px}
+.seg button[aria-pressed="true"]{background:var(--base);color:var(--surface)}
+.toast{animation:pop .35s ease}
+@keyframes pop{from{transform:scale(.96);opacity:.4}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (min-width:560px){ .pair{grid-template-columns:1fr 1fr} }
+</style>
+
+<header class="top">
+  <div class="top-in">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"><span class="a">re</span><span class="b">form</span><span class="c">ed</span></div>
+      <h1>Morpheme Workshop</h1>
+    </div>
+    <button class="icon-btn" id="openSettings" aria-label="Reading settings">Aa</button>
+  </div>
+</header>
+
+<main>
+  <section id="learn"></section>
+  <section id="build" hidden></section>
+  <section id="matrix" hidden></section>
+  <section id="origins" hidden></section>
+  <section id="practice" hidden></section>
+</main>
+
+<nav class="tabs" aria-label="Sections">
+  <div class="tabs-in" role="tablist">
+    <button class="tab" role="tab" data-tab="learn" id="tab-learn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></svg>Learn</button>
+    <button class="tab" role="tab" data-tab="build" id="tab-build"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="8" width="6" height="8" rx="2"/><rect x="16" y="8" width="6" height="8" rx="2"/><path d="M12 9v6M9 12h6"/></svg>Word sums</button>
+    <button class="tab" role="tab" data-tab="matrix" id="tab-matrix"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="2" y="4" width="5" height="16" rx="1.5"/><rect x="9" y="8" width="6" height="8" rx="1.5"/><rect x="17" y="4" width="5" height="16" rx="1.5"/></svg>Matrix</button>
+    <button class="tab" role="tab" data-tab="origins" id="tab-origins"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v10M12 13l-6 4M12 13l6 4M12 13v8M6 17l-2 4M18 17l2 4"/></svg>Origins</button>
+    <button class="tab" role="tab" data-tab="practice" id="tab-practice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>Practice</button>
+  </div>
+</nav>
+
+<div class="sheet" id="settings" hidden>
+  <div class="sheet-in" role="dialog" aria-label="Reading settings">
+    <h2 style="font-size:1.3rem">Reading settings</h2>
+    <div class="setting"><span>Text size</span><div class="seg" id="segSize"><button data-v="normal">Standard</button><button data-v="large">Large</button></div></div>
+    <div class="setting"><span>Letter spacing</span><div class="seg" id="segSpace"><button data-v="normal">Standard</button><button data-v="wide">Wider</button></div></div>
+    <p class="meta">These settings are saved on this device.</p>
+    <button class="btn primary" id="closeSettings">Done</button>
+  </div>
+</div>
+
+<script>
+/* ---------- storage ---------- */
+const store={get(k,d){try{const v=localStorage.getItem('mw.'+k);return v==null?d:JSON.parse(v)}catch(e){return d}},
+             set(k,v){try{localStorage.setItem('mw.'+k,JSON.stringify(v))}catch(e){}}};
+
+/* ---------- morphemes ---------- */
+const PREFIXES=['re','de','in','con','un','im','as','inter','trans','ob'];
+const BASES={sign:{},struct:{bound:1},move:{},act:{},busy:{},carry:{},hope:{},hop:{dbl:1},run:{dbl:1},make:{},care:{}};
+const SUFFIXES=['s','es','ed','ing','er','est','ly','ness','ful','less','al','ion','ive','ment','able','ure','ate','age','or','ify','ature','ist'];
+const typeOf=s=>BASES[s]?'base':PREFIXES.includes(s)?'prefix':'suffix';
+const mk=s=>({s,t:typeOf(s),dbl:!!(BASES[s]&&BASES[s].dbl)});
+const parse=str=>str.split('+').map(mk);
+const g=x=>`<span class="gr">&lt;${x}&gt;</span>`;
+
+/* Join elements, applying the three suffixing changes. */
+function joinSum(parts){
+  let res='';const toks=[];const notes=[];
+  parts.forEach((p,i)=>{
+    if(i>0&&p.t==='suffix'){
+      const vowel=/^[aeiouy]/.test(p.s), prevTok=toks[toks.length-1], prev=parts[i-1];
+      if(/e$/.test(res)&&!/ee$/.test(res)&&vowel&&!(/[cg]e$/.test(res)&&/^[ao]/.test(p.s))){
+        res=res.slice(0,-1);prevTok.mark='/';notes.includes('e')||notes.push('e');
+      }else if(/[^aeiou]y$/.test(res)&&!/^i/.test(p.s)){
+        res=res.slice(0,-1)+'i';prevTok.mark='/i';notes.includes('y')||notes.push('y');
+      }else if(prev.dbl&&vowel){
+        const c=res.slice(-1);res+=c;toks.push({dbl:c});notes.includes('d')||notes.push('d');
+      }
+    }
+    res+=p.s;toks.push({t:p.t,s:p.s});
+  });
+  return {res,toks,notes};
+}
+function sumHTML(parts,o={}){
+  const j=joinSum(parts);const bits=[];
+  j.toks.forEach((tk,i)=>{
+    if(i>0)bits.push('<span class="op">+</span>');
+    bits.push(tk.dbl?`<span class="unit"><span class="tile dbl" title="doubled consonant">(${tk.dbl})</span></span>`
+      :`<span class="unit"><span class="tile ${tk.t}">${tk.s}</span>${tk.mark?`<span class="mark">${tk.mark}</span>`:''}</span>`);
+  });
+  bits.push('<span class="op arrow">→</span>');
+  bits.push(o.hide?'<span class="result q">?</span>':`<span class="result">${j.res}</span>`);
+  return `<div class="sum">${bits.join('')}</div>`;
+}
+const NOTE={
+  e:()=>`The final ${g('e')} is dropped (marked <b>/</b>) because the next suffix starts with a vowel letter.`,
+  y:()=>`The ${g('y')} changes to ${g('i')} (marked <b>/i</b>) because the next suffix doesn't start with ${g('i')}.`,
+  d:()=>`The final consonant is doubled (shown in brackets) before a vowel suffix.`
+};
+const notesHTML=n=>n.length?`<ul class="notes">${n.map(k=>`<li><span>${NOTE[k]()}</span></li>`).join('')}</ul>`:'';
+const canSpeak=('speechSynthesis' in window)&&typeof SpeechSynthesisUtterance!=='undefined';
+const spellBtn=key=>canSpeak?`<button class="speak" data-spell="${key}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>Spell it out</button>`:'';
+function spellOut(key){
+  try{const parts=parse(key),j=joinSum(parts),L=w=>w.split('').join(', ');
+    const u=new SpeechSynthesisUtterance(parts.map(p=>L(p.s)).join(', plus, ')+', rewrites as, '+L(j.res)+'. '+j.res);
+    u.rate=.8;u.lang='en-GB';speechSynthesis.cancel();speechSynthesis.speak(u);}catch(e){}
+}
+
+/* ---------- matrices ---------- */
+const MATRICES=[
+  {base:'sign',origin:'Latin <i>signum</i>, “mark, token”',start:'sign+ature',pre:[['as','con','de','re']],
+   suf:[['al','ate','ature','er','ify','ment','ing','ed','s'],['s','ed','ing']],
+   words:'sign sign+s sign+ed sign+ing sign+er sign+er+s sign+al sign+al+s sign+ature sign+ature+s sign+ify sign+ify+ed sign+ify+ing de+sign de+sign+s de+sign+ed de+sign+ing de+sign+er de+sign+er+s de+sign+ate de+sign+ate+s de+sign+ate+ed re+sign re+sign+s re+sign+ed re+sign+ing as+sign as+sign+s as+sign+ed as+sign+ing as+sign+ment as+sign+ment+s con+sign con+sign+ed con+sign+ment con+sign+ment+s'},
+  {base:'struct',bound:true,origin:'Latin <i>struere, structum</i>, “to build, to pile up”',start:'con+struct+ion',pre:[['re'],['con','de','in','ob']],
+   suf:[['ure','ion','ive','or','ed','ing','s'],['al','ed','s']],
+   words:'struct+ure struct+ure+s struct+ure+ed struct+ure+al re+struct+ure re+struct+ure+ed con+struct con+struct+s con+struct+ed con+struct+ing con+struct+ion con+struct+ion+s con+struct+ive con+struct+or con+struct+or+s de+struct+ion de+struct+ive in+struct in+struct+s in+struct+ed in+struct+ing in+struct+ion in+struct+ion+s in+struct+ion+al in+struct+ive in+struct+or in+struct+or+s ob+struct ob+struct+s ob+struct+ed ob+struct+ing ob+struct+ion ob+struct+ion+s ob+struct+ive re+con+struct re+con+struct+s re+con+struct+ed re+con+struct+ing re+con+struct+ion'},
+  {base:'move',origin:'Latin <i>movēre</i>, “to move”, through French',start:'re+move+al',pre:[['im','re','un']],
+   suf:[['s','ed','ing','er','ment','able','al'],['s']],
+   words:'move move+s move+ed move+ing move+er move+er+s move+ment move+ment+s move+able re+move re+move+s re+move+ed re+move+ing re+move+er re+move+er+s re+move+al re+move+al+s re+move+able im+move+able un+move+ed un+move+able'},
+  {base:'act',origin:'Latin <i>agere, actum</i>, “to do, to drive”',start:'re+act+ion',pre:[['in','inter','re','trans']],
+   suf:[['s','ed','ing','ion','ive','or'],['s','ly','ate','ist']],
+   words:'act act+s act+ed act+ing act+ion act+ion+s act+ive act+ive+ly act+ive+ate act+ive+ist act+or act+or+s re+act re+act+s re+act+ed re+act+ing re+act+ion re+act+ion+s re+act+ive re+act+ive+ate re+act+or re+act+or+s inter+act inter+act+s inter+act+ed inter+act+ing inter+act+ion inter+act+ion+s inter+act+ive inter+act+ive+ly in+act+ion in+act+ive in+act+ive+ate trans+act trans+act+s trans+act+ed trans+act+ion trans+act+ion+s'},
+  {base:'busy',origin:'Old English <i>bisig</i>, “occupied, anxious”',start:'busy+ness',pre:[],
+   suf:[['ed','ing','er','est','ly','ness'],['es']],
+   words:'busy busy+ed busy+ing busy+er busy+est busy+ly busy+ness busy+ness+es'}
+];
+MATRICES.forEach(m=>m.list=m.words.split(' '));
+const EXTRA='hope+s hope+ed hope+ing hope+ful hope+less hop+s hop+ed hop+ing run+s run+ing run+er make+s make+ing make+er care+s care+ed care+ing care+ful care+less care+ful+ly carry+es carry+ed carry+ing carry+er carry+age'.split(' ');
+const KNOWN=new Set([...MATRICES.flatMap(m=>m.list),...EXTRA]);
+
+/* ---------- definitions (word class | meaning) ---------- */
+const DEFS={
+ sign:'noun, verb|A mark, symbol or gesture that carries a meaning. As a verb: to write your name on something.',
+ signs:'noun, verb|More than one sign. Also: writes their name on something (she signs the form).',
+ signed:'verb|Wrote your name on something, or communicated using sign language.',
+ signing:'verb, noun|Writing your name on something, or using sign language.',
+ signer:'noun|A person who signs something, such as a letter or agreement.',
+ signers:'noun|People who sign something.',
+ signal:'noun, verb|A sign, sound or movement that sends a message. As a verb: to send that message.',
+ signals:'noun, verb|More than one signal. Also: sends a message by a sign or movement.',
+ signature:'noun|Your name, written in your own way to show something is from you or agreed by you.',
+ signatures:'noun|More than one signature.',
+ signify:'verb|To mean something, or to be a sign of it.',
+ signified:'verb|Meant something, or showed it.',
+ signifying:'verb|Meaning something, or showing it.',
+ design:'noun, verb|A plan or drawing that shows how something will look or work. As a verb: to make that plan.',
+ designs:'noun, verb|More than one design. Also: plans how something will look or work.',
+ designed:'verb|Planned how something would look or work.',
+ designing:'verb|Planning how something will look or work.',
+ designer:'noun|A person who plans how things will look or work.',
+ designers:'noun|People who plan how things will look or work.',
+ designate:'verb|To officially choose someone or something for a particular job or purpose.',
+ designates:'verb|Officially chooses someone or something for a purpose.',
+ designated:'verb, adjective|Officially chosen for a particular job or purpose (a designated driver).',
+ resign:'verb|To give up your job or position officially.',
+ resigns:'verb|Gives up a job or position officially.',
+ resigned:'verb, adjective|Gave up a job. As an adjective: accepting something you can\'t change.',
+ resigning:'verb|Giving up a job or position officially.',
+ assign:'verb|To give someone a task, or to set something aside for a purpose.',
+ assigns:'verb|Gives someone a task.',
+ assigned:'verb|Gave someone a task, or set something aside for a purpose.',
+ assigning:'verb|Giving someone a task.',
+ assignment:'noun|A task or piece of work that someone is given to do.',
+ assignments:'noun|Tasks or pieces of work given to someone.',
+ consign:'verb|To send or hand something over to someone else to look after or deliver.',
+ consigned:'verb|Sent or handed something over to someone else.',
+ consignment:'noun|A batch of goods sent to someone.',
+ consignments:'noun|Batches of goods sent to someone.',
+ structure:'noun|The way the parts of something are built or arranged; also a building.',
+ structures:'noun|More than one structure: buildings, or ways that parts are arranged.',
+ structured:'adjective, verb|Organised in a clear way. As a verb: arranged the parts of something.',
+ structural:'adjective|To do with how something is built or arranged.',
+ restructure:'verb|To organise something in a new way.',
+ restructured:'verb|Organised something in a new way.',
+ construct:'verb|To build something by putting parts together.',
+ constructs:'verb|Builds something by putting parts together.',
+ constructed:'verb|Built something by putting parts together.',
+ constructing:'verb|Building something by putting parts together.',
+ construction:'noun|The work of building something; also, something that has been built.',
+ constructions:'noun|Things that have been built.',
+ constructive:'adjective|Helpful, and meant to improve something (constructive feedback).',
+ constructor:'noun|A person or company that builds things.',
+ constructors:'noun|People or companies that build things.',
+ destruction:'noun|The act of destroying something so badly it can\'t be used or repaired.',
+ destructive:'adjective|Causing a lot of damage.',
+ instruct:'verb|To teach someone, or tell them what to do.',
+ instructs:'verb|Teaches someone, or tells them what to do.',
+ instructed:'verb|Taught someone, or told them what to do.',
+ instructing:'verb|Teaching someone, or telling them what to do.',
+ instruction:'noun|Teaching; or a piece of information telling you what to do.',
+ instructions:'noun|Information that tells you how to do something.',
+ instructional:'adjective|Made for teaching (an instructional video).',
+ instructive:'adjective|Giving useful knowledge.',
+ instructor:'noun|A person who teaches a practical skill.',
+ instructors:'noun|People who teach a practical skill.',
+ obstruct:'verb|To block something, or get in the way of it.',
+ obstructs:'verb|Blocks something, or gets in its way.',
+ obstructed:'verb|Blocked something, or got in its way.',
+ obstructing:'verb|Blocking something, or getting in its way.',
+ obstruction:'noun|Something that blocks the way.',
+ obstructions:'noun|Things that block the way.',
+ obstructive:'adjective|Deliberately getting in the way or causing delay.',
+ reconstruct:'verb|To build something again, or to work out how something happened.',
+ reconstructs:'verb|Builds something again.',
+ reconstructed:'verb|Built something again.',
+ reconstructing:'verb|Building something again.',
+ reconstruction:'noun|The work of building something again, or of working out what happened.',
+ move:'verb, noun|To go, or make something go, from one place to another.',
+ moves:'verb, noun|Goes from one place to another. Also: more than one move, as in a game.',
+ moved:'verb|Went or carried something from one place to another; or felt strong emotion.',
+ moving:'verb, adjective|Going from one place to another. As an adjective: making you feel emotion.',
+ mover:'noun|A person or thing that moves, such as someone who moves furniture.',
+ movers:'noun|People or things that move.',
+ movement:'noun|A change of place or position; or a group of people working for a shared cause.',
+ movements:'noun|Changes of place or position.',
+ movable:'adjective|Able to be moved.',
+ remove:'verb|To take something away from where it was.',
+ removes:'verb|Takes something away.',
+ removed:'verb|Took something away.',
+ removing:'verb|Taking something away.',
+ remover:'noun|A substance or person that removes something (nail varnish remover).',
+ removers:'noun|Substances or people that remove things.',
+ removal:'noun|The act of taking something away.',
+ removals:'noun|Acts of taking things away; in British English, moving house.',
+ removable:'adjective|Able to be taken away or off.',
+ immovable:'adjective|Impossible to move; or refusing to change your mind.',
+ unmoved:'adjective|Not affected by emotion; or still in the same place.',
+ unmovable:'adjective|Not able to be moved.',
+ act:'verb, noun|To do something; to perform a part in a play. As a noun: something that is done.',
+ acts:'verb, noun|Does something or performs. Also: more than one act.',
+ acted:'verb|Did something, or performed a part.',
+ acting:'verb, noun|Doing something; the job of performing in plays or films.',
+ action:'noun|Doing something, especially to deal with a problem.',
+ actions:'noun|Things that someone does.',
+ active:'adjective|Busy doing things; working or in use.',
+ actively:'adverb|In a way that involves taking action.',
+ activate:'verb|To make something start working.',
+ activist:'noun|A person who works to bring about political or social change.',
+ actor:'noun|A person who performs in plays, films or TV.',
+ actors:'noun|People who perform in plays, films or TV.',
+ react:'verb|To act in response to something.',
+ reacts:'verb|Acts in response to something.',
+ reacted:'verb|Acted in response to something.',
+ reacting:'verb|Acting in response to something.',
+ reaction:'noun|What you do or feel in response to something.',
+ reactions:'noun|Responses to something.',
+ reactive:'adjective|Acting in response to things rather than planning ahead; in science, likely to change chemically.',
+ reactivate:'verb|To make something start working again.',
+ reactor:'noun|A machine in which a nuclear or chemical reaction is controlled.',
+ reactors:'noun|Machines that control nuclear or chemical reactions.',
+ interact:'verb|To act on each other; to communicate or work with someone.',
+ interacts:'verb|Communicates or works with someone.',
+ interacted:'verb|Communicated or worked with someone.',
+ interacting:'verb|Communicating or working with someone.',
+ interaction:'noun|Communication or activity between people or things.',
+ interactions:'noun|Times when people or things communicate or act on each other.',
+ interactive:'adjective|Responding to what the user does (an interactive app).',
+ interactively:'adverb|In a way that involves responding to each other or to the user.',
+ inaction:'noun|Not doing anything, especially when something should be done.',
+ inactive:'adjective|Not doing anything; not working or in use.',
+ inactivate:'verb|To stop something from working.',
+ transact:'verb|To carry out business, such as buying or selling.',
+ transacts:'verb|Carries out business.',
+ transacted:'verb|Carried out business.',
+ transaction:'noun|A piece of business, such as buying or selling something.',
+ transactions:'noun|Pieces of business, such as payments.',
+ busy:'adjective|Having a lot to do; full of activity.',
+ busied:'verb|Kept yourself occupied (she busied herself with the washing-up).',
+ busying:'verb|Keeping yourself occupied.',
+ busier:'adjective|More busy.',
+ busiest:'adjective|The most busy.',
+ busily:'adverb|In a busy way.',
+ business:'noun|A company; the work of buying and selling; or something that concerns you. Originally: the state of being busy.',
+ businesses:'noun|Companies.',
+ hopes:'verb, noun|Wishes for something. Also: more than one hope.',
+ hoped:'verb|Wished for something and thought it might happen.',
+ hoping:'verb|Wishing for something and thinking it might happen.',
+ hopeful:'adjective|Feeling that something good will happen.',
+ hopeless:'adjective|With no hope; very bad at something.',
+ hops:'verb, noun|Jumps on one foot. Also: a plant used in making beer.',
+ hopped:'verb|Jumped on one foot, or made small quick jumps.',
+ hopping:'verb|Jumping on one foot, or making small quick jumps.',
+ runs:'verb, noun|Moves fast on foot. Also: points scored in cricket.',
+ running:'verb, noun|Moving fast on foot; also, managing or operating something.',
+ runner:'noun|A person who runs, especially in races.',
+ makes:'verb|Creates or produces something.',
+ making:'verb|Creating or producing something.',
+ maker:'noun|A person or company that makes something.',
+ cares:'verb, noun|Feels that something matters. Also: worries.',
+ cared:'verb|Felt that something mattered; looked after someone.',
+ caring:'adjective, verb|Kind and helpful to others. Also: looking after someone.',
+ careful:'adjective|Paying attention to avoid mistakes or danger.',
+ careless:'adjective|Not paying enough attention, so that mistakes happen.',
+ carefully:'adverb|With care and attention.',
+ carries:'verb|Holds something and takes it somewhere.',
+ carried:'verb|Held something and took it somewhere.',
+ carrying:'verb|Holding something and taking it somewhere.',
+ carrier:'noun|A person, company or thing that carries something.',
+ carriage:'noun|A vehicle pulled by horses; or one section of a train.'
+};
+function defHTML(word){const d=DEFS[word];if(!d)return'';const [pos,text]=d.split('|');
+  return `<div class="def"><span class="pos">${pos}</span><p><b>${word}:</b> ${text}</p></div>`;}
+
+/* ---------- learn ---------- */
+const S=k=>sumHTML(parse(k));
+const LESSONS=[
+ {k:'Why it works',t:'Spelling carries meaning',h:()=>`
+  <p>English spelling records meaning as well as sound. Words that share meaning usually share spelling, even when they sound different.</p>
+  <p>Say <i>sign</i>, then <i>signal</i>. The ${g('g')} is silent in one and spoken in the other. It's spelled in both because they share the same base.</p>
+  ${S('sign+al')}${S('sign+ature')}
+  <p class="tip">When a spelling seems strange, look for a relative where the letter makes sense.</p>`},
+ {k:'Building blocks',t:'Three kinds of morpheme',h:()=>`
+  <p>A morpheme is the smallest part of a word that carries meaning. Spelling is built from three kinds.</p>
+  <div class="legend">
+   <div><span class="tile prefix">re</span><span><b>Prefix.</b> Goes before the base and adds to its meaning: <i>re</i> means “again” or “back”.</span></div>
+   <div><span class="tile base">act</span><span><b>Base.</b> The core meaning. Every word has at least one.</span></div>
+   <div><span class="tile suffix">ion</span><span><b>Suffix.</b> Goes after the base. It often changes the word's job: <i>act</i> (a verb) becomes <i>action</i> (a noun).</span></div>
+  </div>
+  ${S('re+act+ion')}
+  <p>Some bases can stand alone, like <i>act</i>. Others are <b>bound</b> and always need company, like ${g('struct')} in <i>construct</i>.</p>`},
+ {k:'The main tool',t:'Word sums',h:()=>`
+  <p>A word sum shows how a word is built, piece by piece.</p>
+  ${S('con+struct+ion')}
+  <ul><li><b>+</b> joins the elements.</li><li><b>→</b> means “rewrites as”: the finished spelling.</li></ul>
+  <p>Read a word sum by naming the letters, not their sounds: “c‑o‑n plus s‑t‑r‑u‑c‑t plus i‑o‑n, rewrites as c‑o‑n‑s‑t‑r‑u‑c‑t‑i‑o‑n.”</p>
+  <div class="row">${spellBtn('con+struct+ion')}</div>
+  <p class="tip">Most of the time you just join the pieces. Three changes can happen at the join. The next three lessons cover them.</p>`},
+ {k:'Change 1 of 3',t:'Dropping the final e',h:()=>`
+  <p>When a base ends in a silent ${g('e')} and the suffix starts with a vowel letter, the ${g('e')} is dropped. A slash marks where it goes.</p>
+  <div class="pair"><div class="panel"><span class="cap">Vowel suffix: drop the e</span>${S('move+ing')}${S('hope+ed')}</div>
+  <div class="panel"><span class="cap">Consonant suffix: keep it</span>${S('move+ment')}${S('care+ful')}</div></div>
+  <p>The ${g('e')} isn't lost from the base. You can still see it in <i>movement</i> and <i>moves</i>.</p>`},
+ {k:'Change 2 of 3',t:'Changing y to i',h:()=>`
+  <p>When a base ends in a consonant then ${g('y')}, the ${g('y')} changes to ${g('i')} before most suffixes. It's marked <b>/i</b>.</p>
+  ${S('busy+ness')}${S('busy+ly')}${S('carry+ed')}
+  <p>The exception: keep the ${g('y')} when the suffix starts with ${g('i')}, so you never write <i>ii</i>.</p>
+  ${S('carry+ing')}
+  <p class="tip"><i>business</i> sounds nothing like <i>busy</i>, but the word sum shows it's just <i>busy + ness</i>.</p>`},
+ {k:'Change 3 of 3',t:'Doubling the consonant',h:()=>`
+  <p>When a short base ends in <b>one vowel letter then one consonant</b>, double that consonant before a vowel suffix. The extra letter goes in brackets.</p>
+  <div class="pair"><div class="panel"><span class="cap">hop: one vowel, one consonant</span>${S('hop+ing')}${S('run+er')}</div>
+  <div class="panel"><span class="cap">hope: ends in e, so drop it</span>${S('hope+ing')}${S('hop+s')}</div></div>
+  <p>Doubling keeps <i>hopping</i> and <i>hoping</i> apart. A consonant suffix like ${g('s')} never causes doubling.</p>
+  <p class="meta">In longer words, double only when the last syllable is stressed: <i>begin</i> → <i>beginning</i>, but <i>visit</i> → <i>visiting</i>.</p>`},
+ {k:'Word families',t:'Morphological matrices',h:()=>`
+  <p>A matrix maps a whole family of words that share one base. Each path through it is a word sum.</p>
+  ${matrixHTML(MATRICES[3],{pre:['re'],suf:['ion',null]},false)}
+  <ol class="rules"><li>Read from left to right.</li><li>Take at most one element from each column.</li><li>Always include the base.</li></ol>
+  ${S('re+act+ion')}
+  <div class="row"><button class="btn primary" data-go="matrix">Explore matrices</button></div>`},
+ {k:'Etymology',t:'Four questions for any word',h:()=>`
+  <p>Etymology is a word's history. Knowing where a base came from often explains its spelling. Ask these four questions about any word you're unsure of:</p>
+  <ol><li><b>What does it mean?</b></li><li><b>How is it built?</b> Write a word sum.</li><li><b>What are its relatives?</b> Build a matrix.</li><li><b>How do the letters work?</b> Check which letters spell sounds, which mark meaning, and where the base came from.</li></ol>
+  <p>Try it on <i>muscle</i>: it comes from Latin <i>musculus</i>, “little mouse”. Its relative <i>muscular</i> lets you hear the ${g('c')}.</p>
+  <div class="row"><button class="btn primary" data-go="origins">Explore origins</button><button class="btn" data-go="practice">Practise</button></div>
+  <p class="meta">This approach is known as Structured Word Inquiry.</p>`}
+];
+let lessonIdx=store.get('lesson',0);if(lessonIdx>=LESSONS.length)lessonIdx=0;
+const seen=new Set(store.get('seen',[]));
+function renderLearn(){
+  const L=LESSONS[lessonIdx];seen.add(lessonIdx);store.set('seen',[...seen]);store.set('lesson',lessonIdx);
+  document.getElementById('learn').innerHTML=`
+   <div class="dots" role="group" aria-label="Lessons">${LESSONS.map((x,i)=>`<button class="dot ${i===lessonIdx?'on':seen.has(i)?'done':''}" data-lesson="${i}" aria-label="Lesson ${i+1}: ${x.t}"></button>`).join('')}</div>
+   <div class="lesson-head"><span class="eyebrow">Lesson ${lessonIdx+1} of ${LESSONS.length} · ${L.k}</span><h2>${L.t}</h2></div>
+   <div class="lesson-body">${L.h()}</div>
+   <div class="lesson-nav"><button class="btn" data-lesson="${lessonIdx-1}" ${lessonIdx===0?'disabled':''}>Back</button>
+   ${lessonIdx<LESSONS.length-1?`<button class="btn primary" data-lesson="${lessonIdx+1}">Next lesson</button>`:`<button class="btn primary" data-go="practice">Start practising</button>`}</div>`;
+}
+
+/* ---------- word sum builder ---------- */
+let buildParts=store.get('build',['re','move','al']);
+function renderBuild(){
+  const parts=buildParts.map(mk);const key=buildParts.join('+');
+  const bases=parts.filter(p=>p.t==='base');let verdict='',body='';
+  if(!parts.length){body=`<p class="empty">Tap tiles below to build a word sum.</p>`;verdict=`<div class="verdict info">Start with a prefix or a base.</div>`;}
+  else{
+    body=sumHTML(parts);
+    const bi=parts.findIndex(p=>p.t==='base');
+    const badOrder=bi>=0&&(parts.slice(bi+1).some(p=>p.t==='prefix')||parts.slice(0,bi).some(p=>p.t==='suffix'));
+    if(!bases.length)verdict=`<div class="verdict info">Add a base. Every word needs one.</div>`;
+    else if(bases.length>1)verdict=`<div class="verdict info">This builder uses one base at a time. Tap <b>Undo</b> to remove one.</div>`;
+    else if(badOrder)verdict=`<div class="verdict bad">Prefixes go before the base, and suffixes go after it.</div>`;
+    else if(KNOWN.has(key)){const w=joinSum(parts).res;verdict=`<div class="verdict good toast"><b>${w}</b>&nbsp;is a real word.</div>${defHTML(w)}`;}
+    else if(parts.length===1&&BASES[key]&&BASES[key].bound)verdict=`<div class="verdict info">${g(key)} is a bound base. It needs a prefix or suffix to make a word.</div>`;
+    else verdict=`<div class="verdict info">That isn't in this app's word list. It may not be a word. Check a dictionary, or try another combination.</div>`;
+  }
+  const bank=(label,items,t)=>`<div class="bank"><h3>${label}</h3><div class="bank-tiles">${items.map(s=>`<button class="tile ${t}" data-add="${s}">${s}</button>`).join('')}</div></div>`;
+  document.getElementById('build').innerHTML=`
+   <div class="lesson-head"><span class="eyebrow">Word sums</span><h2 style="font-size:1.6rem">Build a word, piece by piece</h2></div>
+   <p class="lede">Tap tiles to add them. The app applies the three changes at each join and shows you what happened.</p>
+   <div class="panel" aria-live="polite">${body}${verdict}${parts.length?notesHTML(joinSum(parts).notes):''}
+    <div class="row">${parts.length&&bases.length===1?spellBtn(key):''}<span style="flex:1"></span>
+    <button class="btn" data-undo ${parts.length?'':'disabled'}>Undo</button><button class="btn" data-clear ${parts.length?'':'disabled'}>Clear</button></div></div>
+   ${bank('Prefixes',PREFIXES,'prefix')}${bank('Bases',Object.keys(BASES),'base')}${bank('Suffixes',SUFFIXES,'suffix')}
+   <p class="tip">Try <i>hope + ing</i>, then <i>hop + ing</i>. Then try <i>carry + age</i>.</p>`;
+}
+
+/* ---------- matrix explorer ---------- */
+let mxIdx=store.get('mx',0);if(mxIdx>=MATRICES.length)mxIdx=0;
+let found=store.get('found',{});let reveal=false;let mxSel=null;let mxNew='';
+function selFromKey(m,key){
+  const parts=key.split('+'),bi=parts.indexOf(m.base);
+  const sel={pre:m.pre.map(()=>null),suf:m.suf.map(()=>null)};
+  let c=0;parts.slice(0,bi).forEach(x=>{while(c<m.pre.length&&!m.pre[c].includes(x))c++;if(c<m.pre.length)sel.pre[c++]=x;});
+  c=0;parts.slice(bi+1).forEach(x=>{while(c<m.suf.length&&!m.suf[c].includes(x))c++;if(c<m.suf.length)sel.suf[c++]=x;});
+  return sel;
+}
+const keyFromSel=(m,sel)=>[...sel.pre.filter(Boolean),m.base,...sel.suf.filter(Boolean)].join('+');
+function matrixHTML(m,sel,live){
+  const el=(k,ci,x,t)=>live?`<button class="mx-el ${t}" data-k="${k}" data-c="${ci}" data-x="${x}" aria-pressed="${sel[k][ci]===x}">${x}</button>`
+                          :`<span class="mx-el ${t}" ${sel[k][ci]===x?'aria-pressed="true"':''}>${x}</span>`;
+  return `<div class="mx-scroll"><div class="mx" role="group" aria-label="Matrix for ${m.base}">
+   ${m.pre.map((c,ci)=>`<div class="mx-col">${c.map(x=>el('pre',ci,x,'prefix')).join('')}</div>`).join('')}
+   <div class="mx-base">${m.base}</div>
+   ${m.suf.map((c,ci)=>`<div class="mx-col">${c.map(x=>el('suf',ci,x,'suffix')).join('')}</div>`).join('')}
+  </div></div>`;
+}
+function renderMatrix(){
+  const m=MATRICES[mxIdx];if(!mxSel)mxSel=selFromKey(m,m.start);
+  const key=keyFromSel(m,mxSel),parts=parse(key),got=new Set(found[m.base]||[]);
+  let verdict;
+  if(m.list.includes(key)){const w=joinSum(parts).res;verdict=`<div class="verdict good ${mxNew===key?'toast':''}"><b>${w}</b>&nbsp;${mxNew===key?'is a new word for your list!':'is a real word.'}</div>${defHTML(w)}`;}
+  else if(key===m.base&&m.bound)verdict=`<div class="verdict info">${g(m.base)} is a bound base. Add a prefix or suffix to make a word.</div>`;
+  else verdict=`<div class="verdict info">That path doesn't make a word in this family. Try another column.</div>`;
+  const n=m.list.length,f=m.list.filter(w=>got.has(w)).length;
+  const chips=m.list.filter(w=>reveal||got.has(w)).map(w=>`<button class="word ${got.has(w)?'':'hidden'}" data-load="${w}">${joinSum(parse(w)).res}</button>`).join('');
+  document.getElementById('matrix').innerHTML=`
+   <div class="lesson-head"><span class="eyebrow">Matrix explorer</span><h2 style="font-size:1.6rem">Find every word in the family</h2></div>
+   <div class="chips" role="group" aria-label="Choose a base">${MATRICES.map((x,i)=>`<button class="chip" data-mx="${i}" aria-pressed="${i===mxIdx}">${x.base}</button>`).join('')}</div>
+   <p class="origin">Base ${g(m.base)}: from ${m.origin}.</p>
+   ${matrixHTML(m,mxSel,true)}
+   <ol class="rules"><li>Tap one element per column, or none. Tap again to remove it.</li><li>Read left to right through the base.</li></ol>
+   <div class="panel" aria-live="polite">${sumHTML(parts)}${verdict}${notesHTML(joinSum(parts).notes)}<div class="row">${spellBtn(key)}</div></div>
+   <div class="panel">
+    <div class="score"><span>Words found</span><b>${f} of ${n}</b></div>
+    <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="${n}" aria-valuenow="${f}"><span style="width:${f/n*100}%"></span></div>
+    <div class="found">${chips||'<span class="empty">Words you build will collect here.</span>'}</div>
+    <div class="row"><button class="btn" data-reveal>${reveal?'Hide the words I haven\'t found':'Show all words'}</button></div>
+   </div>`;
+}
+
+/* ---------- origins ---------- */
+const ORIGINS=[
+ {w:'si[g]n',q:'Why the g?',from:'Latin <i>signum</i>, “mark, token”',rel:['si[g]nal','si[g]nature','si[g]nify','de|si[g]n'],why:`The ${g('g')} is silent in <i>sign</i>, but you hear it in <i>signal</i> and <i>signature</i>. The base keeps the same spelling so the whole family stays visible.`},
+ {w:'t[w]o',q:'Why the w?',from:'Old English <i>twā</i>',rel:['t[w]in','t[w]elve','t[w]enty','t[w]ice','be[tw]een'],why:`The ${g('w')} links <i>two</i> to other words about “two”. You can hear it in <i>twin</i>, <i>twice</i> and <i>between</i>.`},
+ {w:'mus[c]le',q:'Why the c?',from:'Latin <i>musculus</i>, “little mouse”',rel:['mus[c]ular','mus[c]ulature'],why:`The Romans thought a flexing muscle looked like a little mouse moving under the skin. The ${g('c')} is pronounced in <i>muscular</i>.`},
+ {w:'bus[i]ness',q:'Why the i?',from:'Old English <i>bisig</i>, “occupied”',rel:['bus[y]','bus[i]ly','bus[i]est'],why:`It's a word sum: busy/i + ness → business. The pronunciation shrank over time, but the spelling still shows the base <i>busy</i>.`},
+ {w:'d[o]es',q:'Why not “duz”?',from:'Old English <i>dōn</i>, “to do”',rel:['[do]','[do]ing','un[do]','[do]er'],why:`It's do + es → does. The spelling keeps the base <i>do</i> so you can see what the word means.`},
+ {w:'[sc]ience',q:'Why the sc?',from:'Latin <i>scīre</i>, “to know”',rel:['con[sc]ience','con[sc]ious','omni[sc]ient'],why:`The ${g('sc')} marks the base meaning “know”. <i>Conscious</i> means “knowing”, and <i>omniscient</i> means “knowing everything”.`},
+ {w:'[k]now',q:'Why the k?',from:'Old English <i>cnāwan</i>',rel:['[k]nowledge','ac[k]nowledge','un[k]nown'],why:`The ${g('k')} was once pronounced. The sound dropped away, but the spelling stayed and still links <i>know</i> to <i>knowledge</i>.`},
+ {w:'dou[b]t',q:'Why the b?',from:'Latin <i>dubitāre</i>, “to waver”',rel:['du[b]ious','indu[b]itable'],why:`Medieval scribes added the ${g('b')} to show the Latin root. You can hear it in <i>dubious</i>.`},
+ {w:'colum[n]',q:'Why the n?',from:'Latin <i>columna</i>, “pillar”',rel:['colum[n]ist','colum[n]ar'],why:`The ${g('n')} is silent at the end of the word but spoken once a suffix follows: <i>columnist</i>.`},
+ {w:'autum[n]',q:'Why the n?',from:'Latin <i>autumnus</i>',rel:['autum[n]al'],why:`Same pattern as <i>column</i>: the ${g('n')} comes back in <i>autumnal</i>.`},
+ {w:'bom[b]',q:'Why the final b?',from:'Latin <i>bombus</i>, “a booming sound”',rel:['bom[b]ard','bom[b]ardier'],why:`The ${g('b')} is spoken in <i>bombard</i>, which shares the base.`},
+ {w:'condem[n]',q:'Why the n?',from:'Latin <i>damnāre</i>, “to condemn”',rel:['condem[n]ation'],why:`The ${g('n')} is heard in <i>condemnation</i>.`}
+];
+const hl=s=>s.replace(/\|/g,'').replace(/\[(.+?)\]/g,'<mark>$1</mark>');
+function renderOrigins(){
+  document.getElementById('origins').innerHTML=`
+   <div class="lesson-head"><span class="eyebrow">Origins</span><h2 style="font-size:1.6rem">Letters that seem silent usually have a job</h2></div>
+   <p class="lede">Each word has a highlighted letter that puzzles many spellers. Open a card to see the relatives that explain it.</p>
+   ${ORIGINS.map((o,i)=>`<details class="ocard" ${i===0?'open':''}><summary><span class="big">${hl(o.w)}</span><span class="q">${o.q}</span><svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></summary>
+    <div class="obody"><p class="meta">From ${o.from}</p><div class="rels">${o.rel.map(r=>`<span>${hl(r)}</span>`).join('')}</div><p>${o.why}</p></div></details>`).join('')}`;
+}
+
+/* ---------- practice ---------- */
+const P_BUILD=[
+ {w:'hoping',k:'hope+ing',d:['hop','ed','er'],hint:'wishing for something'},
+ {w:'hopping',k:'hop+ing',d:['hope','ed','s'],hint:'jumping on one foot'},
+ {w:'business',k:'busy+ness',d:['ly','es','ing'],hint:'a company, or the work you do'},
+ {w:'signature',k:'sign+ature',d:['de','al','ify'],hint:'your name, written your own way'},
+ {w:'constructive',k:'con+struct+ive',d:['de','ion','ed'],hint:'helpful, building something up'},
+ {w:'removal',k:'re+move+al',d:['un','able','ment'],hint:'taking something away'},
+ {w:'reactivate',k:'re+act+ive+ate',d:['inter','ion','or'],hint:'make something work again'},
+ {w:'carriage',k:'carry+age',d:['er','es','ed'],hint:'a vehicle pulled by horses'},
+ {w:'designers',k:'de+sign+er+s',d:['as','al','ed'],hint:'people who plan how things look'},
+ {w:'structural',k:'struct+ure+al',d:['con','ion','ive'],hint:'to do with how something is built'},
+ {w:'immovable',k:'im+move+able',d:['re','ment','ed'],hint:'impossible to shift'},
+ {w:'signified',k:'sign+ify+ed',d:['de','al','ing'],hint:'meant, or showed'}
+];
+const P_CHOOSE=[
+ {k:'hope+ed',o:['hoped','hopped','hopeed']},{k:'hop+ed',o:['hopped','hoped','hopd']},
+ {k:'busy+ly',o:['busily','busyly','busly']},{k:'carry+ing',o:['carrying','carriing','caring']},
+ {k:'make+ing',o:['making','makeing','makking']},{k:'run+er',o:['runner','runer','runnar']},
+ {k:'care+ful',o:['careful','carful','carefull']},{k:'struct+ure+ed',o:['structured','structureed','structurd']},
+ {k:'sign+ify+ing',o:['signifying','signifiing','signiffying']}
+];
+const P_WHY=[
+ {q:()=>`Why does <i>sign</i> have a ${g('g')}?`,o:['It links sign to relatives like signal and signature.','It makes the i say its name.','It was a printing mistake that was never fixed.'],e:'The g belongs to the base sign, which you hear in signal and signature.'},
+ {q:()=>`Which word shares the meaning of “two” with <i>two</i>?`,o:['twin','tow','wonder'],e:'twin, twice, twelve and between all carry the “two” meaning.'},
+ {q:()=>`<i>does</i> is built from…`,o:['do + es','dos + e','d + oes'],e:'do + es → does. The spelling keeps the base do.'},
+ {q:()=>`<i>muscle</i> comes from a Latin word meaning…`,o:['little mouse','strong arm','bone'],e:'Latin musculus means “little mouse”.'},
+ {q:()=>`Which relative lets you hear the ${g('n')} in <i>autumn</i>?`,o:['autumnal','autumns','autumnly'],e:'autumn + al → autumnal.'},
+ {q:()=>`<i>science</i> and <i>conscious</i> share a base meaning…`,o:['to know','to see','to cut'],e:'Both come from Latin scīre, “to know”.'},
+ {q:()=>`Why is <i>business</i> spelled with ${g('i')}?`,o:['It is busy + ness, and the y changes to i.','The i spells the sound you hear.','It comes from a French word with an i.'],e:'busy/i + ness → business.'},
+ {q:()=>`In a matrix, how many elements can you take from each column?`,o:['None or one','Exactly one from every column','As many as you like'],e:'Take at most one from each column, and always include the base.'}
+];
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+let round=null;
+function newRound(){
+  const qs=[...shuffle(P_BUILD).slice(0,4).map(x=>({type:'build',...x,pool:shuffle([...x.k.split('+'),...x.d]),ans:[]})),
+            ...shuffle(P_CHOOSE).slice(0,3).map(x=>({type:'choose',...x,opts:shuffle(x.o)})),
+            ...shuffle(P_WHY).slice(0,3).map(x=>({type:'why',...x,opts:shuffle(x.o)}))];
+  round={qs:shuffle(qs),i:0,score:0,done:false,picked:null,checked:false};
+}
+function renderPractice(){
+  if(!round)newRound();
+  const sec=document.getElementById('practice'),R=round,best=store.get('best',0);
+  if(R.i>=R.qs.length){
+    if(R.score>best)store.set('best',R.score);
+    sec.innerHTML=`<div class="lesson-head"><span class="eyebrow">Round complete</span><h2 style="font-size:1.6rem">Nice work</h2></div>
+     <div class="panel"><div class="bigscore">${R.score}<span style="font-size:1.4rem;color:var(--muted)"> / ${R.qs.length}</span></div>
+     <p class="lede">Best score on this device: ${Math.max(best,R.score)} / ${R.qs.length}</p>
+     <button class="btn primary" data-newround>Play another round</button></div>`;return;}
+  const q=R.qs[R.i];let body='',fb='';
+  if(q.type==='build'){
+    const ansParts=q.ans.map(i=>mk(q.pool[i]));
+    body=`<p class="eyebrow">Build the word sum</p><div class="target">${q.w}</div><p class="meta">Meaning: ${q.hint}</p>
+     <div class="slots" aria-label="Your word sum">${q.ans.length?q.ans.map((pi,n)=>`${n?'<span class="op">+</span>':''}<button class="tile ${mk(q.pool[pi]).t}" data-unpick="${n}" ${R.checked?'disabled':''}>${q.pool[pi]}</button>`).join(''):'<span class="empty">Tap tiles in order.</span>'}</div>
+     <div class="bank-tiles">${q.pool.map((s,i)=>q.ans.includes(i)?'':`<button class="tile ${mk(s).t}" data-pick="${i}" ${R.checked?'disabled':''}>${s}</button>`).join('')}</div>
+     ${R.checked?'':`<div class="row"><button class="btn primary" data-check ${q.ans.length?'':'disabled'}>Check</button></div>`}`;
+    if(R.checked){const ok=q.ans.map(i=>q.pool[i]).join('+')===q.k;const j=joinSum(parse(q.k));
+      fb=`<div class="verdict ${ok?'good':'bad'}">${ok?'Correct.':'Not quite. Here is the word sum:'}</div>${S(q.k)}${notesHTML(j.notes)}<div class="row">${spellBtn(q.k)}</div>`;}
+  }else{
+    const isC=q.type==='choose',correct=q.o[0];
+    body=isC?`<p class="eyebrow">Which spelling does this make?</p>${sumHTML(parse(q.k),{hide:!R.checked})}`
+            :`<p class="eyebrow">Etymology</p><p style="font-size:1.15rem;font-weight:500">${q.q()}</p>`;
+    body+=`<div class="opts">${q.opts.map(o=>{let c='';if(R.checked){if(o===correct)c='right';else if(o===R.picked)c='wrong';}
+      return `<button class="opt ${isC?'mono':''} ${c}" data-opt="${o.replace(/"/g,'&quot;')}" ${R.checked?'disabled':''}>${o}</button>`;}).join('')}</div>`;
+    if(R.checked){const ok=R.picked===correct;
+      fb=`<div class="verdict ${ok?'good':'bad'}">${ok?'Correct.':'Not quite.'} ${isC?'':q.e}</div>${isC?notesHTML(joinSum(parse(q.k)).notes):''}`;}
+  }
+  sec.innerHTML=`<div class="lesson-head"><span class="eyebrow">Practice</span><h2 style="font-size:1.6rem">Spell by structure</h2></div>
+   <div class="score"><span>Question ${R.i+1} of ${R.qs.length}</span><span>Score ${R.score}</span></div>
+   <div class="progress"><span style="width:${R.i/R.qs.length*100}%"></span></div>
+   <div class="panel" aria-live="polite">${body}${fb}${R.checked?`<div class="row"><button class="btn primary" data-next>${R.i===R.qs.length-1?'See results':'Next question'}</button></div>`:''}</div>`;
+}
+
+/* ---------- tabs, settings, events ---------- */
+const TABS=['learn','build','matrix','origins','practice'];
+const RENDER={learn:renderLearn,build:renderBuild,matrix:renderMatrix,origins:renderOrigins,practice:renderPractice};
+function show(tab,scroll=true){
+  TABS.forEach(t=>{document.getElementById(t).hidden=t!==tab;document.getElementById('tab-'+t).setAttribute('aria-selected',t===tab);});
+  RENDER[tab]();store.set('tab',tab);if(scroll)window.scrollTo({top:0});
+}
+function applySettings(){
+  const s=store.get('settings',{size:'normal',space:'normal'});
+  document.documentElement.classList.toggle('large',s.size==='large');document.body.classList.toggle('spaced',s.space==='wide');
+  document.querySelectorAll('#segSize button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===s.size));
+  document.querySelectorAll('#segSpace button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===s.space));
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;const d=b.dataset;
+  if(d.tab)return show(d.tab);
+  if(d.go)return show(d.go);
+  if(d.spell!==undefined)return spellOut(d.spell);
+  if(d.lesson!==undefined){const i=+d.lesson;if(i>=0&&i<LESSONS.length){lessonIdx=i;renderLearn();window.scrollTo({top:0});}return;}
+  if(d.add){buildParts.push(d.add);store.set('build',buildParts);return renderBuild();}
+  if(d.undo!==undefined){buildParts.pop();store.set('build',buildParts);return renderBuild();}
+  if(d.clear!==undefined){buildParts=[];store.set('build',buildParts);return renderBuild();}
+  if(d.mx!==undefined){mxIdx=+d.mx;mxSel=null;reveal=false;mxNew='';store.set('mx',mxIdx);return renderMatrix();}
+  if(d.k){const m=MATRICES[mxIdx],c=+d.c;mxSel[d.k][c]=mxSel[d.k][c]===d.x?null:d.x;
+    const key=keyFromSel(m,mxSel);mxNew='';
+    if(m.list.includes(key)){const arr=found[m.base]||(found[m.base]=[]);if(!arr.includes(key)){arr.push(key);mxNew=key;store.set('found',found);}}
+    return renderMatrix();}
+  if(d.load){mxSel=selFromKey(MATRICES[mxIdx],d.load);mxNew='';return renderMatrix();}
+  if(d.reveal!==undefined){reveal=!reveal;return renderMatrix();}
+  const R=round;
+  if(d.pick!==undefined){R.qs[R.i].ans.push(+d.pick);return renderPractice();}
+  if(d.unpick!==undefined){R.qs[R.i].ans.splice(+d.unpick,1);return renderPractice();}
+  if(d.check!==undefined){const q=R.qs[R.i];R.checked=true;if(q.ans.map(i=>q.pool[i]).join('+')===q.k)R.score++;return renderPractice();}
+  if(d.opt!==undefined){const q=R.qs[R.i];R.picked=d.opt;R.checked=true;if(d.opt===q.o[0])R.score++;return renderPractice();}
+  if(d.next!==undefined){R.i++;R.checked=false;R.picked=null;renderPractice();return window.scrollTo({top:0});}
+  if(d.newround!==undefined){newRound();return renderPractice();}
+  if(b.id==='openSettings'){document.getElementById('settings').hidden=false;return;}
+  if(b.id==='closeSettings'){document.getElementById('settings').hidden=true;return;}
+  if(d.v&&b.closest('.seg')){const s=store.get('settings',{size:'normal',space:'normal'});
+    if(b.closest('#segSize'))s.size=d.v;else s.space=d.v;store.set('settings',s);applySettings();
+    const cur=TABS.find(t=>!document.getElementById(t).hidden);if(cur)RENDER[cur]();}
+});
+document.getElementById('settings').addEventListener('click',e=>{if(e.target.id==='settings')e.target.hidden=true;});
+applySettings();
+const hash=(location.hash||'').slice(1);
+show(TABS.includes(hash)?hash:store.get('tab','learn'),false);
+</script>
+
+</body></html>
