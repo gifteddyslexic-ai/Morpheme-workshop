@@ -75,6 +75,7 @@ section{display:flex;flex-direction:column;gap:18px}
 .mark{color:var(--bad);font-weight:700;padding-left:2px}
 .mark.y{color:var(--vow)}
 .chg{display:inline-block;border-radius:4px;padding:0 .08em;color:var(--surface)}
+.chg.k{background:var(--good)}
 .chg.e{background:var(--bad)} .chg.y{background:var(--vow)} .chg.d{background:var(--con)}
 .op{color:var(--muted);font-weight:700}
 .arrow{padding-inline:4px}
@@ -240,6 +241,125 @@ button.tile:active{transform:translateY(1px)}
 .chip[aria-pressed="true"]{background:var(--base);border-color:var(--base);color:var(--surface)}
 .origin{font-size:.92rem;color:var(--muted)}
 .chips.wrap{flex-wrap:wrap;overflow:visible}
+.chip[aria-pressed="true"] .meta{color:inherit;opacity:.85}
+.misslist.deadlist{margin:8px 0 0;padding:8px 10px 8px 26px;display:block;width:auto;font-size:.88rem}
+.chcheck .deadlist li{display:list-item;margin:2px 0}
+.chcheck .deadlist li>span:first-child{text-align:left}
+.deadlist .mono{white-space:nowrap;margin-right:6px}
+.mono{font-family:var(--mono);font-weight:700}
+.banks button.tile.hint{box-shadow:0 0 0 2px var(--surface),0 0 0 4px var(--ink);transform:scale(1.04)}
+.banks button.tile.dim{opacity:.28;cursor:help}
+.banks button.tile.swapok{outline:2px dashed var(--ink);outline-offset:2px}
+.guide-note{margin:0;font-size:.92rem;padding:8px 12px;border-radius:10px;background:var(--surface);border:1.5px dashed var(--ink)}
+.donetag{margin:0;font-weight:600;color:var(--good);display:flex;align-items:center;gap:8px}
+.tick{display:inline-flex;align-items:center;justify-content:center;width:1.4em;height:1.4em;border-radius:50%;background:var(--good);color:var(--surface);font-size:.8em;font-weight:800;flex:none}
+.doneshelf{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding-top:10px;border-top:1px solid var(--line)}
+.doneword{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-weight:700;font-size:.88rem;padding:3px 10px 3px 4px;border-radius:999px;background:var(--good-bg);color:var(--good)}
+
+.pieces.editable li{grid-template-columns:minmax(4.2rem,auto) 1fr auto}
+.pieces .edhint{display:flex!important;justify-content:space-between;align-items:center;gap:8px;font-size:.88rem}
+.pieces button.tile{cursor:pointer;min-height:34px}
+.pieces button.tile.sel{box-shadow:0 0 0 2px var(--surface),0 0 0 4px var(--ink)}
+.swapnote{color:var(--good);font-weight:600}
+.edx{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);color:var(--bad);font-weight:800;cursor:pointer;align-self:center}
+.wordpanel{position:sticky;top:calc(env(safe-area-inset-top,0px) + 66px);z-index:3;box-shadow:0 6px 14px rgb(0 0 0 / .08);gap:10px;padding:12px 14px}
+.wordpanel .anim-cap{font-size:.82rem;line-height:1.4}
+.wordpanel .anim-cap.hintcap{display:none}
+.wordpanel .stage .grp[data-g]{cursor:pointer}
+.wordpanel .stage .grp.sel{box-shadow:0 0 0 2px var(--surface),0 0 0 4px var(--ink)}
+.piecectl{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:.85rem;color:var(--muted);min-height:1.6em}
+.piecectl .speak{padding:4px 12px}
+.piecectl .rmbtn{color:var(--bad);border-color:var(--bad)}
+.wpdef{display:flex;flex-direction:column;gap:4px;font-size:.92rem;line-height:1.4}
+.wpdef .pos-inl{margin-left:0;color:var(--muted)}
+.wpmeta{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:.8rem;color:var(--muted)}
+.wpmeta .newtag{margin-left:0}
+.wpts{color:var(--base);font-weight:600}
+.wpts b{font-family:var(--display);font-size:1.05rem}
+.gunl{display:block;margin-bottom:6px}
+.guide-note .speak{padding:3px 10px;margin-left:4px}
+.modeseg button{padding:6px 12px;min-height:36px;font-size:.85rem}
+.lvhead{display:flex;justify-content:space-between;align-items:baseline;font-size:.92rem;color:var(--muted)}
+.lvhead b{color:var(--ink);font-size:1.05rem}
+.chlevels{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.chlv{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 4px;border-radius:14px;border:1.5px solid var(--line);background:var(--surface);cursor:pointer;font:inherit}
+.chlv.done{border-color:var(--base)}
+.chlv.locked{opacity:.5;cursor:default}
+.chn{font-family:var(--display);font-weight:800;font-size:1.3rem;display:inline-flex;align-items:center;justify-content:center;min-height:1.6rem}
+.stars{color:var(--suf);letter-spacing:1px;font-size:.95rem;white-space:nowrap}
+.stars .off{color:var(--line)}
+.bigstars .stars{font-size:2.4rem;letter-spacing:4px}
+.chres{align-items:flex-start}
+.chcheck{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:.92rem;width:100%}
+.chcheck li{display:grid;grid-template-columns:1.4rem 1fr;gap:6px;align-items:start}
+.chcheck li>span:first-child{font-weight:800;text-align:center}
+.chcheck .yes>span:first-child{color:var(--good)} .chcheck .no>span:first-child{color:var(--bad)}
+.misslist{margin:0;padding:10px 12px 10px 28px;background:var(--bg);border-radius:10px;display:flex;flex-direction:column;gap:4px;font-size:.92rem;width:100%}
+.chgoal{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:.95rem}
+.chtime{font-family:var(--mono);font-weight:700;font-size:1.3rem;padding:2px 12px;border-radius:999px;border:2px solid var(--base);color:var(--base);font-variant-numeric:tabular-nums}
+.chtime.low{border-color:var(--bad);color:var(--bad);animation:pulse 1s infinite}
+.chbuild{min-height:3rem;display:flex;align-items:center}
+.chmsg{margin:0;min-height:1.4em;font-size:.95rem}
+.chmsg .good{color:var(--good)} .chmsg .bad{color:var(--bad)}
+
+.detective{display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:var(--r);border:1.5px dashed var(--base);background:var(--surface)}
+.detective p{margin:0}
+.trail{margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:.85rem;line-height:1.3}
+.cpill{font:inherit;cursor:pointer;display:inline-block;padding:2px 10px;border-radius:999px;border:1.5px solid var(--muted);color:var(--muted);font-weight:600;font-size:.78rem;background:var(--surface);white-space:nowrap}
+.cpill.tchg{background:var(--ink);border-color:var(--ink);color:var(--surface)}
+.tr-step{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.tr-plus{color:var(--muted);font-weight:700}
+.cls-def{display:flex;flex-direction:column;gap:6px;flex:1}
+.cls-def p{margin:0}
+.trail .tile{font-size:.8rem;padding:.05em .45em;border-radius:7px;border-width:1.5px}
+.tr-to{font-size:1.25rem;line-height:1;color:var(--ink)}
+.stage.go~.trail{opacity:.35;transition:opacity .4s} .stage.done~.trail{opacity:1}
+.pc-job{font-size:.8rem;font-weight:600;color:var(--ink)}
+.qtext{font-size:1.15rem;font-weight:500;margin:0}
+
+.top-in .icon-btn{display:inline-flex;align-items:center;justify-content:center}
+.report-in{max-height:88vh;overflow:auto;gap:12px}
+.rep-head{display:flex;justify-content:space-between;align-items:center}
+.rep-name{font:inherit;font-size:1rem;padding:10px 12px;border:2px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);width:100%}
+.rep-name:focus{outline:none;border-color:var(--base)}
+.rep{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0;font-size:.92rem}
+.rep dt{font-weight:600;color:var(--muted)} .rep dd{margin:0;min-width:0}
+.rep-status{font-size:.88rem;color:var(--good);font-weight:600}
+.rep-text{width:100%;min-height:10rem;font-family:var(--mono);font-size:.8rem;padding:8px;border-radius:8px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink)}
+.voice-set{display:flex;flex-direction:column;gap:14px;padding-top:12px;border-top:1px solid var(--line)}
+#voiceSel{max-width:60%;font:inherit;font-size:.9rem;padding:8px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink)}
+@media (max-width:420px){.rep{grid-template-columns:1fr}.rep dd{margin-bottom:6px}}
+
+.ytag{display:inline-block;font-family:var(--body);font-size:.68rem;font-weight:700;letter-spacing:.04em;text-transform:none;padding:1px 7px;border-radius:999px;border:1.5px solid currentColor;white-space:nowrap;vertical-align:middle}
+.ytag.y1{color:var(--pre)} .ytag.y2{color:var(--base)} .ytag.y3{color:var(--suf)} .ytag.y4{color:var(--vow)} .ytag.y5{color:var(--muted)}
+.ywhy{margin:6px 0 0;font-size:.8rem;color:var(--muted)}
+.ncmap summary{cursor:pointer;font-weight:600;padding:4px 0}
+.nc-scroll{overflow-x:auto;margin-top:8px}
+.ncmap table{border-collapse:collapse;width:100%;font-size:.85rem}
+.ncmap td:first-child{width:3.4rem}
+.chip.yc{font-family:var(--body);font-weight:600}
+.ncmap th,.ncmap td{text-align:left;padding:6px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+.ncmap th{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.nc{font-weight:700;font-size:.8rem}
+.nc.yes{color:var(--good)} .nc.part{color:var(--suf)} .nc.no{color:var(--bad)} .nc.extra{color:var(--muted)}
+
+.pieces{list-style:none;margin:0;padding:10px 12px;display:flex;flex-direction:column;gap:8px;background:var(--bg);border-radius:12px}
+.pieces li{display:grid;grid-template-columns:minmax(4.2rem,auto) 1fr;gap:10px;align-items:start}
+.pieces .tile{justify-self:start;font-size:.95rem}
+.pc-txt{display:flex;flex-direction:column;gap:1px;min-width:0;font-size:.92rem;line-height:1.4}
+.pc-orig{font-size:.8rem;color:var(--muted)}
+.pieces li.newest{animation:pcin .45s ease}
+@keyframes pcin{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.split-form{display:flex;gap:8px}
+.split-form input{flex:1;min-width:0;font-family:var(--mono);font-weight:700;font-size:1.25rem;padding:10px 14px;border:2px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink)}
+.split-form input:focus{outline:none;border-color:var(--base)}
+#splitOut{display:flex;flex-direction:column;gap:12px}
+.stag{margin:0;font-size:.88rem;font-weight:600}
+.stag.good{color:var(--good)} .stag.info{color:var(--muted)}
+.parts-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.parts-list li{display:grid;grid-template-columns:minmax(4.5rem,auto) 1fr;gap:12px;align-items:center}
+.parts-list .tile{justify-self:start}
+
 .tile,.mx-el,.mx-base,.grp{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
 .mx-base{cursor:help}
 .mpop{position:fixed;left:16px;right:16px;bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:9;max-width:560px;margin:0 auto;background:var(--surface);border:1.5px solid var(--ink);border-radius:14px;padding:12px 14px;box-shadow:0 8px 24px rgb(0 0 0 / .18);display:flex;flex-direction:column;gap:6px;animation:pop .25s ease}
@@ -259,7 +379,7 @@ button.tile:active{transform:translateY(1px)}
 .qhead{display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:44px}
 .qhead .eyebrow{margin:0}
 .next-btn{flex:none;min-height:42px;padding:8px 14px}
-.levels{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.levels{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px}
 .lv{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 4px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);text-align:center;font-size:.72rem;line-height:1.25;min-width:0}
 .lv-n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;font-weight:700;font-size:.85rem;background:var(--bg);color:var(--muted)}
 .lv.done .lv-n{background:var(--good);color:var(--surface)}
@@ -342,7 +462,7 @@ span.mx-el{cursor:default;display:block}
 
 /* tab bar */
 .tabs{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
-.tabs-in{max-width:620px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)}
+.tabs-in{max-width:620px;margin:0 auto;display:grid;grid-template-columns:repeat(6,1fr)}
 .tab{border:0;background:transparent;display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 2px 10px;font-size:.7rem;font-weight:500;color:var(--muted);cursor:pointer;letter-spacing:0;word-spacing:0}
 .tab svg{width:24px;height:24px}
 .tab[aria-selected="true"]{color:var(--base)}
@@ -352,7 +472,7 @@ span.mx-el{cursor:default;display:block}
 .sheet{position:fixed;inset:0;z-index:10;background:rgb(0 0 0 / .35);display:flex;align-items:flex-end;justify-content:center}
 .sheet-in{background:var(--surface);width:100%;max-width:620px;border-radius:18px 18px 0 0;padding:20px 16px calc(24px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:16px}
 .setting{display:flex;justify-content:space-between;align-items:center;gap:12px}
-.seg{display:flex;border:1.5px solid var(--line);border-radius:10px;overflow:hidden}
+.seg{flex:none;display:flex;border:1.5px solid var(--line);border-radius:10px;overflow:hidden}
 .seg button{border:0;background:transparent;padding:8px 14px;cursor:pointer;min-height:42px}
 .seg button[aria-pressed="true"]{background:var(--base);color:var(--surface)}
 .toast{animation:pop .35s ease}
@@ -367,13 +487,15 @@ span.mx-el{cursor:default;display:block}
       <div class="logo" aria-hidden="true"><span class="a">re</span><span class="b">form</span><span class="c">ed</span></div>
       <h1>Morpheme Workshop</h1>
     </div>
-    <button class="icon-btn" id="openSettings" aria-label="Reading settings">Aa</button>
+    <button class="icon-btn" id="openReport" aria-label="Progress report" title="Progress report"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></button>
+    <button class="icon-btn" id="openSettings" aria-label="Settings" title="Settings">Aa</button>
   </div>
 </header>
 
 <main>
   <section id="learn"></section>
   <section id="build" hidden></section>
+  <section id="split" hidden></section>
   <section id="matrix" hidden></section>
   <section id="origins" hidden></section>
   <section id="practice" hidden></section>
@@ -383,6 +505,7 @@ span.mx-el{cursor:default;display:block}
   <div class="tabs-in" role="tablist">
     <button class="tab" role="tab" data-tab="learn" id="tab-learn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></svg>Learn</button>
     <button class="tab" role="tab" data-tab="build" id="tab-build"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="8" width="6" height="8" rx="2"/><rect x="16" y="8" width="6" height="8" rx="2"/><path d="M12 9v6M9 12h6"/></svg>Word sums</button>
+    <button class="tab" role="tab" data-tab="split" id="tab-split"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.1 15.9M14.5 14.5L20 20M8.1 8.1L12 12"/></svg>Split</button>
     <button class="tab" role="tab" data-tab="matrix" id="tab-matrix"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="2" y="4" width="5" height="16" rx="1.5"/><rect x="9" y="8" width="6" height="8" rx="1.5"/><rect x="17" y="4" width="5" height="16" rx="1.5"/></svg>Matrix</button>
     <button class="tab" role="tab" data-tab="origins" id="tab-origins"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v10M12 13l-6 4M12 13l6 4M12 13v8M6 17l-2 4M18 17l2 4"/></svg>Origins</button>
     <button class="tab" role="tab" data-tab="practice" id="tab-practice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>Practice</button>
@@ -390,11 +513,19 @@ span.mx-el{cursor:default;display:block}
 </nav>
 
 <div class="mpop" id="mpop" hidden role="status" aria-live="polite"></div>
+<div class="sheet" id="report" hidden><div class="sheet-in report-in" role="dialog" aria-label="Progress report" id="reportIn"></div></div>
 <div class="sheet" id="settings" hidden>
   <div class="sheet-in" role="dialog" aria-label="Reading settings">
-    <h2 style="font-size:1.3rem">Reading settings</h2>
+    <h2 style="font-size:1.3rem">Settings</h2>
     <div class="setting"><span>Text size</span><div class="seg" id="segSize"><button data-v="normal">Standard</button><button data-v="large">Large</button></div></div>
     <div class="setting"><span>Letter spacing</span><div class="seg" id="segSpace"><button data-v="normal">Standard</button><button data-v="wide">Wider</button></div></div>
+    <div class="setting"><span>Word classes</span><div class="seg" id="segCls"><button data-v="show">Show</button><button data-v="hide">Hide</button></div></div>
+    <div class="voice-set" id="voiceSet" hidden>
+      <div class="setting"><label for="voiceSel">Voice</label><select id="voiceSel"></select></div>
+      <div class="setting"><span>Speaking speed</span><div class="seg" id="segRate"><button data-v="0.8">Slower</button><button data-v="1">Standard</button></div></div>
+      <div class="row"><button class="speak" id="testVoice">Test: “interruption, i-n-t-e-r”</button></div>
+      <p class="meta">Voices come from your device. Ones marked en-GB are British.</p>
+    </div>
     <p class="meta">These settings are saved on this device.</p>
     <button class="btn primary" id="closeSettings">Done</button>
   </div>
@@ -406,39 +537,61 @@ const store={get(k,d){try{const v=localStorage.getItem('mw.'+k);return v==null?d
              set(k,v){try{localStorage.setItem('mw.'+k,JSON.stringify(v))}catch(e){}}};
 
 /* ---------- morphemes ---------- */
-const PREFIXES=['re','de','in','con','un','im','as','inter','trans','ob','ex','sup','dis','pro','intro','cor','ab','e','non'];
-const BASES={sign:{},struct:{bound:1},move:{},act:{},busy:{},port:{},form:{},spect:{bound:1},rupt:{bound:1},hope:{},stop:{dbl:1},rely:{},carry:{},hop:{dbl:1},run:{dbl:1},make:{},care:{}};
-const SUFFIXES=['s','es','ed','ing','er','est','ly','ness','ful','less','al','ion','ive','ment','able','ance','ure','ate','ation','age','or','ator','acle','ify','ature','ist'];
-const typeOf=s=>BASES[s]?'base':PREFIXES.includes(s)?'prefix':'suffix';
-const mk=s=>({s,t:typeOf(s),dbl:!!(BASES[s]&&BASES[s].dbl)});
+const PREFIXES=['af','pre','suf','en','re','de','in','con','un','im','as','inter','trans','ob','ex','sup','dis','pro','intro','cor','ab','e','non'];
+const BASES={fix:{},son:{bound:1},gentle:{},simple:{},lie:{},tie:{},die:{},notice:{},courage:{},change:{},picnic:{ck:1},panic:{ck:1},begin:{dbl:1,stress:'last'},visit:{stress:'first'},travel:{stress:'first',ll:1},cancel:{stress:'first',ll:1},sign:{},struct:{bound:1},move:{},act:{},busy:{},port:{},form:{},spect:{bound:1},rupt:{bound:1},hope:{},stop:{dbl:1},rely:{},carry:{},hop:{dbl:1},run:{dbl:1},make:{},care:{}};
+const SUFFIXES=['ant','y','ous','s','es','ed','ing','er','est','ly','ness','ful','less','al','ion','ive','ment','able','ance','ure','ate','ation','age','or','ator','acle','ify','ature','ist'];
+const BANK_BASES=()=>{const k=Object.keys(BASES),n=['gentle','simple','lie','tie','die','notice','courage','change','picnic','panic','begin','visit','travel','cancel'];return [...k.filter(x=>!n.includes(x)),...n];};
+const XT={},XD={},XM={}; // types, doubling and meanings for pieces found by Claude in the Split tab
+const typeOf=s=>XT[s]||(BASES[s]?'base':PREFIXES.includes(s)?'prefix':'suffix');
+const mk=s=>({s,t:typeOf(s),dbl:!!(BASES[s]&&BASES[s].dbl)||!!XD[s]});
 const parse=str=>str.split('+').map(mk);
 const g=x=>`<span class="gr">&lt;${x}&gt;</span>`;
 
 /* Join elements, applying the three suffixing changes. */
-function joinSum(parts){
+function joinSum(parts,alt){
   let res='';const toks=[];const notes=[];const ch=[];const hl={};
+  const note=k=>{notes.includes(k)||notes.push(k);};
   parts.forEach((p,i)=>{
     let c=null;
     if(i>0&&p.t==='suffix'){
-      const vowel=/^[aeiouy]/.test(p.s), prevTok=toks[toks.length-1], prev=parts[i-1];
-      if(/e$/.test(res)&&!/ee$/.test(res)&&vowel&&!(/[cg]e$/.test(res)&&/^[ao]/.test(p.s))){
-        res=res.slice(0,-1);prevTok.mark='/';notes.includes('e')||notes.push('e');c='e';
+      const vowel=/^[aeiouy]/.test(p.s), prevTok=toks[toks.length-1], prev=parts[i-1], B=BASES[prev.s]||{};
+      if(alt&&alt.i===i){
+        const m=alt.mode;
+        if(m==='double'&&vowel&&/[bdfgklmnprstvz]$/.test(res))res+=res.slice(-1);
+        else if(m==='double'&&vowel&&/[bdfgklmnprstvz]e$/.test(res)){res=res.slice(0,-1);res+=res.slice(-1);}
+        else if(m==='drop'&&/e$/.test(res))res=res.slice(0,-1);
+        else if(m==='yi'&&/y$/.test(res))res=res.slice(0,-1)+'i';
+      }else if(/[^aeiou]le$/.test(res)&&p.s==='ly'){            // simple/ + ly -> simply
+        res=res.slice(0,-2);prevTok.mark='/';prevTok.k='e';prevTok.n=2;note('le');c='le';
+      }else if(/ie$/.test(res)&&/^i/.test(p.s)){                  // lie + ing -> lying
+        res=res.slice(0,-2)+'y';prevTok.mark='/y';prevTok.k='y';prevTok.n=2;note('ie');c='ie';hl[res.length-1]='y';
+      }else if(/[cg]e$/.test(res)&&/^[ao]/.test(p.s)){            // notice + able -> noticeable
+        prevTok.k='k';prevTok.n=1;hl[res.length-1]='k';note('k');c='k';
+      }else if(/e$/.test(res)&&!/ee$/.test(res)&&vowel){
+        res=res.slice(0,-1);prevTok.mark='/';prevTok.k='e';prevTok.n=1;note('e');c='e';
       }else if(/[^aeiou]y$/.test(res)&&!/^i/.test(p.s)){
-        res=res.slice(0,-1)+'i';prevTok.mark='/i';notes.includes('y')||notes.push('y');c='y';hl[res.length-1]='y';
-      }else if(prev.dbl&&vowel){
-        const d=res.slice(-1);hl[res.length-1]='d';res+=d;hl[res.length-1]='d';prevTok.dsrc=true;toks.push({dbl:d});notes.includes('d')||notes.push('d');c='d';
+        res=res.slice(0,-1)+'i';prevTok.mark='/i';prevTok.k='y';prevTok.n=1;note('y');c='y';hl[res.length-1]='y';
+      }else if(B.ck&&/^[eiy]/.test(p.s)){                         // picnic + (k) + ing
+        hl[res.length-1]='d';res+='k';hl[res.length-1]='d';prevTok.k='d';prevTok.n=1;toks.push({dbl:'k'});note('ck');c='ck';
+      }else if((prev.dbl||B.ll)&&vowel){                          // hop + (p) + ing, travel + (l) + ing
+        const d=res.slice(-1);hl[res.length-1]='d';res+=d;hl[res.length-1]='d';prevTok.k='d';prevTok.n=1;toks.push({dbl:d});
+        note(B.ll?'ll':B.stress?'ds':'d');c=B.ll?'ll':'d';
+      }else if(B.stress==='first'&&vowel&&/[aeiou][^aeiouwxy]$/.test(res)){ // visit + ing: no doubling
+        note('u');c='u';
       }
     }
     ch.push(c);res+=p.s;toks.push({t:p.t,s:p.s});
   });
   return {res,toks,notes,ch,hl};
 }
+const isDblCode=c=>c==='d'||c==='ck'||c==='ll';
+const CHANGE=c=>!!c&&c!=='u';
 function sumHTML(parts,o={}){
   const j=joinSum(parts);const bits=[];
   j.toks.forEach((tk,i)=>{
     if(i>0)bits.push('<span class="op">+</span>');
-    const k=tk.mark==='/'?'e':tk.mark==='/i'?'y':tk.dsrc?'d':null;
-    const txt=k?`${tk.s.slice(0,-1)}<span class="chg ${k}">${tk.s.slice(-1)}</span>`:tk.s;
+    const k=tk.k||null,n=tk.n||1;
+    const txt=k?`${tk.s.slice(0,-n)}<span class="chg ${k}">${tk.s.slice(-n)}</span>`:tk.s;
     bits.push(tk.dbl?`<span class="unit"><span class="tile dbl" title="doubled consonant">(<span class="chg d">${tk.dbl}</span>)</span></span>`
       :`<span class="unit"><span class="tile ${tk.t}">${txt}</span>${tk.mark?`<span class="mark ${k}">${tk.mark}</span>`:''}</span>`);
   });
@@ -450,7 +603,14 @@ function sumHTML(parts,o={}){
 const NOTE={
   e:()=>`The final ${g('e')} is dropped (marked <b>/</b>) because the next suffix starts with a vowel letter.`,
   y:()=>`The ${g('y')} changes to ${g('i')} (marked <b>/i</b>) because the next suffix doesn't start with ${g('i')}.`,
-  d:()=>`The final consonant is doubled (shown in brackets) before a vowel suffix.`
+  d:()=>`The final consonant is doubled (shown in brackets) before a vowel suffix.`,
+  le:()=>`The final ${g('le')} is dropped (marked <b>/</b>) when ${g('ly')} is added, so the ${g('l')} of ${g('ly')} takes its place.`,
+  ie:()=>`${g('ie')} changes to ${g('y')} (marked <b>/y</b>) before a suffix starting with ${g('i')}, so you never write ${g('ii')}.`,
+  k:()=>`The final ${g('e')} stays (shown in green) before ${g('a')} or ${g('o')}, to keep the ${g('c')} or ${g('g')} soft.`,
+  ck:()=>`A ${g('k')} is added after the final ${g('c')} (shown in brackets) before ${g('e')}, ${g('i')} or ${g('y')}, so the ${g('c')} keeps its hard sound.`,
+  ll:()=>`In British spelling, a final ${g('l')} after one vowel letter doubles before a vowel suffix, wherever the stress falls.`,
+  ds:()=>`The base is stressed on its last syllable, so its final consonant doubles before a vowel suffix.`,
+  u:()=>`The base is stressed on its first syllable, so its final consonant does not double.`
 };
 const notesHTML=n=>n.length?`<ul class="notes">${n.map(k=>`<li><span>${NOTE[k]()}</span></li>`).join('')}</ul>`:'';
 const canSpeak=('speechSynthesis' in window)&&typeof SpeechSynthesisUtterance!=='undefined';
@@ -459,7 +619,15 @@ const spellBtn=key=>canSpeak?`<button class="speak" data-say="${key}">${SPK}Say<
 // Respellings for words the device voice mispronounces. Add more here as they are found.
 const SAY_AS={unmoved:'un-mooved',unmovable:'un-moovable',immovable:'im-moovable'};
 const sayText=w=>SAY_AS[w.toLowerCase()]||w;
-function speak(txt,rate){try{const u=new SpeechSynthesisUtterance(txt);u.rate=rate;u.lang='en-GB';speechSynthesis.cancel();speechSynthesis.speak(u);}catch(e){}}
+let voiceList=[];
+function loadVoices(){try{voiceList=speechSynthesis.getVoices().filter(v=>/^en/i.test(v.lang)).sort((a,b)=>((b.lang==='en-GB')-(a.lang==='en-GB'))||a.lang.localeCompare(b.lang)||a.name.localeCompare(b.name));}catch(e){voiceList=[];}fillVoiceSel();}
+function chosenVoice(){const n=store.get('voice','');return voiceList.find(v=>v.name===n)||null;}
+function fillVoiceSel(){const sel=document.getElementById('voiceSel');if(!sel)return;const cur=store.get('voice','');
+  sel.innerHTML=`<option value="">Automatic (British English)</option>`+voiceList.map(v=>`<option value="${v.name.replace(/"/g,'&quot;')}" ${v.name===cur?'selected':''}>${v.name} (${v.lang})</option>`).join('');
+  document.getElementById('voiceSet').hidden=!canSpeak;}
+function speak(txt,rate){try{const u=new SpeechSynthesisUtterance(txt);const v=chosenVoice();if(v){u.voice=v;u.lang=v.lang;}else u.lang='en-GB';
+  u.rate=Math.max(.4,rate*store.get('rate',1));speechSynthesis.cancel();speechSynthesis.speak(u);}catch(e){}}
+if(canSpeak){try{loadVoices();speechSynthesis.addEventListener?speechSynthesis.addEventListener('voiceschanged',loadVoices):(speechSynthesis.onvoiceschanged=loadVoices);}catch(e){}}
 const spk=w=>canSpeak?`<button class="spk" data-sayw="${w}" aria-label="Hear ${w}">${SPK}</button>`:'';
 const sw=w=>`<span class="sw"><i>${w}</i>${spk(w)}</span>`;
 function spellOut(key){const w=joinSum(parse(key)).res;speak(w.split('').join(', '),.75);}
@@ -474,17 +642,18 @@ function animHTML(key,o={}){
   j.toks.forEach(tk=>{
     if(tk.dbl){h+=`<span class="plus" data-pd="${pi+1}">+</span><span class="grp dblg" data-d="${pi+1}"><span class="br">(</span><span class="al chg d">${tk.dbl}</span><span class="br">)</span></span>`;return;}
     pi++;if(pi)h+=`<span class="plus" data-p="${pi}">+</span>`;
-    const k=tk.mark==='/'?'e':tk.mark==='/i'?'y':tk.dsrc?'d':null;
-    const ls=tk.s.split('').map((c,x)=>`<span class="al${k&&x===tk.s.length-1?' chg '+k:''}">${c}</span>`).join('');
+    const k=tk.k||null,n=tk.n||1;
+    const ls=tk.s.split('').map((c,x)=>`<span class="al${k&&x>=tk.s.length-n?' chg '+k:''}">${c}</span>`).join('');
     h+=`<span class="grp ${tk.t}" data-g="${pi}" data-morph="${tk.s}">${ls}</span>${tk.mark?`<span class="mk ${k}" data-m="${pi}">${tk.mark}</span>`:''}`;
   });
   const resTxt=j.res.split('').map((c,i)=>j.hl[i]?`<span class="chg ${j.hl[i]}">${c}</span>`:c).join('');
   h+=`<span class="tail"><span class="op arrow">→</span><span class="result">${resTxt}</span></span>`;
   const play=o.play&&parts.length>1;
-  const cap=j.notes.length?j.notes.map(n=>NOTE[n]()).join(' '):(play?'Tap <b>Play</b> to watch the parts join.':'');
+  const cap=j.notes.length?j.notes.map(n=>NOTE[n]()).join(' '):(play?'Tap the word sum to watch the parts join again.':'');
   return `<div class="anim" data-anim="${key}" data-play="${play?1:0}" data-spell="${o.spell?1:0}" data-ctl="${o.controls===false?0:1}">
    <div class="stage" aria-label="Word sum">${h}</div>
-   ${cap?`<p class="anim-cap" aria-live="polite">${cap}</p>`:'<p class="anim-cap" aria-live="polite" hidden></p>'}
+   ${cap?`<p class="anim-cap${j.notes.length?'':' hintcap'}" aria-live="polite">${cap}</p>`:'<p class="anim-cap" aria-live="polite" hidden></p>'}
+   ${o.trail===false?'':trailHTML(key,o.trail==='force')}
    <div class="ctl">${o.spell?spellBtn(key):''}${o.extra||''}</div></div>`;
 }
 function animState(el){let s=ANIM.get(el);if(!s){const parts=parse(el.dataset.anim);s={parts,j:joinSum(parts),next:1,busy:false,run:0,started:false};ANIM.set(el,s);}return s;}
@@ -504,14 +673,21 @@ async function animStep(el){
     s.busy=false;return;}
   const i=s.next,p=parts[i],prev=parts[i-1],c=j.ch[i];
   const pg=el.querySelector(`[data-g="${i-1}"]`),plus=el.querySelector(`[data-p="${i}"]`),mkEl=el.querySelector(`[data-m="${i-1}"]`);
-  const lastL=pg?[...pg.querySelectorAll('.al')].pop():null;
-  if(c==='e'){
+  const als=pg?[...pg.querySelectorAll('.al')]:[];const lastL=als[als.length-1]||null,prevL=als[als.length-2]||null;
+  if(c==='le'){
+    prevL.classList.add('pulse');lastL.classList.add('pulse');await sleep(900);if(mkEl)mkEl.classList.add('gone');prevL.classList.add('gone');lastL.classList.add('gone');await sleep(500);
+  }else if(c==='ie'){
+    prevL.classList.add('pulse');lastL.classList.add('pulse');await sleep(800);if(mkEl)mkEl.classList.add('gone');
+    prevL.textContent='y';prevL.classList.remove('pulse');prevL.classList.add('swap');lastL.classList.add('gone');await sleep(600);
+  }else if(c==='k'){
+    lastL.classList.add('pulse');await sleep(1000);
+  }else if(c==='e'){
     
     lastL.classList.add('pulse');await sleep(900);if(mkEl)mkEl.classList.add('gone');lastL.classList.add('gone');await sleep(500);
   }else if(c==='y'){
     
     lastL.classList.add('pulse');await sleep(800);if(mkEl)mkEl.classList.add('gone');lastL.textContent='i';lastL.classList.remove('pulse');lastL.classList.add('swap');await sleep(600);
-  }else if(c==='d'){
+  }else if(isDblCode(c)){
     
     const dg=el.querySelector(`[data-d="${i}"]`);lastL.classList.add('pulse');dg.querySelector('.al').classList.add('pulse');await sleep(900);
     const pd=el.querySelector(`[data-pd="${i}"]`);if(pd)pd.classList.add('gone');dg.classList.add('merged');await sleep(500);
@@ -530,8 +706,8 @@ async function playAnim(el,delay=300){
 }
 function autoAnimAll(sec){document.querySelectorAll(`#${sec} .anim[data-play="1"]`).forEach((el,i)=>playAnim(el,1400+i*4500));}
 function autoAnim(sec){const el=document.querySelector(`#${sec} .anim[data-play="1"]`);return el?playAnim(el,1400):Promise.resolve();}
-function wordBox(w,isNew){const d=DEFS[w];const [pos,text]=d?d.split('|'):['',''];
-  return `<div class="verdict good ${isNew?'toast':''}"><p><b class="vw">${w}</b>${pos?` <span class="pos-inl">${pos}</span>`:''}${isNew?' <span class="newtag">New word</span>':''}<br>${text||'A real word.'}</p></div>`;}
+function wordBox(w,isNew,key){const d=DEFS[w];const [pos,text]=d?d.split('|'):['',''];
+  return `<div class="verdict good ${isNew?'toast':''}"><p><b class="vw">${w}</b>${pos?` <span class="pos-inl">${pos}</span>`:''}${isNew?' <span class="newtag">New word</span>':''}<br>${text||'A real word.'}</p>${key?ywhy(key):''}</div>`;}
 
 /* ---------- matrices ---------- */
 const MATRICES=[
@@ -540,25 +716,25 @@ const MATRICES=[
    words:'sign sign+s sign+ed sign+ing sign+er sign+er+s sign+al sign+al+s sign+ature sign+ature+s sign+ify sign+ify+ed sign+ify+ing de+sign de+sign+s de+sign+ed de+sign+ing de+sign+er de+sign+er+s de+sign+ate de+sign+ate+s de+sign+ate+ed re+sign re+sign+s re+sign+ed re+sign+ing as+sign as+sign+s as+sign+ed as+sign+ing as+sign+ment as+sign+ment+s con+sign con+sign+ed con+sign+ment con+sign+ment+s'},
   {base:'struct',bound:true,origin:'Latin <i>struere, structum</i>, “to build, to pile up”',start:'con+struct+ion',pre:[['re'],['con','de','in','ob']],
    suf:[['ure','ion','ive','or','ed','ing','s'],['al','ed','s']],
-   words:'struct+ure struct+ure+s struct+ure+ed struct+ure+al re+struct+ure re+struct+ure+ed con+struct con+struct+s con+struct+ed con+struct+ing con+struct+ion con+struct+ion+s con+struct+ive con+struct+or con+struct+or+s de+struct+ion de+struct+ive in+struct in+struct+s in+struct+ed in+struct+ing in+struct+ion in+struct+ion+s in+struct+ion+al in+struct+ive in+struct+or in+struct+or+s ob+struct ob+struct+s ob+struct+ed ob+struct+ing ob+struct+ion ob+struct+ion+s ob+struct+ive re+con+struct re+con+struct+s re+con+struct+ed re+con+struct+ing re+con+struct+ion'},
+   words:'struct+ure struct+ure+s struct+ure+ed struct+ure+al re+struct+ure re+struct+ure+ed con+struct con+struct+s con+struct+ed con+struct+ing con+struct+ion con+struct+ion+s con+struct+ive con+struct+or con+struct+or+s de+struct+ion de+struct+ive in+struct in+struct+s in+struct+ed in+struct+ing in+struct+ion in+struct+ion+s in+struct+ion+al in+struct+ive in+struct+or in+struct+or+s ob+struct ob+struct+s ob+struct+ed ob+struct+ing ob+struct+ion ob+struct+ion+s ob+struct+ive re+con+struct re+con+struct+s re+con+struct+ed re+con+struct+ing re+con+struct+ion re+con+struct+ion+s'},
   {base:'move',origin:'Latin <i>movēre</i>, “to move”, through French',start:'re+move+al',pre:[['im','re','un']],
-   suf:[['s','ed','ing','er','ment','able','al'],['s']],
-   words:'move move+s move+ed move+ing move+er move+er+s move+ment move+ment+s move+able re+move re+move+s re+move+ed re+move+ing re+move+er re+move+er+s re+move+al re+move+al+s re+move+able im+move+able un+move+ed un+move+able'},
+   suf:[['s','ed','ing','er','ment','able','al'],['s','ly']],
+   words:'im+move+able+ly move move+s move+ed move+ing move+er move+er+s move+ment move+ment+s move+able re+move re+move+s re+move+ed re+move+ing re+move+er re+move+er+s re+move+al re+move+al+s re+move+able im+move+able un+move+ed un+move+able'},
   {base:'act',origin:'Latin <i>agere, actum</i>, “to do, to drive”',start:'re+act+ion',pre:[['in','inter','re','trans']],
-   suf:[['s','ed','ing','ion','ive','or'],['s','ly','ate','ist']],
-   words:'act act+s act+ed act+ing act+ion act+ion+s act+ive act+ive+ly act+ive+ate act+ive+ist act+or act+or+s re+act re+act+s re+act+ed re+act+ing re+act+ion re+act+ion+s re+act+ive re+act+ive+ate re+act+or re+act+or+s inter+act inter+act+s inter+act+ed inter+act+ing inter+act+ion inter+act+ion+s inter+act+ive inter+act+ive+ly in+act+ion in+act+ive in+act+ive+ate trans+act trans+act+s trans+act+ed trans+act+ion trans+act+ion+s'},
+   suf:[['s','ed','ing','ion','ive','or'],['s','ly','ate','ist'],['s']],
+   words:'act act+s act+ed act+ing act+ion act+ion+s act+ive act+ive+ly act+ive+ate act+ive+ist act+ive+ist+s act+or act+or+s re+act re+act+s re+act+ed re+act+ing re+act+ion re+act+ion+s re+act+ive re+act+ive+ate re+act+or re+act+or+s inter+act inter+act+s inter+act+ed inter+act+ing inter+act+ion inter+act+ion+s inter+act+ive inter+act+ive+ly in+act+ion in+act+ive in+act+ive+ate trans+act trans+act+s trans+act+ed trans+act+ion trans+act+ion+s'},
   {base:'busy',origin:'Old English <i>bisig</i>, “occupied, anxious”',start:'busy+ness',pre:[],
    suf:[['ed','ing','er','est','ly','ness'],['es']],
    words:'busy busy+ed busy+ing busy+er busy+est busy+ly busy+ness busy+ness+es'},
   {base:'port',bound:true,note:'On its own, <i>port</i> (a harbour) comes from a different Latin word, <i>portus</i>. In this family, ‹port› means “carry” and always has company.',origin:'Latin <i>portāre</i>, “to carry”',start:'trans+port+ation',pre:[['de','ex','im','re','sup','trans']],
    suf:[['s','ed','ing','er','able','ation'],['s']],
-   words:'port+er port+er+s port+able de+port de+port+s de+port+ed de+port+ing de+port+ation ex+port ex+port+s ex+port+ed ex+port+ing ex+port+er ex+port+er+s im+port im+port+s im+port+ed im+port+ing im+port+er im+port+er+s im+port+ation re+port re+port+s re+port+ed re+port+ing re+port+er re+port+er+s sup+port sup+port+s sup+port+ed sup+port+ing sup+port+er sup+port+er+s trans+port trans+port+s trans+port+ed trans+port+ing trans+port+able trans+port+ation'},
+   words:'port+er port+er+s port+able de+port de+port+s de+port+ed de+port+ing de+port+ation de+port+ation+s ex+port ex+port+s ex+port+ed ex+port+ing ex+port+er ex+port+er+s im+port im+port+s im+port+ed im+port+ing im+port+er im+port+er+s im+port+ation re+port re+port+s re+port+ed re+port+ing re+port+er re+port+er+s sup+port sup+port+s sup+port+ed sup+port+ing sup+port+er sup+port+er+s trans+port trans+port+s trans+port+ed trans+port+ing trans+port+able trans+port+ation'},
   {base:'form',origin:'Latin <i>forma</i>, “shape”',start:'in+form+ation',pre:[['con','de','in','re','trans']],
    suf:[['s','ed','ing','er','al','ation'],['s','ly']],
-   words:'form form+s form+ed form+ing form+al form+al+ly form+ation form+ation+s con+form con+form+s con+form+ed con+form+ing de+form de+form+ed de+form+ation in+form in+form+s in+form+ed in+form+ing in+form+er in+form+al in+form+al+ly in+form+ation re+form re+form+s re+form+ed re+form+er re+form+ation trans+form trans+form+s trans+form+ed trans+form+ing trans+form+er trans+form+er+s trans+form+ation trans+form+ation+s'},
+   words:'form form+s form+ed form+ing form+al form+al+ly form+ation form+ation+s con+form con+form+s con+form+ed con+form+ing de+form de+form+ed de+form+ation de+form+ation+s in+form in+form+s in+form+ed in+form+ing in+form+er in+form+er+s in+form+al in+form+al+ly in+form+ation re+form re+form+s re+form+ed re+form+er re+form+er+s re+form+ation trans+form trans+form+s trans+form+ed trans+form+ing trans+form+er trans+form+er+s trans+form+ation trans+form+ation+s'},
   {base:'spect',bound:true,origin:'Latin <i>specere, spectāre</i>, “to look”',start:'re+spect+ful',pre:[['dis'],['in','intro','pro','re']],
    suf:[['s','ed','ing','ion','or','ator','acle','ful','able','ive'],['s','ly']],
-   words:'in+spect in+spect+s in+spect+ed in+spect+ing in+spect+ion in+spect+ion+s in+spect+or in+spect+or+s re+spect re+spect+s re+spect+ed re+spect+ing re+spect+ful re+spect+ful+ly re+spect+able re+spect+ive re+spect+ive+ly dis+re+spect dis+re+spect+ful dis+re+spect+ful+ly pro+spect pro+spect+s pro+spect+or pro+spect+or+s pro+spect+ive intro+spect+ion intro+spect+ive spect+ator spect+ator+s spect+acle spect+acle+s'},
+   words:'in+spect in+spect+s in+spect+ed in+spect+ing in+spect+ion in+spect+ion+s in+spect+or in+spect+or+s re+spect re+spect+s re+spect+ed re+spect+ing re+spect+ful re+spect+ful+ly re+spect+able re+spect+able+ly re+spect+ive re+spect+ive+ly dis+re+spect dis+re+spect+ful dis+re+spect+ful+ly pro+spect pro+spect+s pro+spect+or pro+spect+or+s pro+spect+ive intro+spect+ion intro+spect+ive spect+ator spect+ator+s spect+acle spect+acle+s'},
   {base:'rupt',bound:true,origin:'Latin <i>rumpere, ruptum</i>, “to break”',start:'inter+rupt+ion',pre:[['ab','cor','dis','e','inter']],
    suf:[['s','ed','ing','ion','ive','ure','ly'],['s','ed']],
    words:'rupt+ure rupt+ure+s rupt+ure+ed ab+rupt ab+rupt+ly cor+rupt cor+rupt+s cor+rupt+ed cor+rupt+ing cor+rupt+ion dis+rupt dis+rupt+s dis+rupt+ed dis+rupt+ing dis+rupt+ion dis+rupt+ion+s dis+rupt+ive e+rupt e+rupt+s e+rupt+ed e+rupt+ing e+rupt+ion e+rupt+ion+s inter+rupt inter+rupt+s inter+rupt+ed inter+rupt+ing inter+rupt+ion inter+rupt+ion+s'},
@@ -566,14 +742,59 @@ const MATRICES=[
    suf:[['s','ed','ing','ful','less'],['ly','ness']],
    words:'hope hope+s hope+ed hope+ing hope+ful hope+ful+ly hope+ful+ness hope+less hope+less+ly hope+less+ness'},
   {base:'stop',origin:'Old English <i>stoppian</i>, from Latin <i>stuppāre</i>, “to plug with stuffing”',start:'stop+ing',pre:[['non','un']],
-   suf:[['s','ed','ing','er','able','age'],['s']],
-   words:'stop stop+s stop+ed stop+ing stop+er stop+er+s stop+age stop+age+s un+stop+able non+stop'},
+   suf:[['s','ed','ing','er','able','age'],['s','ly']],
+   words:'stop stop+s stop+ed stop+ing stop+er stop+er+s stop+age stop+age+s un+stop+able un+stop+able+ly non+stop'},
   {base:'rely',origin:'Old French <i>relier</i>, from Latin <i>religāre</i>, “to tie fast”',start:'rely+able',pre:[['un']],
-   suf:[['es','ed','ing','able','ance']],
-   words:'rely rely+es rely+ed rely+ing rely+able rely+ance un+rely+able'}
+   suf:[['es','ed','ing','able','ance'],['ly']],
+   words:'rely rely+es rely+ed rely+ing rely+able rely+able+ly rely+ance un+rely+able un+rely+able+ly'},
+  {base:'fix',origin:'Latin <i>fīgere, fīxus</i>, “to fasten”',start:'suf+fix',pre:[['af','pre','suf','trans']],
+   suf:[['es','ed','ing']],
+   words:'fix fix+es fix+ed fix+ing pre+fix pre+fix+es pre+fix+ed suf+fix suf+fix+es suf+fix+ed af+fix af+fix+es af+fix+ed trans+fix trans+fix+ed'},
+  {base:'gentle',origin:'Old French <i>gentil</i>, “well-born”, from Latin <i>gentīlis</i>',start:'gentle+ly',pre:[],
+   suf:[['er','est','ly','ness']],
+   words:'gentle gentle+er gentle+est gentle+ly gentle+ness'},
+  {base:'simple',origin:'Latin <i>simplex</i>, “single, plain”',start:'simple+ly',pre:[],
+   suf:[['er','est','ly','ify'],['ed','ing','es']],
+   words:'simple simple+er simple+est simple+ly simple+ify simple+ify+ed simple+ify+ing simple+ify+es'},
+  {base:'lie',origin:'Old English <i>licgan</i>, “to lie down”, and <i>lēogan</i>, “to tell a lie”',start:'lie+ing',pre:[],
+   suf:[['s','ed','ing']],
+   words:'lie lie+s lie+ed lie+ing'},
+  {base:'tie',origin:'Old English <i>tīegan</i>, “to bind”',start:'un+tie+ing',pre:[['un']],
+   suf:[['s','ed','ing']],
+   words:'tie tie+s tie+ed tie+ing un+tie un+tie+s un+tie+ed un+tie+ing'},
+  {base:'die',origin:'Old Norse <i>deyja</i>, “to die”',start:'die+ing',pre:[],
+   suf:[['s','ed','ing']],
+   words:'die die+s die+ed die+ing'},
+  {base:'notice',origin:'Latin <i>nōtitia</i>, “being known”',start:'notice+able',pre:[['un']],
+   suf:[['s','ed','ing','able'],['ly']],
+   words:'notice notice+s notice+ed notice+ing notice+able notice+able+ly un+notice+ed'},
+  {base:'courage',origin:'Old French <i>corage</i>, from Latin <i>cor</i>, “heart”',start:'courage+ous',pre:[['dis','en']],
+   suf:[['s','ed','ing','ment','ous'],['ly','s']],
+   words:'courage courage+ous courage+ous+ly en+courage en+courage+s en+courage+ed en+courage+ing en+courage+ment en+courage+ment+s dis+courage dis+courage+s dis+courage+ed dis+courage+ing'},
+  {base:'change',origin:'Old French <i>changier</i>, from Latin <i>cambiāre</i>, “to exchange”',start:'change+able',pre:[['ex','inter','un']],
+   suf:[['s','ed','ing','able'],['ly']],
+   words:'change change+s change+ed change+ing change+able un+change+ed un+change+able ex+change ex+change+s ex+change+ed ex+change+ing inter+change inter+change+s inter+change+ed inter+change+ing inter+change+able inter+change+able+ly'},
+  {base:'picnic',origin:'French <i>pique-nique</i>',start:'picnic+ing',pre:[],
+   suf:[['s','ed','ing','er'],['s']],
+   words:'picnic picnic+s picnic+ed picnic+ing picnic+er picnic+er+s'},
+  {base:'panic',origin:'Greek <i>panikos</i>, “of the god Pan”, who was said to cause sudden fear',start:'panic+y',pre:[],
+   suf:[['s','ed','ing','y']],
+   words:'panic panic+s panic+ed panic+ing panic+y'},
+  {base:'begin',origin:'Old English <i>beginnan</i>, “to begin”',start:'begin+ing',pre:[],
+   suf:[['s','er','ing'],['s']],
+   words:'begin begin+s begin+er begin+er+s begin+ing begin+ing+s'},
+  {base:'visit',origin:'Latin <i>vīsitāre</i>, “to go to see”',start:'visit+ing',pre:[['re']],
+   suf:[['s','ed','ing','or','ation'],['s']],
+   words:'visit visit+s visit+ed visit+ing visit+or visit+or+s visit+ation visit+ation+s re+visit re+visit+s re+visit+ed re+visit+ing'},
+  {base:'travel',origin:'Old French <i>travailler</i>, “to work hard”',start:'travel+ing',pre:[],
+   suf:[['s','ed','ing','er'],['s']],
+   words:'travel travel+s travel+ed travel+ing travel+er travel+er+s'},
+  {base:'cancel',origin:'Latin <i>cancellāre</i>, “to cross out with lines like a lattice”',start:'cancel+ation',pre:[],
+   suf:[['s','ed','ing','ation'],['s']],
+   words:'cancel cancel+s cancel+ed cancel+ing cancel+ation cancel+ation+s'}
 ];
 MATRICES.forEach(m=>m.list=m.words.split(' '));
-const EXTRA='hope+s hope+ed hope+ing hope+ful hope+less hop+s hop+ed hop+ing run+s run+ing run+er make+s make+ing make+er care+s care+ed care+ing care+ful care+less care+ful+ly carry+es carry+ed carry+ing carry+er carry+age'.split(' ');
+const EXTRA='con+son+ant con+son+ant+s re+son+ant hope+s hope+ed hope+ing hope+ful hope+less hop+s hop+ed hop+ing run+s run+ing run+er run+er+s make+s make+ing make+er make+er+s care+s care+ed care+ing care+ful care+less care+ful+ly carry+es carry+ed carry+ing carry+er carry+er+s carry+age carry+age+s'.split(' ');
 const KNOWN=new Set([...MATRICES.flatMap(m=>m.list),...EXTRA]);
 
 /* ---------- definitions (word class | meaning) ---------- */
@@ -901,7 +1122,147 @@ const DEFS={
  relying:'verb|Trusting or depending on someone or something.',
  reliable:'adjective|Able to be trusted to work well or do what is expected.',
  reliance:'noun|Depending on someone or something.',
- unreliable:'adjective|Not able to be trusted or depended on.'
+ unreliable:'adjective|Not able to be trusted or depended on.',
+ fix:'verb, noun|To fasten something firmly; or to mend it. As a noun: a solution to a problem.',
+ fixes:'verb, noun|Fastens or mends something. Also: solutions.',
+ fixed:'verb, adjective|Fastened or mended; not changing.',
+ fixing:'verb|Fastening or mending something.',
+ prefix:'noun, verb|A morpheme fastened before a base, such as re- in redo. As a verb: to add one.',
+ prefixes:'noun|More than one prefix.',
+ prefixed:'verb|Had a prefix added.',
+ suffix:'noun, verb|A morpheme fastened after a base, such as -ful in hopeful. As a verb: to add one.',
+ suffixes:'noun|More than one suffix.',
+ suffixed:'verb|Had a suffix added.',
+ affix:'noun, verb|A prefix or a suffix: any morpheme fastened to a base. As a verb: to stick or fasten something on.',
+ affixes:'noun|Prefixes and suffixes.',
+ affixed:'verb|Stuck or fastened on.',
+ transfix:'verb|To hold someone so still with wonder or fear that they cannot move.',
+ transfixed:'adjective, verb|So amazed or frightened that you cannot move.',
+ consonant:'noun|A speech sound made by blocking or squeezing the air, such as b, t or s; or a letter for one.',
+ consonants:'noun|More than one consonant.',
+ resonant:'adjective|Deep, clear and continuing to sound.',
+ interchange:'noun, verb|A place where main roads meet; or an exchange. As a verb: to swap things round.',
+ interchanges:'noun, verb|Places where main roads meet. Also: swaps things round.',
+ interchanged:'verb|Swapped things round.',
+ interchanging:'verb|Swapping things round.',
+ interchangeable:'adjective|Able to be swapped for each other.',
+ interchangeably:'adverb|In a way that lets things be swapped for each other.',
+ encouragements:'noun|Words or actions that give someone confidence or hope.',
+ beginnings:'noun|Starts of things.',
+ visitations:'noun|Official or special visits.',
+ deportations:'noun|Times when people are forced to leave a country.',
+ informers:'noun|People who secretly give information, often to the police.',
+ reformers:'noun|People who work to improve a system.',
+ deformations:'noun|Changes in the shape of things.',
+ reconstructions:'noun|Things built again; or attempts to work out what happened.',
+ activists:'noun|People who work to bring about political or social change.',
+ runners:'noun|People who run, especially in races.',
+ makers:'noun|People or companies that make things.',
+ carriers:'noun|People, companies or things that carry something.',
+ carriages:'noun|Vehicles pulled by horses; or sections of a train.',
+ reliably:'adverb|In a way that can be trusted or depended on.',
+ unreliably:'adverb|In a way that cannot be trusted or depended on.',
+ respectably:'adverb|In a way that is seen as good, proper or acceptable.',
+ unstoppably:'adverb|In a way that cannot be stopped.',
+ immovably:'adverb|In a way that cannot be moved or changed.',
+ gentle:'adjective|Kind, calm and careful; not rough or strong.',
+ gentler:'adjective|More gentle.',
+ gentlest:'adjective|The most gentle.',
+ gently:'adverb|In a kind, calm and careful way.',
+ gentleness:'noun|The quality of being kind, calm and careful.',
+ simple:'adjective|Easy to understand or do; plain.',
+ simpler:'adjective|More simple.',
+ simplest:'adjective|The most simple.',
+ simply:'adverb|In a simple way; just, only.',
+ simplify:'verb|To make something easier to understand or do.',
+ simplified:'verb, adjective|Made easier to understand or do.',
+ simplifying:'verb|Making something easier to understand or do.',
+ simplifies:'verb|Makes something easier to understand or do.',
+ lie:'verb, noun|To rest flat; or to say something you know is untrue. As a noun: something untrue said on purpose.',
+ lies:'verb, noun|Rests flat, or says something untrue. Also: untrue things said on purpose.',
+ lied:'verb|Said something you knew was untrue.',
+ lying:'verb|Resting flat; or saying something untrue.',
+ tie:'verb, noun|To fasten with a knot. As a noun: a strip of cloth worn round the neck; or an equal score.',
+ ties:'verb, noun|Fastens with a knot. Also: more than one tie.',
+ tied:'verb|Fastened with a knot; or finished with an equal score.',
+ tying:'verb|Fastening with a knot.',
+ untie:'verb|To undo a knot.',
+ unties:'verb|Undoes a knot.',
+ untied:'verb, adjective|Undid a knot; not tied.',
+ untying:'verb|Undoing a knot.',
+ die:'verb|To stop living.',
+ dies:'verb|Stops living.',
+ died:'verb|Stopped living.',
+ dying:'verb, adjective|Coming to the end of life.',
+ notice:'verb, noun|To see or become aware of something. As a noun: a sign or message that gives information.',
+ notices:'verb, noun|Sees or becomes aware of something. Also: signs giving information.',
+ noticed:'verb|Saw or became aware of something.',
+ noticing:'verb|Seeing or becoming aware of something.',
+ noticeable:'adjective|Easy to see or notice.',
+ noticeably:'adverb|In a way that is easy to see or notice.',
+ unnoticed:'adjective|Not seen or noticed.',
+ courage:'noun|Bravery; being able to do something that frightens you.',
+ courageous:'adjective|Brave.',
+ courageously:'adverb|Bravely.',
+ encourage:'verb|To give someone confidence or hope; to support them.',
+ encourages:'verb|Gives someone confidence or hope.',
+ encouraged:'verb, adjective|Gave someone confidence; feeling more hopeful.',
+ encouraging:'adjective, verb|Giving confidence or hope.',
+ encouragement:'noun|Words or actions that give someone confidence or hope.',
+ discourage:'verb|To make someone feel less confident; to try to stop them doing something.',
+ discourages:'verb|Makes someone feel less confident.',
+ discouraged:'adjective, verb|Feeling less confident or hopeful.',
+ discouraging:'adjective, verb|Making someone feel less confident.',
+ change:'verb, noun|To make or become different. As a noun: something that is different; also coins.',
+ changes:'verb, noun|Makes or becomes different. Also: things that are different.',
+ changed:'verb, adjective|Made or became different.',
+ changing:'verb|Making or becoming different.',
+ changeable:'adjective|Likely to change often (changeable weather).',
+ unchanged:'adjective|Not changed; the same as before.',
+ unchangeable:'adjective|Not able to be changed.',
+ exchange:'verb, noun|To give something and get something else back. As a noun: a swap.',
+ exchanges:'verb, noun|Swaps one thing for another. Also: swaps.',
+ exchanged:'verb|Swapped one thing for another.',
+ exchanging:'verb|Swapping one thing for another.',
+ picnic:'noun, verb|A meal eaten outdoors. As a verb: to eat a meal outdoors.',
+ picnics:'noun, verb|More than one picnic. Also: eats a meal outdoors.',
+ picnicked:'verb|Ate a meal outdoors.',
+ picnicking:'verb|Eating a meal outdoors.',
+ picnicker:'noun|A person having a picnic.',
+ picnickers:'noun|People having a picnic.',
+ panic:'noun, verb|A sudden, strong feeling of fear. As a verb: to feel that fear and act without thinking.',
+ panics:'verb, noun|Feels sudden fear. Also: moments of sudden fear.',
+ panicked:'verb|Felt sudden fear and acted without thinking.',
+ panicking:'verb|Feeling sudden fear.',
+ panicky:'adjective|Feeling or showing panic.',
+ begin:'verb|To start.',
+ begins:'verb|Starts.',
+ beginner:'noun|A person who is just starting to learn something.',
+ beginners:'noun|People who are just starting to learn something.',
+ beginning:'noun, verb|The start of something. Also: starting.',
+ visit:'verb, noun|To go to see a person or place. As a noun: a time when you go to see someone.',
+ visits:'verb, noun|Goes to see a person or place. Also: more than one visit.',
+ visited:'verb|Went to see a person or place.',
+ visiting:'verb|Going to see a person or place.',
+ visitor:'noun|A person who visits.',
+ visitors:'noun|People who visit.',
+ visitation:'noun|An official visit; a visit seen as special.',
+ revisit:'verb|To visit again; to think about something again.',
+ revisits:'verb|Visits again.',
+ revisited:'verb|Visited again.',
+ revisiting:'verb|Visiting again.',
+ travel:'verb, noun|To go from one place to another, especially far away. As a noun: travelling.',
+ travels:'verb, noun|Goes from place to place. Also: journeys.',
+ travelled:'verb|Went from one place to another.',
+ travelling:'verb, noun|Going from one place to another.',
+ traveller:'noun|A person who travels.',
+ travellers:'noun|People who travel.',
+ cancel:'verb|To call off something that was planned; to cross out.',
+ cancels:'verb|Calls off something that was planned.',
+ cancelled:'verb, adjective|Called off.',
+ cancelling:'verb|Calling off something that was planned.',
+ cancellation:'noun|The act of calling something off.',
+ cancellations:'noun|Things that have been called off.'
 };
 function defHTML(word){const d=DEFS[word];if(!d)return'';const [pos,text]=d.split('|');
   return `<div class="def"><span class="pos">${pos}</span><p><b>${word}:</b> ${text}</p></div>`;}
@@ -966,7 +1327,7 @@ const letters=(w,yv)=>`<span class="letters" aria-label="${w}">${w.split('').map
 const LESSONS=[
  {k:'Before we start',t:'Vowels and consonants',h:()=>`
   <p>Every word you say is made of two kinds of sound. Say “aaah” and notice your mouth: it stays open and the air flows out freely. That's a <b>vowel</b> sound.</p>
-  <p>Now say “b”, “t” and “s”. Your lips, tongue or teeth block or squeeze the air on its way out. Those are <b>consonant</b> sounds. The word comes from Latin for “sounding with”: consonants need a vowel next to them to be heard clearly.</p>
+  <p>Now say “b”, “t” and “s”. Your lips, tongue or teeth block or squeeze the air on its way out. Those are <b>consonant</b> sounds.</p>
   ${mouthHTML()}
   <div class="vc">
    <div><span class="eyebrow">Vowel letters</span><div class="letters">${'aeiou'.split('').map(c=>`<span class="lt v">${c}</span>`).join('')}</div></div>
@@ -980,7 +1341,20 @@ const LESSONS=[
    <div><span class="sw">${letters('rhythm',true)}${spk('rhythm')}</span><span class="cap">No a, e, i, o or u, so ${g('y')} steps in as the vowel.</span></div>
   </div>
   <p>So ${g('y')} can do both jobs, depending on where it sits in the word.</p>
+  <div class="detective"><span class="eyebrow">Word detective: the names explain themselves</span>
+   <p>The word ${sw('consonant')} is built from parts:</p>
+   ${A('con+son+ant')}
+   <p><b>con</b> “with” + <b>son</b> “sound” + <b>ant</b> “one that does it”. A consonant is a sound that sounds <i>with</i> another one. That’s why a consonant needs a vowel beside it to be heard clearly.</p>
+   <p>${sw('vowel')} comes from Latin <i>vōcālis</i>, “of the voice”, like ${sw('vocal')} and ${sw('voice')}. A vowel is the open sound of your voice.</p>
+  </div>
   <h3 style="font-size:1.2rem">Why this matters for spelling</h3>
+  <div class="detective"><span class="eyebrow">Word detective: what is a suffix?</span>
+   <p>The next part uses the word ${sw('suffix')}. It’s built from parts too:</p>
+   ${A('suf+fix')}
+   <p><b>suf</b> “under, after” + <b>fix</b> “fastened”: a piece fastened <i>after</i> the base. Its partner is a ${sw('prefix')}:</p>
+   ${A('pre+fix')}
+   <p><b>pre</b> “before” + <b>fix</b>: a piece fastened <i>before</i> the base. You’ll use both all through the app.</p>
+  </div>
   <p>When you add a suffix, the first letter of the suffix decides what happens at the join. Compare:</p>
   ${A('move+ing')}${A('move+ment')}
   <p>${g('ing')} starts with a vowel letter, so the ${g('e')} of <i>move</i> drops. ${g('ment')} starts with a consonant letter, so it stays. You'll meet this rule properly in a later lesson.</p>
@@ -1002,7 +1376,13 @@ const LESSONS=[
    <div><span class="tile suffix">ion</span><span><b>Suffix.</b> Goes after the base. It often changes the word's job: <i>act</i> (a verb) becomes <i>action</i> (a noun).</span></div>
   </div>
   ${A('re+act+ion')}
-  <p>Some bases can stand alone, like <i>act</i>. Others are <b>bound</b> and always need company, like ${g('struct')} in <i>construct</i>.</p>`},
+  <p>Some bases can stand alone, like <i>act</i>. Others are <b>bound</b> and always need company, like ${g('struct')} in <i>construct</i>.</p>
+  <h3 style="font-size:1.15rem">Where the names come from</h3>
+  <p>Prefixes and suffixes together are called <b>affixes</b>: pieces fastened <i>to</i> a base.</p>
+  ${A('af+fix')}
+  <p>Look closely at ${g('suf')} and ${g('af')}. They are really the Latin prefixes <i>sub</i> and <i>ad</i>, changed to match the ${g('f')} that follows. You’ll see the same thing in ${sw('assign')} (<i>ad</i> → <i>as</i> before s) and ${sw('import')} (<i>in</i> → <i>im</i> before p).</p>
+  <p>And ${sw('morpheme')} comes from Greek <i>morphē</i>, “form”: the smallest piece of a word with its own form and meaning.</p>
+  <div class="row"><button class="speak" data-gofam="fix">Explore the fix family</button></div>`},
  {k:'The main tool',t:'Word sums',h:()=>`
   <p>A word sum shows how a word is built, piece by piece.</p>
   ${A('con+struct+ion')}
@@ -1027,6 +1407,26 @@ const LESSONS=[
   <div class="panel"><span class="cap">hope: ends in e, so drop it</span>${A('hope+ing')}${A('hop+s')}</div></div>
   <p>Doubling keeps <i>hopping</i> and <i>hoping</i> apart. A consonant suffix like ${g('s')} never causes doubling.</p>
   <p class="meta">In longer words, double only when the last syllable is stressed: <i>begin</i> → <i>beginning</i>, but <i>visit</i> → <i>visiting</i>.</p>`},
+ {k:'Going further',t:'Trickier joins',h:()=>`
+  <p>Once you know the three main changes, a few more patterns explain many words that look odd at first. Each follows a rule you can use again.</p>
+  <h3 style="font-size:1.15rem">‹le› + ‹ly›</h3>
+  <p>When ${g('ly')} joins a word ending in ${g('le')}, the ${g('le')} drops.</p>
+  ${A('simple+ly')}${A('rely+able+ly')}
+  <h3 style="font-size:1.15rem">‹ie› before ‹ing›</h3>
+  <p>${g('ie')} becomes ${g('y')} before ${g('ing')}, so you never write ${g('ii')}.</p>
+  ${A('lie+ing')}
+  <h3 style="font-size:1.15rem">Keeping the ‹e›</h3>
+  <p>A soft ${g('c')} or ${g('g')} keeps its ${g('e')} before ${g('a')} or ${g('o')}. Without it, the letter would sound hard, as in ${sw('cat')} or ${sw('go')}.</p>
+  ${A('notice+able')}${A('courage+ous')}
+  <h3 style="font-size:1.15rem">‹c› becomes ‹ck›</h3>
+  <p>A ${g('k')} is added after ${g('c')} before ${g('e')}, ${g('i')} or ${g('y')}, so the ${g('c')} stays hard.</p>
+  ${A('picnic+ing')}
+  <h3 style="font-size:1.15rem">Doubling in longer words</h3>
+  <p>Say ${sw('begin')} and ${sw('visit')}. The stress falls on <b>gin</b> in begin, but on <b>vis</b> in visit. Only a stressed final syllable doubles its consonant.</p>
+  ${A('begin+ing')}${A('visit+ing')}
+  <p>British spelling makes one exception: a final ${g('l')} after one vowel letter always doubles.</p>
+  ${A('travel+ing')}
+  <p class="tip">American spelling writes <i>traveling</i>. This app follows British spelling.</p>`},
  {k:'Word families',t:'Morphological matrices',h:()=>`
   <p>A matrix maps a whole family of words that share one base. Each path through it is a word sum.</p>
   ${matrixHTML(MATRICES[3],{pre:['re'],suf:['ion',null]},false)}
@@ -1072,12 +1472,169 @@ function clearBar(ms){const pn=document.querySelector('#build .panel');if(!pn)re
   pn.insertAdjacentHTML('beforeend',`<div class="clearbar"><div class="cb-track"><span style="animation-duration:${ms}ms"></span></div><button class="speak" data-keep>Keep</button></div>`);}
 const canGrow=ps=>KEYPARTS().some(ks=>ks.length>=ps.length&&ps.every((x,i)=>ks[i]===x));
 let bScore=store.get('bScore',0),bWords=new Set(store.get('bWords',[]));
-function wordPoints(k){const j=joinSum(parse(k)),parts=k.split('+').length,ch=j.ch.filter(Boolean).length;return {pts:parts*10+ch*15,parts,ch};}
+function wordPoints(k){const j=joinSum(parse(k)),parts=k.split('+').length,ch=j.ch.filter(CHANGE).length;return {pts:parts*10+ch*15,parts,ch};}
 function award(k){if(bWords.has(k))return null;const w=wordPoints(k);bWords.add(k);bScore+=w.pts;store.set('bScore',bScore);store.set('bWords',[...bWords]);return w;}
 function endDemo(){buildDemo=false;store.set('buildDemoDone',true);buildParts=[];store.set('build',[]);}
+
+/* ---------- Word sums: challenge levels ---------- */
+const SKILLS=[
+ {id:'s',name:'Starter',sub:'Years 1–2',cap:2,dis:2,time:1.5},
+ {id:'e',name:'Explorer',sub:'Years 3–4',cap:3,dis:4,time:1.25},
+ {id:'x',name:'Expert',sub:'Years 5–6',cap:4,dis:6,time:1},
+ {id:'m',name:'Master',sub:'every word',cap:5,dis:8,time:1}];
+const CH_LEVELS=12;
+let bMode=store.get('bmode','guide');
+let chSkill=store.get('chskill','e'),chTimer=store.get('chtimer',false);
+let chStars=store.get('chstars',{}); // skill -> {level: stars}
+let ch=null,chTick=0,chTok=0;
+const skillOf=id=>SKILLS.find(x=>x.id===id)||SKILLS[1];
+const pieceSet=k=>k.split('+');
+function chEligibleFor(m,cap){return m.list.filter(k=>k.includes('+')&&yearOf(k).y<=cap);}
+function startChallenge(level){
+  const S=skillOf(chSkill),target=3+Math.floor((level-1)/2);
+  let fams=MATRICES.filter(m=>chEligibleFor(m,S.cap).length>=target);
+  if(!fams.length)fams=MATRICES.filter(m=>chEligibleFor(m,S.cap).length>=3);
+  const m=fams[Math.floor(Math.random()*fams.length)];
+  const el=chEligibleFor(m,S.cap);
+  const need=new Set(el.flatMap(pieceSet));
+  const pool=[...new Set(MATRICES.filter(x=>x!==m).flatMap(x=>[...x.pre.flat(),...x.suf.flat()]))].filter(x=>!need.has(x));
+  shuffle(pool).slice(0,S.dis).forEach(x=>need.add(x));
+  const bank=[...need];
+  const words=[...KNOWN].filter(k=>k.includes('+')&&pieceSet(k).every(x=>need.has(x)));
+  const eligible=words.filter(k=>yearOf(k).y<=S.cap);
+  const secs=chTimer?Math.round((30+Math.min(target,eligible.length)*20)*S.time):0;
+  ch={level,skill:S.id,fam:m.base,bank,words:new Set(words),eligible:new Set(eligible),target:Math.min(target,eligible.length),
+      found:[],misses:0,dead:[],parts:[],msg:'',done:false,secs,left:secs,pts:0};
+  startTimer();renderBuild();
+}
+function startTimer(){clearInterval(chTick);if(!ch||!ch.secs)return;let last=Date.now();
+  chTick=setInterval(()=>{if(!ch||ch.done){clearInterval(chTick);return;}const now=Date.now();
+    if(!document.getElementById('build').hidden)ch.left-=(now-last)/1000;last=now;
+    const t=document.getElementById('chTime');if(t){t.textContent=fmtTime(ch.left);t.classList.toggle('low',ch.left<=10);}
+    if(ch.left<=0){ch.left=0;finishChallenge();}},250);}
+const fmtTime=x=>{x=Math.max(0,Math.ceil(x));return `${Math.floor(x/60)}:${String(x%60).padStart(2,'0')}`;};
+const chFoundElig=()=>ch.found.filter(k=>ch.eligible.has(k)).length;
+function chStarsNow(){if(ch.found.length<ch.target)return 0;let n=1;if(ch.misses<=2)n++;if(chFoundElig()>=ch.eligible.size)n++;return n;}
+function finishChallenge(){if(!ch||ch.done)return;ch.done=true;clearInterval(chTick);
+  if(ch.secs&&ch.found.length>=ch.target)ch.bonus=Math.round(ch.left);else ch.bonus=0;
+  const st=chStarsNow();ch.stars=st;const rec=chStars[ch.skill]||(chStars[ch.skill]={});
+  if(st>(rec[ch.level]||0)){rec[ch.level]=st;store.set('chstars',chStars);}
+  if(!document.getElementById('build').hidden)renderBuild();}
+function chAdd(x){if(!ch||ch.done)return;const tok=++chTok;ch.parts.push(x);ch.msg='';
+  const key=ch.parts.join('+');const grows=ch.parts.length&&[...ch.words].some(k=>{const ps=pieceSet(k);return ps.length>ch.parts.length&&ch.parts.every((y,i)=>ps[i]===y);});
+  if(ch.words.has(key)){
+    if(ch.found.includes(key))ch.msg=`<span class="bad">Already found.</span>`;
+    else{ch.found.push(key);const w=wordPoints(key);ch.pts+=w.pts;award(key);addFound(key);ch.msg=`<span class="good"><b>${joinSum(parse(key)).res}</b> +${w.pts}</span>`;
+      if(!ch.secs&&chFoundElig()>=ch.eligible.size){renderBuild();return setTimeout(finishChallenge,900);}}
+    if(!grows)setTimeout(()=>{if(tok===chTok&&ch&&!ch.done){ch.parts=[];renderBuild();}},1100);
+  }else if(!grows){ch.misses++;ch.dead.push([...ch.parts]);ch.msg=`<span class="bad">No word starts like this.</span>`;
+    setTimeout(()=>{if(tok===chTok&&ch&&!ch.done){ch.parts=[];ch.msg='';renderBuild();}},1300);}
+  renderBuild();}
+function deadReason(ps){
+  const t=ps.map(typeOf),bi=t.indexOf('base'),nb=t.filter(x=>x==='base').length;
+  if(nb===0)return 'every word needs a base';
+  if(nb>1)return 'a word here uses only one base';
+  if(t.slice(bi+1).includes('prefix'))return 'a prefix goes before the base, not after';
+  if(t.slice(0,bi).includes('suffix'))return 'a suffix goes after the base, not before';
+  return 'no real word starts like this';
+}
+function modeHTML(){return `<div class="seg modeseg" role="group" aria-label="Word sums mode"><button data-bmode="guide" aria-pressed="${bMode==='guide'}">Learn</button><button data-bmode="free" aria-pressed="${bMode==='free'}">Practice</button><button data-bmode="ch" aria-pressed="${bMode==='ch'}">Test</button></div>`;}
+function starsHTML(n,of=3){return `<span class="stars" aria-label="${n} of ${of} stars">${'★'.repeat(n)}<span class="off">${'★'.repeat(of-n)}</span></span>`;}
+function renderChallenge(){
+  const sec=document.getElementById('build');const S=skillOf(chSkill);const rec=chStars[chSkill]||{};
+  const tot=Object.values(rec).reduce((a,b)=>a+b,0);
+  if(!ch){
+    const unlocked=Math.min(CH_LEVELS,1+Object.keys(rec).filter(l=>rec[l]>0).reduce((a,l)=>Math.max(a,+l),0));
+    sec.innerHTML=`<div class="bhead"><h2 class="sec-title">Word sum tests</h2>${modeHTML()}</div>
+     <div class="panel"><p class="meta">Build as many real words as you can from the pieces you’re given. Pick a level to start.</p>
+      <div class="setting"><span>Level of challenge</span></div>
+      <div class="chips wrap">${SKILLS.map(x=>`<button class="chip yc" data-chskill="${x.id}" aria-pressed="${x.id===chSkill}">${x.name} <span class="meta">${x.sub}</span></button>`).join('')}</div>
+      <div class="setting"><span>Timer</span><div class="seg"><button data-chtimer="on" aria-pressed="${chTimer}">On</button><button data-chtimer="off" aria-pressed="${!chTimer}">Off</button></div></div>
+     </div>
+     <div class="lvhead"><b>${S.name} levels</b><span>${tot} of ${CH_LEVELS*3} stars</span></div>
+     <div class="chlevels">${Array.from({length:CH_LEVELS},(_,i)=>{const l=i+1,st=rec[l]||0,lk=l>unlocked;
+       return `<button class="chlv${lk?' locked':''}${st?' done':''}" data-chlevel="${l}" ${lk?'disabled':''} aria-label="Level ${l}${lk?', locked':`, ${st} stars`}"><span class="chn">${lk?LOCK:l}</span>${starsHTML(st)}</button>`;}).join('')}</div>
+     <p class="meta">★ reach the target · ★★ with two dead ends or fewer · ★★★ find every word${chTimer?' before time runs out':''}. Each level asks for more words.</p>`;
+    return;}
+  if(ch.done){
+    const ok=ch.found.length>=ch.target,miss=[...ch.eligible].filter(k=>!ch.found.includes(k));
+    sec.innerHTML=`<div class="bhead"><h2 class="sec-title">Level ${ch.level} ${ok?'complete':'not finished'}</h2>${modeHTML()}</div>
+     <div class="panel chres"><div class="bigstars">${starsHTML(ch.stars)}</div>
+      <p>${ok?`You found <b>${ch.found.length}</b> word${ch.found.length===1?'':'s'}. The target was ${ch.target}.`:`You found ${ch.found.length} of the ${ch.target} words needed. Try again!`}</p>
+      <p class="meta">${ch.pts} points${ch.bonus?` + ${ch.bonus} time bonus`:''} · ${ch.misses} dead end${ch.misses===1?'':'s'}</p>
+      ${ch.found.length?`<div class="found">${ch.found.map(k=>`<span class="word">${joinSum(parse(k)).res}</span>`).join('')}</div>`:''}
+      ${ch.stars<3?`<ul class="chcheck">
+        <li class="${ok?'yes':'no'}"><span>${ok?'✓':'✗'}</span><span><b>Reach the target of ${ch.target} words.</b> ${ok?'Done.':`You needed ${ch.target-ch.found.length} more.`}</span></li>
+        <li class="${ok&&ch.misses<=2?'yes':'no'}"><span>${ok&&ch.misses<=2?'✓':'✗'}</span><span><b>Two dead ends or fewer.</b> You had ${ch.misses}.${ch.misses>2?' Check that a word can start with your first pieces before adding more.':''}${ch.misses>2&&ch.dead.length?`<ul class="misslist deadlist">${ch.dead.map(ps=>`<li><span class="mono">${ps.join(' + ')}</span> <span class="meta">${deadReason(ps)}</span></li>`).join('')}</ul>`:''}</span></li>
+        <li class="${miss.length?'no':'yes'}"><span>${miss.length?'✗':'✓'}</span><span><b>Find every word${ch.secs?' before time runs out':''}.</b> ${miss.length?`${miss.length} still to find${ch.secs&&ch.left<=0?'; time ran out':''}:`:'Done.'}</span></li>
+       </ul>
+       ${miss.length?`<ul class="misslist">${miss.map(k=>`<li><b>${joinSum(parse(k)).res}</b> <span class="meta">${plainSum(k)}</span></li>`).join('')}</ul>`:''}`:''}
+      <div class="row">${ok&&ch.level<CH_LEVELS?`<button class="btn primary" data-chnext>Next level</button>`:''}<button class="btn${ok?'':' primary'}" data-chretry>Try again</button><button class="btn" data-chquit>All levels</button></div></div>`;
+    return;}
+  const parts=ch.parts.map(mk),key=ch.parts.join('+');const progress=Math.min(ch.found.length,ch.target);
+  const B=t=>[...ch.bank].filter(x=>typeOf(x)===t).sort((a,b)=>a.localeCompare(b));
+  const col=(label,t)=>`<div class="bank"><h3>${label}</h3><div class="bank-tiles">${B(t).map(x=>`<button class="tile ${t}" data-chadd="${x}">${x}</button>`).join('')}</div></div>`;
+  sec.innerHTML=`<div class="bhead"><h2 class="sec-title">Level ${ch.level} · ${S.name}</h2>${ch.secs?`<span class="chtime" id="chTime">${fmtTime(ch.left)}</span>`:''}</div>
+   <div class="panel wordpanel">
+    <div class="chgoal"><span>Find <b>${ch.target}</b> words · <b>${progress}</b> found${ch.found.length>ch.target?` (+${ch.found.length-ch.target} extra)`:''}</span>${starsHTML(chStarsNow())}</div>
+    <div class="progress"><span style="width:${progress/ch.target*100}%"></span></div>
+    <div class="chbuild">${parts.length?sumHTML(parts):'<p class="empty">Tap pieces to build a word.</p>'}</div>
+    <p class="chmsg" aria-live="polite">${ch.msg||'&nbsp;'}</p>
+    <div class="ctl"><button class="speak" data-chundo ${parts.length?'':'disabled'}>Undo</button><button class="speak" data-chclear ${parts.length?'':'disabled'}>Clear</button><span class="ctl-end"><button class="speak" data-chfinish>${ch.found.length>=ch.target?'Finish':'Give up'}</button></span></div>
+   </div>
+   <div class="banks">${col('Prefixes','prefix')}${col('Bases','base')}${col('Suffixes','suffix')}</div>
+   ${ch.found.length?`<div class="panel"><span class="eyebrow">Found</span><div class="found">${ch.found.map(k=>`<span class="word">${joinSum(parse(k)).res}</span>`).join('')}</div></div>`:''}
+   <p class="meta">Press and hold a piece to see what it means.</p>`;
+}
+
+/* ---------- Word sums: guided mode (highlight pieces that can join) ---------- */
+let gTap=[],gUnlock=false;
+const groupsOf=arr=>({p:arr.filter(x=>typeOf(x)==='prefix'),b:arr.filter(x=>typeOf(x)==='base'),s:arr.filter(x=>typeOf(x)==='suffix')});
+function subMulti(a,b){const c={};b.forEach(x=>c[x]=(c[x]||0)+1);return a.every(x=>c[x]-->0);}
+function minusMulti(b,a){const c={};a.forEach(x=>c[x]=(c[x]||0)+1);return b.filter(x=>!(c[x]-->0));}
+function compatKeys(sel){const S=groupsOf(sel);if(S.b.length>1)return [];
+  return [...KNOWN].filter(k=>{const K=groupsOf(k.split('+'));if(S.b.length&&!K.b.includes(S.b[0]))return false;return subMulti(S.p,K.p)&&subMulti(S.s,K.s);});}
+function arrange(tap){
+  const ks=compatKeys(tap).sort((a,b)=>a.split('+').length-b.split('+').length);
+  const T=groupsOf(tap);if(!ks.length)return [...T.p,...T.b,...T.s];
+  const K=groupsOf(ks[0].split('+'));
+  const order=(kg,arr)=>{const c={};arr.forEach(x=>c[x]=(c[x]||0)+1);const out=[];kg.forEach(x=>{if(c[x]>0){out.push(x);c[x]--;}});return out;};
+  return [...order(K.p,T.p),...T.b,...order(K.s,T.s)];
+}
+function guideHints(sel){if(!sel.length)return null;const ks=compatKeys(sel);const h=new Set();
+  ks.forEach(k=>minusMulti(k.split('+'),sel).forEach(x=>h.add(x)));return {hints:h,count:ks.filter(k=>k.includes('+')).length};}
+let doneWords=[],swapIdx=null,swapNote='';
+function pieceCtlHTML(){
+  if(swapNote&&swapIdx==null)return `<span class="swapnote">${swapNote}</span>`;
+  if(swapIdx==null||swapIdx>=buildParts.length)return 'Tap a piece in the word to remove it or swap it.';
+  return `<b class="mono">${buildParts[swapIdx]}</b><button class="speak rmbtn" data-rm="${swapIdx}">✕ Remove</button><span>or tap a new piece below to swap it in</span><button class="speak" data-swapcancel>Cancel</button>`;
+}
+function selectPiece(i){
+  swapIdx=swapIdx===i?null:i;buildTok++;document.querySelector('#build .clearbar')?.remove();
+  document.querySelectorAll('#build .wordpanel .grp.sel').forEach(x=>x.classList.remove('sel'));
+  if(swapIdx!=null)document.querySelector(`#build .wordpanel .grp[data-g="${swapIdx}"]`)?.classList.add('sel');
+  const c=document.getElementById('pieceCtl');if(c)c.innerHTML=pieceCtlHTML();
+}
+// A suffix tapped straight after a wrong suffix replaces it instead of being added
+function suffixSwap(x){
+  if(typeOf(x)!=='suffix')return false;
+  const tap=bMode==='guide'?gTap:buildParts,last=tap[tap.length-1];
+  if(!last||typeOf(last)!=='suffix')return false;
+  const build=t=>bMode==='guide'?arrange(t):t,ok=t=>{const b=build(t);return KNOWN.has(b.join('+'))||growOK(b);};
+  const cur=[...tap],app=[...tap,x],rep=[...tap.slice(0,-1),x];
+  if(bMode!=='guide'&&ok(cur))return false;   // Practice: a complete or growing word is never swapped
+  if(ok(cur)&&(ok(app)||!ok(rep)))return false;
+  if(bMode==='guide'){gTap=rep;buildParts=arrange(gTap);}else buildParts=rep;
+  swapNote=`Changed <b>-${last}</b> to <b>-${x}</b>.`;return true;
+}
+function removeAt(i){const x=buildParts[i];if(x==null)return;if(bMode==='guide'){const j=gTap.lastIndexOf(x);if(j>=0)gTap.splice(j,1);buildParts=arrange(gTap);}else buildParts.splice(i,1);}
+function swapAt(i,y){const x=buildParts[i];if(x==null)return;if(bMode==='guide'){const j=gTap.lastIndexOf(x);if(j>=0)gTap[j]=y;buildParts=arrange(gTap);}else buildParts[i]=y;}
+const moreOK=ps=>bMode==='guide'?compatKeys(ps).some(k=>k.split('+').length>ps.length):canGrowLonger(ps);
+const growOK=ps=>bMode==='guide'?compatKeys(ps).length>0:canGrow(ps);
 function renderBuild(){
+  if(bMode==='ch')return renderChallenge();
   const parts=buildParts.map(mk);const key=buildParts.join('+');
-  const bases=parts.filter(p=>p.t==='base');let verdict='',body='',okShape=false;
+  const bases=parts.filter(p=>p.t==='base');let verdict='',body='',okShape=false,wordDef='';
   const ctl=`<span data-extra class="ctl-end"><button class="speak" data-undo ${parts.length||lastBuilt?'':'disabled'}>Undo</button><button class="speak" data-clear ${parts.length?'':'disabled'}>Clear</button></span>`;
   if(!parts.length){const lw=lastBuilt?joinSum(parse(lastBuilt.join('+'))).res:'';
     body=`<p class="empty">${lw?(lastWrong?`That one didn’t make a word. Tap tiles below for a fresh try, or <b>Undo</b> to bring it back.`:`<b>${lw}</b> is done. Tap tiles below to build your next word, or <b>Undo</b> to bring it back.`):'Tap tiles below to build a word sum.'}</p><div class="ctl">${ctl}</div>`;}
@@ -1090,28 +1647,40 @@ function renderBuild(){
     else if(bases.length>1)verdict=`<div class="verdict info">Use one base at a time. Tap <b>Undo</b> to remove one.</div>`;
     else if(badOrder)verdict=`<div class="verdict bad">Prefixes go before the base, and suffixes go after it.</div>`;
     else if(KNOWN.has(key)){const nw=addFound(key);const aw=buildDemo?null:award(key);
-      verdict=(chal&&chal.key===key&&chal.status==='added'?'<p class="addedtag">Checked with Claude and added to your word list.</p>':'')+wordBox(joinSum(parts).res,nw)+(aw?`<div class="points toast"><b>+${aw.pts}</b> points <span>${aw.parts} parts × 10${aw.ch?` + ${aw.ch} change${aw.ch>1?'s':''} × 15`:''}</span></div>`:bWords.has(key)?'<p class="meta">You already scored this word.</p>':'');}
+      verdict=chal&&chal.key===key&&chal.status==='added'?'<p class="addedtag">Checked with Claude and added to your word list.</p>':'';
+      const w=joinSum(parts).res,d=DEFS[w]?DEFS[w].split('|'):['',''];
+      if(key.includes('+')||d[1])wordDef=`<div class="wpdef"><p>${d[0]?`<span class="pos-inl">${d[0]}</span> `:''}${d[1]||'A real word.'}</p>
+        <p class="wpmeta">${ytag(key)}${nw?'<span class="newtag">New word</span>':''}${aw?`<span class="wpts toast" title="${aw.parts} parts × 10${aw.ch?` + ${aw.ch} change${aw.ch>1?'s':''} × 15`:''}"><b>+${aw.pts}</b> points</span>`:bWords.has(key)?'<span>Already scored</span>':''}</p></div>`;}
     else if(parts.length===1&&BASES[key]&&BASES[key].bound)verdict=`<div class="verdict info">${g(key)} is a bound base. It needs a prefix or suffix to make a word.</div>`;
     else if(chal&&chal.key===key&&chal.status==='asking')verdict=`<div class="verdict info">Checking <b>${joinSum(parts).res}</b> with Claude…</div>`;
     else if(chal&&chal.key===key&&chal.status!=='added')verdict=`<div class="verdict ${chal.status==='no'?'bad':'info'}">${chal.msg}</div>${chal.status==='err'&&!sampleOff?`<div class="row"><button class="speak" data-challenge>Try again</button></div>`:''}`;
-    else{verdict=!canGrow(buildParts)?`<div class="verdict bad">No word in this app starts like this. Clearing it so you can try again…</div>`:`<div class="verdict info">Not a word yet. Keep adding pieces.</div>`;
-      if(parts.length>1&&sampleFn&&!sampleOff)verdict+=`<div class="challenge"><span>Think <b>${joinSum(parts).res}</b> is a real word?</span><button class="speak" data-challenge>Check with Claude</button></div>`;}
+    else{verdict=bMode==='guide'&&gUnlock&&!growOK(buildParts)?`<div class="verdict info">This word isn’t in the app’s list yet.</div>`:!growOK(buildParts)?`<div class="verdict bad">${bMode==='guide'?'No word in this app uses all these pieces.':'No word in this app starts like this.'} Tap a piece in the word to remove or swap it, or it will clear.</div>`:`<div class="verdict info">Not a word yet. Keep adding pieces.</div>`;
+      if(parts.length>1&&bases.length===1&&!badOrder){const w=joinSum(parts).res,sg=store.get('suggest',[]);
+        verdict+=sampleFn&&!sampleOff?`<div class="challenge"><span>Think <b>${w}</b> is a real word?</span><button class="speak" data-challenge>Check with Claude</button></div>`
+          :sg.includes(w)?`<div class="challenge"><span>Saved <b>${w}</b> for your teacher. It’s listed in your progress report.</span></div>`
+          :`<div class="challenge"><span>Think <b>${w}</b> is a real word?</span><button class="speak" data-suggest="${w}">Save it for your teacher</button></div>`;}}
   }
-  const bank=(label,items,t)=>`<div class="bank"><h3>${label}</h3><div class="bank-tiles">${items.map(s=>`<button class="tile ${t}" data-add="${s}">${s}</button>`).join('')}</div></div>`;
+  const GH=bMode==='guide'&&!gUnlock?guideHints(buildParts):null;
+  const SW=new Set();if(GH){const last=gTap[gTap.length-1];if(last&&typeOf(last)==='suffix')SUFFIXES.forEach(x=>{if(x!==last&&!GH.hints.has(x)&&compatKeys([...gTap.slice(0,-1),x]).length)SW.add(x);});}
+  const bank=(label,items,t)=>`<div class="bank"><h3>${label}</h3><div class="bank-tiles">${[...items].sort((a,b)=>a.localeCompare(b)).map(s=>{const st=!GH?'':GH.hints.has(s)?'hint':SW.has(s)?'swapok':'dim';return `<button class="tile ${t}${st?' '+st:''}" data-add="${s}" ${st==='dim'?'aria-disabled="true"':''}${st==='swapok'?` title="Swap in for -${gTap[gTap.length-1]}"`:''}>${s}</button>`;}).join('')}</div></div>`;
+  const guideNote=bMode!=='guide'?'<p class="meta">Press and hold any piece to see what it means.</p>'
+    :gUnlock?`<p class="guide-note">You’re building a word the guide doesn’t know. When it’s ready, check it below. <button class="speak" data-glock>Back to the guide</button></p>`
+    :`<p class="guide-note">${GH?(GH.count?`<b>Highlighted pieces</b> can join the ones you’ve chosen. Faded ones don’t make a word the app knows; tap one if you think they do.${SW.size?' <b>Dashed</b> suffixes can swap in for your last one.':''} <b>${GH.count}</b> word${GH.count===1?'':'s'} can still be made.`:'No word uses all these pieces. Tap <b>Undo</b>.'):'Tap any piece to start: a prefix, a base or a suffix. Pieces that can join it will light up.'}</p>`;
   document.getElementById('build').innerHTML=`
-   <div class="bhead"><h2 class="sec-title">Build a word sum</h2><div class="bscore" title="10 points per part, plus 15 for each change at a join"><b>${bScore}</b> points · ${bWords.size} words</div></div>${buildDemo?'<p class="verdict info">Example: watch how re + move + al joins together. Then it’s your turn.</p>':''}
-   <div class="panel">${body}<div aria-live="polite">${verdict}</div></div>
-   <p class="meta">Press and hold any piece to see what it means.</p>
+   <div class="bhead"><h2 class="sec-title">Build a word sum</h2>${modeHTML()}</div><div class="bhead"><span></span><div class="bscore" title="10 points per part, plus 15 for each change at a join"><b>${bScore}</b> points · ${bWords.size} word${bWords.size===1?'':'s'}</div></div>${buildDemo?'<p class="verdict info">Example: watch how re + move + al joins together. Then it’s your turn.</p>':''}
+   ${guideNote}
+   <div class="panel wordpanel">${body}${parts.length?`<div class="piecectl" id="pieceCtl">${pieceCtlHTML()}</div>`:''}${wordDef}${parts.length&&KNOWN.has(key)&&!moreOK(buildParts)?'<p class="donetag toast"><span class="tick">✓</span> Done: nothing more can be added to this word.</p>':''}${!KNOWN.has(key)&&verdict?`<div aria-live="polite">${verdict}</div>`:''}</div>
    <div class="banks">${bank('Prefixes',PREFIXES,'prefix')}${bank('Bases',Object.keys(BASES),'base')}${bank('Suffixes',SUFFIXES,'suffix')}</div>
-   <p class="tip">Try <i>hope + ing</i>, then <i>hop + ing</i>. Then try <i>carry + age</i>.</p>`;
+   ${(KNOWN.has(key)&&verdict)||doneWords.length?`<div class="panel">${KNOWN.has(key)&&verdict?`<div aria-live="polite">${verdict}</div>`:''}${doneWords.length?`<div class="doneshelf"><span class="eyebrow">Done</span>${doneWords.map(k=>`<span class="doneword"><span class="tick">✓</span>${joinSum(parse(k)).res}</span>`).join('')}</div>`:''}</div>`:''}
+   ${bMode==='guide'?'<p class="tip">Try starting with a suffix such as <i>ful</i>, and see which bases light up.</p>':'<p class="tip">Try <i>hope + ing</i>, then <i>hop + ing</i>. Then try <i>carry + age</i>.</p>'}`;
   const tok=++buildTok;
-  if(!buildDemo&&parts.length&&!KNOWN.has(key)&&!canGrow(buildParts)&&!holdWord&&!(chal&&chal.key===key)){
+  if(!buildDemo&&swapIdx==null&&!(bMode==='guide'&&gUnlock)&&parts.length&&!KNOWN.has(key)&&!growOK(buildParts)&&!holdWord&&!(chal&&chal.key===key)){
     clearBar(7000);
     setTimeout(()=>{if(tok!==buildTok||holdWord)return;lastBuilt=[...buildParts];lastWrong=true;buildParts=[];store.set('build',[]);if(!document.getElementById('build').hidden)renderBuild();},7000);}
   if(!buildDemo){const done=autoAnim('build');
-    const wait=canGrowLonger(buildParts)?9000:5000;
-    if(KNOWN.has(key)&&!holdWord)done.then(()=>{if(tok!==buildTok)return;clearBar(wait);setTimeout(()=>{if(tok!==buildTok||buildDemo||holdWord)return;
-      lastBuilt=[...buildParts];lastWrong=false;buildParts=[];store.set('build',[]);if(!document.getElementById('build').hidden)renderBuild();},wait);});
+    const wait=moreOK(buildParts)?9000:2500;
+    if(KNOWN.has(key)&&!holdWord&&swapIdx==null)done.then(()=>{if(tok!==buildTok)return;clearBar(wait);setTimeout(()=>{if(tok!==buildTok||buildDemo||holdWord)return;
+      lastBuilt=[...buildParts];lastWrong=false;doneWords=[key,...doneWords.filter(x=>x!==key)].slice(0,12);buildParts=[];gTap=[];gUnlock=false;store.set('build',[]);if(!document.getElementById('build').hidden)renderBuild();},wait);});
     return;}
   if(demoArmed)return;demoArmed=true;
   const el=document.querySelector('#build .anim');
@@ -1148,7 +1717,7 @@ function renderMatrix(){
   const m=MATRICES[mxIdx];if(!mxSel)mxSel=selFromKey(m,m.start);
   const key=keyFromSel(m,mxSel),parts=parse(key),got=new Set(found[m.base]||[]);
   let verdict;
-  if(m.list.includes(key))verdict=wordBox(joinSum(parts).res,mxNew===key);
+  if(m.list.includes(key))verdict=wordBox(joinSum(parts).res,mxNew===key,key);
   else if(key===m.base&&m.bound)verdict=`<div class="verdict info">${m.note||`${g(m.base)} is a bound base. Add a prefix or suffix to make a word.`}</div>`;
   else verdict=`<div class="verdict info">That path doesn't make a word in this family. Try another element.</div>`;
   const n=m.list.length,f=m.list.filter(w=>got.has(w)).length;
@@ -1213,7 +1782,7 @@ EXTRA.forEach(k=>{if(!FAM[k])FAM[k]=k.split('+').find(x=>BASES[x]);});
 const FAMS=[...new Set(Object.values(FAM))];
 let listenMode=store.get('listen',false);
 let pBases=store.get('pbases',[]).filter(b=>FAMS.includes(b));let pChooser=false;
-const poolKeys=()=>Object.keys(FAM).filter(k=>!pBases.length||pBases.includes(FAM[k]));
+const poolKeys=()=>Object.keys(FAM).filter(k=>(!pBases.length||pBases.includes(FAM[k]))&&(!pYear||yearOf(k).y===pYear));
 const maskDef=w=>{const d=DEFS[w];return d?d.split('|')[1].replace(new RegExp('\\b'+w+'\\b','gi'),'___'):'';};
 const mxOf=k=>MATRICES.find(m=>m.base===FAM[k]);
 function genBuild(k){
@@ -1222,28 +1791,14 @@ function genBuild(k){
   const preP=m&&m.pre.length?m.pre.flat():PREFIXES.slice(0,6),sufP=m?m.suf.flat():SUFFIXES.slice(0,12);
   return {type:'build',k,w,hint:maskDef(w),pool:shuffle([...parts,...pick(preP,1),...pick(sufP,2)]),ans:Array(parts.length).fill(null)};
 }
-const OK_VARIANTS=new Set(['moveable','unmoveable','removeable','immoveable']); // accepted alternative spellings, never offered as wrong
-function joinAlt(ps,alt,mode){let res='';
-  ps.forEach((p,i)=>{
-    if(i>0&&p.t==='suffix'){const vowel=/^[aeiouy]/.test(p.s),prev=ps[i-1];
-      const eR=/e$/.test(res)&&!/ee$/.test(res)&&vowel&&!(/[cg]e$/.test(res)&&/^[ao]/.test(p.s));
-      const yR=!eR&&/[^aeiou]y$/.test(res)&&!/^i/.test(p.s), dR=!eR&&!yR&&prev.dbl&&vowel;
-      if(i===alt){
-        if(mode==='drop'&&/e$/.test(res))res=res.slice(0,-1);
-        else if(mode==='double'&&vowel&&/[bdfgklmnprstvz]$/.test(res))res+=res.slice(-1);
-        else if(mode==='double'&&eR&&/[bdfgklmnprstvz]e$/.test(res)){res=res.slice(0,-1);res+=res.slice(-1);}
-        else if(mode==='yi'&&/y$/.test(res))res=res.slice(0,-1)+'i';
-      }else if(eR)res=res.slice(0,-1);else if(yR)res=res.slice(0,-1)+'i';else if(dR)res+=res.slice(-1);
-    }
-    res+=p.s;});
-  return res;}
+const OK_VARIANTS=new Set(['moveable','unmoveable','removeable','immoveable','immoveably','traveled','traveling','traveler','travelers','canceled','canceling','cancelation','cancelations']); // accepted alternative spellings, never offered as wrong
 function wrongSpellings(k){
-  const ps=parse(k),j=joinSum(ps),out=[];
+  const ps=parse(k),j=joinSum(ps),out=[];const alt=(i,mode)=>joinSum(ps,{i,mode}).res;
   ps.forEach((p,i)=>{if(!i||p.t!=='suffix')return;const c=j.ch[i];
-    if(c)out.push(joinAlt(ps,i,'skip'));
-    if(c!=='d')out.push(joinAlt(ps,i,'double'));
-    if(c!=='e')out.push(joinAlt(ps,i,'drop'));
-    if(c!=='y')out.push(joinAlt(ps,i,'yi'));});
+    if(CHANGE(c)&&c!=='ll')out.push(alt(i,'skip'));   // 'traveling' is American, so never offered as wrong
+    if(!isDblCode(c))out.push(alt(i,'double'));
+    if(c!=='e')out.push(alt(i,'drop'));
+    if(c!=='y')out.push(alt(i,'yi'));});
   return [...new Set(out)].filter(w=>w!==j.res&&!OK_VARIANTS.has(w));
 }
 function genChoose(k){const w=joinSum(parse(k)).res,wr=shuffle(wrongSpellings(k)).slice(0,2);
@@ -1253,10 +1808,12 @@ const LEVELS=[
   {n:1,name:'Just join',fam:['sign','act','struct','form','spect','rupt','port']},
   {n:2,name:'Drop the e',fam:['move','hope','make','care']},
   {n:3,name:'y to i',fam:['busy','rely','carry']},
-  {n:4,name:'Doubling',fam:['stop','hop','run']}];
+  {n:4,name:'Doubling',fam:['stop','hop','run']},
+  {n:5,name:'Trickier joins',fam:['gentle','simple','lie','tie','die','notice','courage','change','picnic','panic','begin','visit','travel','cancel']}];
 const UNLOCK_AT=8;
 const famLevel=b=>(LEVELS.find(l=>l.fam.includes(b))||{n:1}).n;
-const wordLevel=k=>{const n=joinSum(parse(k)).notes;return n.includes('d')?4:n.includes('y')?3:n.includes('e')?2:1;};
+const L5=['le','ie','k','ck','ll','ds','u'];
+const wordLevel=k=>{const n=joinSum(parse(k)).notes;return n.some(x=>L5.includes(x))?5:n.includes('d')?4:n.includes('y')?3:n.includes('e')?2:1;};
 let level=store.get('level',1);
 let lvlCorrect=store.get('lvlCorrect',{});
 let stats=store.get('stats',{});   // key -> {c,w}
@@ -1273,6 +1830,19 @@ function record(k,ok){
   return up;
 }
 const unlockedKey=k=>famLevel(FAM[k])<=level&&wordLevel(k)<=level;
+
+function genClsSuffix(k){
+  const ps=k.split('+'),s=ps[ps.length-1];if(ps.length<2||typeOf(s)!=='suffix'||!SJOB[s]||SJOB[s].infl)return null;
+  const stem=ps.slice(0,-1).join('+'),sw=joinSum(parse(stem)).res,w=joinSum(parse(k)).res;
+  const sc=classOf(sw).slice(0,1),wc=classOf(w);if(!sc.length||wc.length!==1||sc[0]===wc[0])return null;
+  const target=wc[0];
+  const outs=x=>Object.values(SJOB[x].to||{});
+  const pool=SUFFIXES.filter(x=>x!==s&&SJOB[x]&&!SJOB[x].infl&&!outs(x).includes(target));
+  const d=shuffle(pool).slice(0,2);if(d.length<2)return null;
+  return {type:'clsS',k,sw,sc,target,o:[s,...d],opts:shuffle([s,...d])};
+}
+function genClsWord(k){const w=joinSum(parse(k)).res,c=classOf(w);if(c.length!==1||!k.includes('+'))return null;
+  return {type:'clsW',k,w,o:[c[0],...CLS.filter(x=>x!==c[0])],opts:[...CLS]};}
 function newRound(){
   let pool=poolKeys().filter(k=>k.includes('+')&&unlockedKey(k));
   if(!pool.length)pool=Object.keys(FAM).filter(k=>k.includes('+')&&unlockedKey(k));
@@ -1282,11 +1852,13 @@ function newRound(){
   due.forEach((k,i)=>{if(i%2===0){builds.push({...genBuild(k),review:true});used.add(k);}else{const q=genChoose(k);if(q){chooses.push({...q,review:true});used.add(k);}}});
   const lvlFirst=shuffle(keys.filter(k=>wordLevel(k)===level));
   for(const k of [...lvlFirst.slice(0,3),...keys]){if(builds.length>=4)break;if(used.has(k))continue;builds.push(genBuild(k));used.add(k);}
-  for(const k of [...lvlFirst,...keys]){if(chooses.length>=3)break;if(used.has(k))continue;const q=genChoose(k);if(q){chooses.push(q);used.add(k);}}
-  const whys=shuffle(P_WHY).slice(0,3).map(x=>({type:'why',...x,opts:shuffle(x.o)}));
-  round={qs:shuffle([...builds,...chooses,...whys]),i:0,score:0,picked:null,checked:false,levelUp:0};
+  for(const k of [...lvlFirst,...keys]){if(chooses.length>=2)break;if(used.has(k))continue;const q=genChoose(k);if(q){chooses.push(q);used.add(k);}}
+  const cls=[];for(const k of keys){if(used.has(k))continue;const q=genClsSuffix(k);if(q){cls.push(q);used.add(k);break;}}
+  for(const k of shuffle(keys)){if(cls.length>=2)break;if(used.has(k))continue;const q=genClsWord(k);if(q){cls.push(q);used.add(k);}}
+  const whys=shuffle(P_WHY).slice(0,10-builds.length-chooses.length-cls.length).map(x=>({type:'why',...x,opts:shuffle(x.o)}));
+  round={qs:shuffle([...builds,...chooses,...cls,...whys]),i:0,score:0,picked:null,checked:false,levelUp:0};
 }
-const LV_WORDS={1:'words with no change at the join',2:'words where the final ‹e› drops',3:'words where ‹y› changes to ‹i›',4:'words with a doubled consonant'};
+const LV_WORDS={1:'words with no change at the join',2:'words where the final ‹e› drops',3:'words where ‹y› changes to ‹i›',4:'words with a doubled consonant',5:'words with the trickier joining changes'};
 function levelNote(){
   if(level>=LEVELS.length)return `<p class="meta">All levels unlocked.</p>`;
   const left=Math.max(UNLOCK_AT-(lvlCorrect[level]||0),0);
@@ -1306,7 +1878,7 @@ function statsHTML(){const acc=totals.a?Math.round(totals.c/totals.a*100):0;cons
   return `<div class="pstats"><div><b>${mastered()}</b><span>words mastered</span></div><div><b>${totals.a?acc+'%':'–'}</b><span>accuracy</span></div><div><b>${store.get('best',0)}</b><span>best round</span></div><div><b>${rv}</b><span>to review</span></div></div>`;}
 function chooserHTML(){
   const all=!pBases.length,n=poolKeys().filter(k=>k.includes('+')&&unlockedKey(k)).length;
-  return `<div class="pbar"><span>Practising <b>${all?'all unlocked families':pBases.join(', ')}</b> · ${n} words</span><span class="row" style="gap:6px">${canSpeak?`<button class="speak" data-listen aria-pressed="${listenMode}">${SPK}Listen only</button>`:''}<button class="speak" data-pchooser>${pChooser?'Close':'Choose bases'}</button></span></div>
+  return `<div class="pbar"><span>Practising <b>${all?'all unlocked families':pBases.join(', ')}</b>${pYear?` · <b>${YLABEL[pYear]}</b>`:''} · ${n} words</span><span class="row" style="gap:6px">${canSpeak?`<button class="speak" data-listen aria-pressed="${listenMode}">${SPK}Listen only</button>`:''}<button class="speak" data-pcurric aria-pressed="${!!pYear}">${pYear?YSHORT[pYear]:'Year group'}</button><button class="speak" data-pchooser>${pChooser?'Close':'Choose bases'}</button></span></div>${curricHTML()}
   ${pChooser?`<div class="panel"><p class="meta">Tap the families you want to practise. Locked families open as you level up.</p><div class="chips wrap">${['__all',...FAMS].map(b=>{const lk=b!=='__all'&&famLevel(b)>level;
     return `<button class="chip" data-pbase="${b}" aria-pressed="${b==='__all'?all:pBases.includes(b)}" ${lk?'disabled':''}>${lk?LOCK+' ':''}${b==='__all'?'All':b}</button>`;}).join('')}</div><div class="row"><button class="btn primary" data-pstart>Start a new round</button></div></div>`:''}`;
 }
@@ -1318,29 +1890,33 @@ function renderPractice(){
     sec.innerHTML=`<h2 class="sec-title">Round complete</h2>
      <div class="panel"><div class="bigscore">${R.score}<span style="font-size:1.4rem;color:var(--muted)"> / ${R.qs.length}</span></div>
      ${nb?'<p class="newbest">New personal best!</p>':''}${statsHTML()}
-     <button class="btn primary" data-newround>Play another round</button></div>${levelsHTML()}${chooserHTML()}`;return;}
+     <div class="row"><button class="btn primary" data-newround>Play another round</button><button class="btn" data-openreport>Progress report</button></div></div>${levelsHTML()}${chooserHTML()}`;return;}
   const q=R.qs[R.i];let body='',fb='';
   const tag=q.review?'<span class="rvtag">Review</span>':'';
   const nxt=R.checked?`<button class="btn primary next-btn" data-next>${R.i===R.qs.length-1?'See results':'Next'} →</button>`:'';
-  const head=t=>`<div class="qhead"><p class="eyebrow">${t}</p>${nxt}</div>`;
+  const head=t=>`<div class="qhead"><p class="eyebrow">${t} ${q.k&&q.type!=='clsS'&&q.type!=='clsW'?ytag(q.k):''}</p>${nxt}</div>`;
   if(q.type==='build'){
     const types=q.k.split('+').map(x=>mk(x).t),full=!q.ans.includes(null);
     body=`${head('Build the word sum '+tag)}${listenMode&&canSpeak&&!R.checked?`<div class="listen"><button class="hear" data-sayw="${q.w}">${SPK}<span>Hear the word</span></button><span class="meta">Listen, then build it.</span></div>`:`<div class="target">${q.w}</div>`}${q.hint?`<p class="meta">Meaning: ${q.hint}</p>`:''}
-     ${R.checked?`<div class="slots done">${animHTML(q.k,{play:true,controls:false,spell:true})}</div>`:`<div class="slots" aria-label="Your word sum">${types.map((t,n)=>{const pi=q.ans[n];
+     ${R.checked?`<div class="slots done">${animHTML(q.k,{play:true,controls:false,spell:true})}</div>${piecesHTML(parse(q.k)).replace(' class="newest"',' ')}`:`<div class="slots" aria-label="Your word sum">${types.map((t,n)=>{const pi=q.ans[n];
        return `${n?'<span class="op">+</span>':''}${pi==null?`<span class="slot ${t}" aria-label="empty ${t} space"></span>`:`<button class="tile ${mk(q.pool[pi]).t}" data-unpick="${n}">${q.pool[pi]}</button>`}`;}).join('')}</div>
-     <div class="bank-tiles">${q.pool.map((s,i)=>q.ans.includes(i)?'':`<button class="tile ${mk(s).t}" data-pick="${i}" ${full?'disabled':''}>${s}</button>`).join('')}</div>`}
+     <div class="bank-tiles">${q.pool.map((s,i)=>q.ans.includes(i)?'':`<button class="tile ${mk(s).t}" data-pick="${i}" ${full?'disabled':''}>${s}</button>`).join('')}</div>${piecesHTML(q.ans.filter(x=>x!=null).map(i=>mk(q.pool[i])))}`}
      `;
     if(R.checked){const ok=q.ans.map(i=>q.pool[i]).join('+')===q.k;
       fb=`<div class="verdict ${ok?'good':'bad'}">${ok?'Correct.':'Not quite. The word sum above shows how it is built. It will come back in a later round.'}</div>`;}
   }else{
-    const isC=q.type==='choose',correct=q.o[0];
+    const isC=q.type==='choose',isS=q.type==='clsS',isW=q.type==='clsW',correct=q.o[0];
     body=isC?`${head('Which spelling does this make? '+tag)}${R.checked?A(q.k):sumHTML(parse(q.k),{hide:true})}`
+       :isS?`${head('Word class '+tag)}<p class="qtext">Which suffix turns <b>${q.sw}</b> (${q.sc.join(' / ')}) into a <b>${q.target}</b>?</p>${R.checked?animHTML(q.k,{play:true,spell:true,trail:'force'}):''}`
+       :isW?`${head('Word class '+tag)}<p class="qtext">What word class is <b>${q.w}</b>? ${spk(q.w)}</p>${R.checked?animHTML(q.k,{play:true,spell:true,trail:'force'}):''}`
             :`${head('Etymology')}<p style="font-size:1.15rem;font-weight:500">${q.q()}</p>${q.say&&canSpeak?`<div class="sayrow">${q.say.map(w=>`<span class="saychip">${w}${spk(w)}</span>`).join('')}</div>`:''}`;
     body+=`<div class="opts">${q.opts.filter(o=>!R.checked||o===correct||o===R.picked).map(o=>{let c='';if(R.checked){if(o===correct)c='right';else if(o===R.picked)c='wrong';}
-      const btn=`<button class="opt ${isC||q.sayOpts?'mono':''} ${c}" data-opt="${o.replace(/"/g,'&quot;')}" ${R.checked?'disabled':''}>${o}</button>`;
+      const btn=`<button class="opt ${isC||isS||q.sayOpts?'mono':''} ${c}" data-opt="${o.replace(/"/g,'&quot;')}" ${R.checked?'disabled':''}>${isS?'-'+o:o}</button>`;
       return q.sayOpts&&canSpeak?`<div class="optrow">${btn}${spk(o)}</div>`:btn;}).join('')}</div>`;
     if(R.checked){const ok=R.picked===correct;
-      fb=`<div class="verdict ${ok?'good':'bad'}">${ok?'Correct.':'Not quite.'} ${isC?(!ok?'It will come back in a later round.':''):q.e}</div>`;}
+      const why=isS?`The suffix <b>-${q.o[0]}</b> ${SJOB[q.o[0]].job.includes('→')?'changes '+q.sc[0]+' to '+q.target:'makes a '+q.target}.`
+        :isW?`<b>${q.w}</b> is ${/^[aeiou]/.test(q.o[0])?'an':'a'} ${q.o[0]}. The line under the word sum shows how its suffixes made it one.`:'';
+      fb=`<div class="verdict ${ok?'good':'bad'}"><span>${ok?'Correct.':'Not quite.'} ${isC?(!ok?'It will come back in a later round.':''):(isS||isW)?why:q.e}</span></div>`;}
   }
   if(R.checked&&R.levelUp){const L=LEVELS[R.levelUp-1];fb+=`<div class="levelup toast"><b>Level ${L.n} unlocked: ${L.name}</b><br>New families: ${L.fam.join(', ')}.</div>`;}
   sec.innerHTML=`<h2 class="sec-title">Spell by structure</h2>${levelsHTML()}${chooserHTML()}
@@ -1357,7 +1933,7 @@ let custom=store.get('custom',{}); // key -> 'word class|definition'
 function addCustom(k,pos,def){const w=joinSum(parse(k)).res;KNOWN.add(k);DEFS[w]=DEFS[w]||`${pos}|${def}`;FAM[k]=k.split('+').find(x=>BASES[x]);custom[k]=`${pos}|${def}`;store.set('custom',custom);}
 Object.entries(custom).forEach(([k,v])=>{const w=joinSum(parse(k)).res;KNOWN.add(k);if(!DEFS[w])DEFS[w]=v;FAM[k]=k.split('+').find(x=>BASES[x]);});
 let sampleFn=null,sampleOff=false,chal=null;
-try{window.claude?.use?.('sample').then(f=>{sampleFn=f;if(f&&!document.getElementById('build').hidden)renderBuild();}).catch(()=>{});}catch(_){}
+try{window.claude?.use?.('sample').then(f=>{sampleFn=f;if(!f)return;if(!document.getElementById('build').hidden)renderBuild();if(!document.getElementById('split').hidden)renderSplit();}).catch(()=>{});}catch(_){}
 async function challenge(key){
   const parts=parse(key),w=joinSum(parts).res;
   chal={key,status:'asking'};holdWord=true;renderBuild();
@@ -1384,12 +1960,22 @@ Reply with only a JSON object, for example {"isWord":true,"spelling":"${w}","bui
 }
 
 /* ---------- morpheme meanings (press and hold) ---------- */
-const MEAN={
- prefix:{re:'again, or back',de:'down, away, or undoing',in:'in or into (inspect, inform). In some words it means “not” (inactive).',con:'with, together',un:'not, or reversing an action',im:'in or into (import); or “not” (immovable). A form of in- used before m, b and p.',as:'to, towards. A form of ad- used before s.',inter:'between',trans:'across, beyond',ob:'against, in the way',ex:'out, out of',sup:'under, up from below. A form of sub- used before p.',dis:'apart, away, or not',pro:'forward, ahead',intro:'inward, within',cor:'with, together. A form of con- used before r.',ab:'away, off',e:'out. A form of ex-.',non:'not'},
- base:{sign:'a mark or token',struct:'build, pile up',move:'move',act:'do, drive',busy:'occupied, having a lot to do',port:'carry',form:'shape',spect:'look',rupt:'break',hope:'wish for something good',stop:'stop, block',rely:'depend on, trust',carry:'take something from place to place',hop:'jump on one foot',run:'move fast on foot',make:'create, produce',care:'look after; feel that something matters'},
- suffix:{s:'more than one (signs); or he, she or it does it (acts)',es:'like -s; used after some endings, such as y changed to i (carries)',ed:'it happened in the past',ing:'happening now, or the activity itself',er:'a person or thing that does it (reporter); or “more” (busier)',est:'the most',ly:'in that way; turns a word into an adverb',ness:'the state of being',ful:'full of',less:'without',al:'to do with (formal); or the act of (removal)',ion:'the act or result of; turns a verb into a noun',ive:'tending to, likely to',ment:'the act or result of',able:'able to be',ance:'the act or state of',ure:'the act or result of',ate:'make or cause (activate); or having',ation:'the act or result of',age:'the act of, or the result of',or:'a person or thing that does it',ator:'a person who does it',acle:'a thing or sight',ify:'make',ature:'the act or result of',ist:'a person who does it or believes in it'}
+const ORIG={
+ prefix:{af:'Latin <i>ad</i>, “to”, spelled <i>af-</i> before f',pre:'Latin <i>prae</i>, “before”',suf:'Latin <i>sub</i>, “under, after”, spelled <i>suf-</i> before f',en:'French <i>en-</i>, from Latin <i>in-</i>, “in, into”',re:'Latin <i>re-</i>, “again, back”',de:'Latin <i>dē</i>, “down from, away”',in:'Latin <i>in</i>, “in, into”; also Latin <i>in-</i>, “not”',con:'Latin <i>com-, con-</i>, “with”',un:'Old English <i>un-</i>, “not”',im:'Latin <i>in-</i>, spelled <i>im-</i> before m, b and p',as:'Latin <i>ad</i>, “to”, spelled <i>as-</i> before s',inter:'Latin <i>inter</i>, “between”',trans:'Latin <i>trāns</i>, “across”',ob:'Latin <i>ob</i>, “against, in the way”',ex:'Latin <i>ex</i>, “out of”',sup:'Latin <i>sub</i>, “under”, spelled <i>sup-</i> before p',dis:'Latin <i>dis-</i>, “apart”',pro:'Latin <i>prō</i>, “forward”',intro:'Latin <i>intrō</i>, “inwardly”',cor:'Latin <i>com-</i>, “with”, spelled <i>cor-</i> before r',ab:'Latin <i>ab</i>, “away from”',e:'Latin <i>ex</i>, “out”, shortened to <i>e-</i>',non:'Latin <i>nōn</i>, “not”'},
+ base:{son:'Latin <i>sonāre</i>, “to sound”',carry:'Old French <i>carier</i>, from Latin <i>carrus</i>, “wagon”',hop:'Old English <i>hoppian</i>, “to hop”',run:'Old English <i>rinnan</i>, “to run”',make:'Old English <i>macian</i>, “to make”',care:'Old English <i>caru</i>, “concern, sorrow”'},
+ suffix:{ant:'Latin <i>-ant-</i>, “doing”',y:'Old English <i>-ig</i>',ous:'Latin <i>-ōsus</i>, through French',s:'Old English',es:'Old English, the same ending as -s',ed:'Old English past-tense ending',ing:'Old English <i>-ung, -ing</i>',er:'Old English <i>-ere</i> (a person) and <i>-ra</i> (more)',est:'Old English <i>-est</i>',ly:'Old English <i>-līc</i>, “having the form of”',ness:'Old English <i>-nes</i>',ful:'Old English <i>full</i>',less:'Old English <i>lēas</i>, “without”',al:'Latin <i>-ālis</i>',ion:'Latin <i>-iō, -iōnis</i>',ive:'Latin <i>-īvus</i>',ment:'Latin <i>-mentum</i>, through French',able:'Latin <i>-ābilis</i>, through French',ance:'Latin <i>-antia</i>, through French',ure:'Latin <i>-ūra</i>',ate:'Latin <i>-ātus</i>',ation:'Latin <i>-ātiō</i>',age:'French <i>-age</i>, from Latin <i>-āticum</i>',or:'Latin <i>-or</i>',ator:'Latin <i>-ātor</i>',acle:'Latin <i>-āculum</i>',ify:'Latin <i>-ificāre</i>, “to make”',ature:'Latin <i>-ātūra</i>',ist:'Greek <i>-istēs</i>, through Latin'}
 };
-const meaningOf=(s,t)=>(MEAN[t]&&MEAN[t][s])||MEAN.prefix[s]||MEAN.base[s]||MEAN.suffix[s]||'';
+function originOf(s,t){if(t==='base'){const m=MATRICES.find(x=>x.base===s);if(m)return m.origin;}return (ORIG[t]&&ORIG[t][s])||'';}
+function piecesHTML(list,E){if(!list.length)return '';
+  return `<ol class="pieces${E?' editable':''}">${E?`<li class="edhint">${E.note?`<span class="swapnote">${E.note}</span>`:E.sel!=null?`<span>Tap a new piece below to swap in for <b>${list[E.sel].s}</b>.</span><button class="speak" data-swapcancel>Cancel</button>`:'<span class="meta">Wrong piece? Tap ✕ to remove it, or tap the piece to swap it.</span>'}</li>`:''}${list.map((p,i)=>{const m=meaningOf(p.s,p.t),o=originOf(p.s,p.t);
+    const jb=p.t==='suffix'?jobOf(p.s):'';
+    return `<li class="${i===list.length-1?'newest':''}">${E?`<button class="tile ${p.t}${E.sel===i?' sel':''}" data-swap="${i}" aria-label="Swap ${p.s}">${p.s}</button>`:`<span class="tile ${p.t}">${p.s}</span>`}<span class="pc-txt"><span>${m||'<span class="meta">No meaning stored</span>'}</span>${jb?`<span class="pc-job">${jb}</span>`:''}${o?`<span class="pc-orig">From ${o}</span>`:''}</span>${E?`<button class="edx" data-rm="${i}" aria-label="Remove ${p.s}">✕</button>`:''}</li>`;}).join('')}</ol>`;}
+const MEAN={
+ prefix:{af:'to, towards. A form of ad- used before f',pre:'before',suf:'under, after. A form of sub- used before f',en:'in, into; or make',re:'again, or back',de:'down, away, or undoing',in:'in or into (inspect, inform). In some words it means “not” (inactive).',con:'with, together',un:'not, or reversing an action',im:'in or into (import); or “not” (immovable). A form of in- used before m, b and p.',as:'to, towards. A form of ad- used before s.',inter:'between',trans:'across, beyond',ob:'against, in the way',ex:'out, out of',sup:'under, up from below. A form of sub- used before p.',dis:'apart, away, or not',pro:'forward, ahead',intro:'inward, within',cor:'with, together. A form of con- used before r.',ab:'away, off',e:'out. A form of ex-.',non:'not'},
+ base:{fix:'fasten',son:'sound (not the word son, meaning a boy)',gentle:'kind, calm, careful',simple:'plain, easy',lie:'rest flat; or say something untrue',tie:'fasten with a knot',die:'stop living',notice:'see, become aware of',courage:'bravery',change:'make or become different',picnic:'a meal eaten outdoors',panic:'sudden great fear',begin:'start',visit:'go to see',travel:'go from place to place',cancel:'call off, cross out',sign:'a mark or token',struct:'build, pile up',move:'move',act:'do, drive',busy:'occupied, having a lot to do',port:'carry',form:'shape',spect:'look',rupt:'break',hope:'wish for something good',stop:'stop, block',rely:'depend on, trust',carry:'take something from place to place',hop:'jump on one foot',run:'move fast on foot',make:'create, produce',care:'look after; feel that something matters'},
+ suffix:{ant:'one that does it; or doing it (consonant, resonant)',y:'full of, like (panicky)',ous:'full of, having',s:'more than one (signs); or he, she or it does it (acts)',es:'like -s; used after some endings, such as y changed to i (carries)',ed:'it happened in the past',ing:'happening now, or the activity itself',er:'a person or thing that does it (reporter); or “more” (busier)',est:'the most',ly:'in that way',ness:'the state of being',ful:'full of',less:'without',al:'to do with (formal); or the act of (removal)',ion:'the act or result of',ive:'tending to, likely to',ment:'the act or result of',able:'able to be',ance:'the act or state of',ure:'the act or result of',ate:'make or cause (activate); or having',ation:'the act or result of',age:'the act of, or the result of',or:'a person or thing that does it',ator:'a person who does it',acle:'a thing or sight',ify:'make',ature:'the act or result of',ist:'a person who does it or believes in it'}
+};
+const meaningOf=(s,t)=>(MEAN[t]&&MEAN[t][s])||MEAN.prefix[s]||MEAN.base[s]||MEAN.suffix[s]||XM[s]||'';
 function examplesOf(s,t){return [...KNOWN].filter(k=>{const ps=parse(k);return ps.length>1&&ps.some(p=>p.s===s&&p.t===t);}).slice(0,40).sort(()=>Math.random()-.5).slice(0,3).map(k=>joinSum(parse(k)).res);}
 let popTimer=0,holdTimer=0,suppressClick=false;
 function morphFrom(el){
@@ -1400,8 +1986,9 @@ function morphFrom(el){
 }
 function showPop(m){
   const el=document.getElementById('mpop');const ex=examplesOf(m.s,m.t);
+  const jb=m.t==='suffix'?jobOf(m.s):'';
   el.innerHTML=`<div class="mpop-head"><p>${meaningOf(m.s,m.t)}</p><button class="mpop-x" data-popclose aria-label="Close">✕</button></div>
-   ${ex.length?`<p class="meta">For example: ${ex.join(', ')}</p>`:''}`;
+   ${jb?`<p class="pc-job">${jb}</p>`:''}${originOf(m.s,m.t)?`<p class="meta">From ${originOf(m.s,m.t)}</p>`:''}${ex.length?`<p class="meta">For example: ${ex.join(', ')}</p>`:''}`;
   el.hidden=false;clearTimeout(popTimer);popTimer=setTimeout(()=>{el.hidden=true;},7000);
 }
 const HOLD_SEL='.tile, .mx-el, .mx-base, .grp';
@@ -1415,9 +2002,321 @@ document.addEventListener('click',e=>{if(suppressClick){suppressClick=false;e.st
 document.addEventListener('contextmenu',e=>{if(e.target.closest(HOLD_SEL))e.preventDefault();});
 document.addEventListener('pointerover',e=>{const el=e.target.closest(HOLD_SEL);if(el&&!el.title){const m=morphFrom(el);if(m)el.title=meaningOf(m.s,m.t);}});
 
+
+
+
+/* ---------- word classes: what each suffix does to a word's job ---------- */
+const CLS=['noun','verb','adjective','adverb'];
+const N='noun',V='verb',ADJ='adjective';
+const SJOB={
+ ant:{to:{_:ADJ},job:'verb → adjective or noun (one that does it)'},
+ s:{infl:'makes a plural, or the he/she/it form of a verb'},es:{infl:'makes a plural, or the he/she/it form of a verb'},
+ ed:{infl:'makes the past tense'},ing:{infl:'makes the -ing form of a verb'},
+ er:{to:{verb:N,adjective:ADJ,_:N},job:'verb → noun (a person or thing that does it), or makes an adjective mean “more”'},
+ est:{to:{_:ADJ},job:'makes an adjective mean “the most”'},
+ ly:{to:{_:'adverb'},job:'adjective → adverb'},
+ ness:{to:{_:N},job:'adjective → noun'},
+ ful:{to:{_:ADJ},job:'noun → adjective'},less:{to:{_:ADJ},job:'noun → adjective'},
+ y:{to:{_:ADJ},job:'noun → adjective'},ous:{to:{_:ADJ},job:'noun → adjective'},
+ al:{to:{verb:N,_:ADJ},job:'noun → adjective (formal), or verb → noun (removal)'},
+ ion:{to:{_:N},job:'verb → noun'},ation:{to:{_:N},job:'verb → noun'},ment:{to:{_:N},job:'verb → noun'},ance:{to:{_:N},job:'verb → noun'},
+ ure:{to:{_:N},job:'verb → noun'},ature:{to:{_:N},job:'verb → noun'},age:{to:{_:N},job:'verb → noun'},
+ or:{to:{_:N},job:'verb → noun (a person or thing that does it)'},ator:{to:{_:N},job:'verb → noun (a person who does it)'},
+ acle:{to:{_:N},job:'verb → noun'},ist:{to:{_:N},job:'makes a noun for a person'},
+ ive:{to:{_:ADJ},job:'verb → adjective'},able:{to:{_:ADJ},job:'verb → adjective'},
+ ate:{to:{_:V},job:'adjective or noun → verb'},ify:{to:{_:V},job:'adjective or noun → verb'}
+};
+const CLSDEF={
+ noun:'A naming word: a person, place, thing or idea. For example: teacher, London, chair, happiness.',
+ verb:'A doing or being word: what someone does or is. For example: run, think, is.',
+ adjective:'A describing word: it tells you more about a noun. For example: big, careful, active.',
+ adverb:'A word that tells you how, when or where something happens. Many end in -ly. For example: slowly, soon, here.',
+ base:'This base isn’t a word on its own, so it has no word class yet.'};
+function showAddOption(x){buildTok++;holdWord=true;document.querySelector('#build .clearbar')?.remove();const el=document.getElementById('mpop');const w=buildParts.length?joinSum(parse(buildParts.join('+'))).res:'';
+  el.innerHTML=`<div class="mpop-head"><p><span class="tile ${typeOf(x)}">${x}</span> doesn’t make a word the app knows with <b>${w}</b>.</p><button class="mpop-x" data-popclose aria-label="Close">✕</button></div>
+   <p class="meta">Think it does? Add it as an option, finish the word, then check it.</p>
+   <div class="row"><button class="btn primary" data-addopt="${x}">Add an option</button><button class="btn" data-popclose>Cancel</button></div>`;
+  el.hidden=false;clearTimeout(popTimer);popTimer=setTimeout(()=>{el.hidden=true;},15000);}
+function showClsPop(list){const el=document.getElementById('mpop');
+  el.innerHTML=`<div class="mpop-head"><div class="cls-def">${list.map(c=>`<p><b>${c[0].toUpperCase()+c.slice(1)}.</b> ${CLSDEF[c]||''}</p>`).join('')}</div><button class="mpop-x" data-popclose aria-label="Close">✕</button></div>`;
+  el.hidden=false;clearTimeout(popTimer);popTimer=setTimeout(()=>{el.hidden=true;},8000);}
+const jobOf=s=>SJOB[s]?(SJOB[s].infl?`Keeps the word class: ${SJOB[s].infl}`:`Changes the word class: ${SJOB[s].job}`):'';
+function classOf(w){const d=DEFS[w];if(!d)return [];return d.split('|')[0].split(',').map(x=>x.trim()).filter(x=>CLS.includes(x));}
+function trailOf(key){
+  const ps=key.split('+'),types=ps.map(typeOf);let bi=-1;types.forEach((t,i)=>{if(t==='base')bi=i;});if(bi<0)return [];
+  const st=[];let prev=[];
+  for(let n=bi;n<ps.length;n++){
+    const k=ps.slice(0,n+1).join('+'),w=joinSum(parse(k)).res,suf=n>bi?ps[n]:null;
+    let c=classOf(w),inferred=false;
+    if(!c.length&&suf&&SJOB[suf]){const J=SJOB[suf];c=J.infl?prev:[J.to[prev[0]]||J.to._];inferred=true;}
+    const changed=!!suf&&!!SJOB[suf]&&!SJOB[suf].infl&&prev.length>0&&c.length>0&&c[0]!==prev[0];
+    st.push({w,c,suf,changed,inferred});prev=c;
+  }
+  if(st.length&&!st[0].c.length)st.shift(); // a bound start like con+son isn't a word, so the trail starts at the first real word
+  return st;
+}
+function trailHTML(key,force){
+  if(!force&&!store.get('classes',true))return '';
+  const st=trailOf(key);if(st.length<2)return '';
+  const said=st.map(x=>x.c.join(' or ')||'base').join(', then ');
+  const pill=x=>{const c=x.c.length?x.c:['base'];return `<button type="button" class="cpill${x.changed?' tchg':''}" data-cls="${c.join('|')}" aria-label="${c.join(' or ')}: what does this mean?" title="${c.map(k=>CLSDEF[k].split('.')[0]).join(' / ')}">${c.join(' / ')}</button>`;};
+  return `<p class="trail" aria-label="Word class: ${said}">${st.map((x,i)=>i?`<span class="tr-step"><span class="tr-plus">+</span><span class="tile suffix" data-morph="${x.suf}" title="${jobOf(x.suf).replace(/"/g,'&quot;')}">${x.suf}</span><span class="tr-to">→</span>${pill(x)}</span>`:pill(x)).join('')}</p>`;
+}
+
+/* ---------- national curriculum (England) year groups ---------- */
+// Ranks: 1 = Year 1, 2 = Year 2, 3 = Years 3–4, 4 = Years 5–6, 5 = not in the English Appendix 1 spelling list
+const YLABEL={1:'Year 1',2:'Year 2',3:'Years 3–4',4:'Years 5–6',5:'Not in the curriculum list'};
+const YSHORT={1:'Y1',2:'Y2',3:'Y3–4',4:'Y5–6',5:'Extra'};
+const YPRE={un:1,dis:3,in:3,im:3,re:3,inter:3};
+const YSUF={ant:4,s:1,es:1,ed:1,ing:1,er:1,est:1,y:2,ly:2,ness:2,ful:2,less:2,ment:2,ion:3,ation:3,ous:3,ure:3,ature:3,able:4,ance:4};
+const RULE_NAME={e:'dropping the final ‹e›',y:'changing ‹y› to ‹i›',d:'doubling in one-syllable words',ds:'stress and doubling in longer words',u:'stress and doubling in longer words',
+  le:'‹le› + ‹ly›',k:'keeping ‹e› for a soft ‹c› or ‹g›',ie:'‹ie› to ‹y›',ck:'‹c› to ‹ck›',ll:'British ‹l› doubling',yly:'‹y› to ‹i› before ‹ly› in longer words'};
+function yearOf(key){
+  const ps=parse(key),j=joinSum(ps);const items=[];
+  ps.forEach((p,i)=>{
+    if(p.t==='prefix')items.push([YPRE[p.s]||5,`prefix ${p.s}-`]);
+    else if(p.t==='suffix')items.push([YSUF[p.s]||5,`suffix -${p.s}`]);
+    const c=j.ch[i];if(!c)return;
+    let r={e:2,y:2,d:2,u:3,le:3,ie:5,ck:5,ll:5}[c];
+    if(c==='d')r=j.notes.includes('ds')?3:2;
+    if(c==='k')r=p.s==='ous'?3:4;
+    if(c==='y'&&p.s==='ly'){items.push([3,RULE_NAME.yly]);return;}
+    items.push([r,RULE_NAME[c==='d'&&r===3?'ds':c]]);
+  });
+  const y=items.length?Math.max(...items.map(x=>x[0])):1;
+  return {y,why:[...new Set(items.filter(x=>x[0]===y).map(x=>x[1]))]};
+}
+const ytag=key=>{if(!key||!key.includes('+'))return '';const Y=yearOf(key);return `<span class="ytag y${Y.y}" title="${YLABEL[Y.y]}: ${Y.why.join(', ')}">${YSHORT[Y.y]}</span>`;};
+const ywhy=key=>{if(!key||!key.includes('+'))return '';const Y=yearOf(key);return `<p class="ywhy"><span class="ytag y${Y.y}">${YLABEL[Y.y]}</span> ${Y.why.length?'because of '+Y.why.join(', '):''}</p>`;};
+// Coverage of the statutory list (DfE, English Appendix 1: Spelling, 2013)
+const NC_MAP=[
+ [1,'Adding -s and -es','yes','signs, acts'],
+ [1,'-ing, -ed, -er with no change','yes','acting, reported'],
+ [1,'-er, -est on adjectives with no change','part','add a family like <i>quick</i>'],
+ [1,'The prefix un-','yes','unmoved, untie'],
+ [2,'-es after a consonant + y','yes','carries, relies'],
+ [2,'y to i before -ed, -er, -est','yes','carried, busier'],
+ [2,'Dropping e before -ing, -ed, -er, -est, -y','yes','hoping, gentler'],
+ [2,'Doubling in one-syllable words','yes','hopping, runner'],
+ [2,'-ment, -ness, -ful, -less, -ly','yes','movement, hopeless'],
+ [2,'Words ending -tion','yes','action, construction'],
+ [3,'Stress and doubling in longer words','yes','beginning, visiting'],
+ [3,'Prefixes dis-, in-, im-, re-, inter-','yes','disrupt, inactive, import'],
+ [3,'Prefixes il-, ir-, mis-, sub-, super-, anti-, auto-','no','not in the app yet'],
+ [3,'The suffix -ation','yes','information, transportation'],
+ [3,'-ly, including le to ly and y to i','yes','gently, simply, busily'],
+ [3,'-ic + -ally (basically)','no','not in the app yet'],
+ [3,'The suffix -ous, keeping e for soft g','part','courageous; no -our to -or yet'],
+ [3,'Endings -ure and -ture','yes','structure, signature'],
+ [3,'Endings -tion, -sion, -ssion, -cian','part','-tion only'],
+ [3,'Word families','yes','every matrix'],
+ [4,'-cious, -tious, -cial, -tial','no','not in the app yet'],
+ [4,'-ant, -ance, -ent, -ence','part','reliance'],
+ [4,'-able and -ably, keeping e for soft c or g','yes','changeable, noticeably, reliably'],
+ [4,'-ible and -ibly','no','not in the app yet'],
+ [4,'Adding suffixes to words ending -fer','no','not in the app yet'],
+ [4,'Silent letters','yes','Origins tab: doubt, knight, column'],
+ [2,'Grammar: nouns with -ness and -er; adjectives with -ful and -less; -ly adverbs','yes','class trail and word-class questions'],
+ [3,'Grammar: word families related in form and meaning','yes','every matrix'],
+ [4,'Grammar: turning nouns or adjectives into verbs with suffixes','yes','activate, simplify'],
+ [5,'Also in the app: ‹ie› to ‹y›, ‹c› to ‹ck›, British ‹l› doubling, prefixes con-, de-, ex-, trans- and more','extra','lying, picnicking, travelling']
+];
+let pYear=store.get('pyear',0); // 0 = all year groups
+let pCurric=false;
+function curricHTML(){
+  if(!pCurric)return '';
+  const st={yes:'Covered',part:'Partly',no:'Not yet',extra:'Extra'};
+  return `<div class="panel"><p class="meta">Practise words from one year group of the national curriculum for England. Each word counts as the latest year group of any piece or change it uses.</p>
+   <div class="chips wrap">${[0,1,2,3,4,5].map(y=>`<button class="chip yc" data-pyear="${y}" aria-pressed="${pYear===y}">${y?YLABEL[y]:'All years'}</button>`).join('')}</div>
+   <details class="ncmap"><summary>How the app covers the curriculum spelling list</summary>
+    <div class="nc-scroll"><table><thead><tr><th>Year</th><th>Statutory item</th><th>In the app</th></tr></thead><tbody>
+    ${NC_MAP.map(([y,item,stt,ex])=>`<tr><td><span class="ytag y${y}">${YSHORT[y]}</span></td><td>${item}</td><td><span class="nc ${stt}">${st[stt]}</span> <span class="meta">${ex}</span></td></tr>`).join('')}
+    </tbody></table></div><p class="meta">Sources: Department for Education, <i>English Appendix 1: Spelling</i> and <i>English Appendix 2: Vocabulary, grammar and punctuation</i> (2013). Year 5 grammar is shown with Years 5–6.</p></details>
+   <div class="row"><button class="btn primary" data-pstart>Start a new round</button></div></div>`;
+}
+
+/* ---------- Split: break a word into its parts ---------- */
+const normWord=v=>String(v||'').toLowerCase().replace(/[^a-z]/g,'').slice(0,30);
+function decompose(w){
+  const out=new Set(),B=Object.keys(BASES);
+  (function dfs(parts,hasBase,np,ns){
+    let r='';
+    if(parts.length){r=joinSum(parse(parts.join('+'))).res;
+      if(hasBase&&r===w){out.add(parts.join('+'));return;}
+      if(r.length>w.length||!w.startsWith(r.slice(0,-2)))return;}
+    if(!hasBase){if(np<2)for(const x of PREFIXES)dfs([...parts,x],false,np+1,0);for(const x of B)dfs([...parts,x],true,np,0);}
+    else if(ns<4)for(const x of SUFFIXES)dfs([...parts,x],true,np,ns+1);
+  })([],false,0,0);
+  // drop splits that only work by dropping an e before -es (reliance + es): -s is the real suffix there
+  const ok=[...out].filter(k=>{const ps=k.split('+'),j=joinSum(parse(k));return !ps.some((x,i)=>x==='es'&&j.ch[i]==='e');});
+  // how many leading parts already make a known word (rely+ance in rely+ance+s)
+  const stem=k=>{const ps=k.split('+');for(let n=ps.length;n>0;n--)if(KNOWN.has(ps.slice(0,n).join('+')))return n;return 0;};
+  ok.sort((a,b)=>(KNOWN.has(b)-KNOWN.has(a))||(stem(b)-stem(a))||(a.split('+').length-b.split('+').length));
+  // if the best split is a known word, only offer other known splits as alternatives
+  if(ok.length&&KNOWN.has(ok[0]))return ok.filter(k=>KNOWN.has(k));
+  return ok.length&&stem(ok[0])?ok.filter(k=>stem(k)).slice(0,3):ok.slice(0,3);
+}
+let splitCache=store.get('splits',{}); // word -> Claude's breakdown
+function registerPieces(c){(c.parts||[]).forEach(p=>{const known=BASES[p.text]||PREFIXES.includes(p.text)||SUFFIXES.includes(p.text);
+  if(!known){XT[p.text]=p.type==='base'?'base':p.type==='prefix'?'prefix':'suffix';if(p.doubled)XD[p.text]=true;}
+  if(!meaningOf(p.text,typeOf(p.text))&&p.meaning)XM[p.text]=p.meaning;});}
+Object.values(splitCache).forEach(registerPieces);
+let split=null;
+function doSplit(v,auto){
+  const w=normWord(v);const inp=document.getElementById('splitInput');if(inp)inp.value=w;
+  if(!w){split=null;return renderSplit();}
+  store.set('splitLast',w);
+  const keys=decompose(w);
+  if(keys.length)split={w,mode:'local',keys,idx:0};
+  else if(splitCache[w])split={w,mode:'claude',c:splitCache[w]};
+  else split={w,mode:'none'};
+  if(split.mode==='none'&&auto&&sampleFn&&!sampleOff)return askClaudeSplit(w);
+  renderSplit();
+}
+async function askClaudeSplit(w){
+  split={w,mode:'asking'};renderSplit();
+  const prompt=`You are helping a spelling app that teaches Structured Word Inquiry (using morphology to explain spelling). Analyse the English word "${w}".
+Reply with only a JSON object, for example:
+{"isWord":true,"spelling":"${w}","partOfSpeech":"noun","definition":"One short, simple sentence for a learner, without using the word itself.","parts":[{"text":"re","type":"prefix","meaning":"again, back"},{"text":"act","type":"base","meaning":"do"},{"text":"ion","type":"suffix","meaning":"the act or result of"}],"origin":"Latin agere, to do"}
+Rules:
+- isWord: true only if "${w}" is a standard British English word spelled exactly like that. If it is misspelled, set isWord to false and put the correct spelling in "spelling".
+- parts: the word sum in order, following Structured Word Inquiry conventions. Give each part's spelling as it is BEFORE joining, so "hoping" is hope + ing and "business" is busy + ness. type is "prefix", "base", "suffix" or "connector" (a connecting vowel letter, such as the o in therm + o + meter). Add "doubled": true to a part whose final consonant doubles before the next suffix (hop + ing → hopping).
+- Only lowercase letters a to z in each part's text.
+- meaning: a few plain words for each part.
+- origin: the base's origin in a few words, or "" if unsure.
+- If isWord is false, parts may be [].`;
+  try{
+    const r=await sampleFn.json(prompt,{modelTier:'default'});
+    if(split?.w!==w)return;
+    const parts=Array.isArray(r?.parts)?r.parts.filter(p=>p&&/^[a-z]+$/.test(String(p.text||''))).slice(0,10).map(p=>({text:String(p.text),type:['prefix','base','suffix','connector'].includes(p.type)?p.type:'suffix',meaning:String(p.meaning||'').slice(0,120),doubled:p.doubled===true})):[];
+    const c={isWord:r?.isWord===true,spelling:normWord(r?.spelling)||w,pos:String(r?.partOfSpeech||'').toLowerCase().slice(0,30),def:String(r?.definition||'').slice(0,300),origin:String(r?.origin||'').slice(0,160),parts};
+    if(c.isWord&&parts.length&&parts.some(p=>p.type==='base')){
+      registerPieces(c);c.key=parts.map(p=>p.text).join('+');c.match=joinSum(parse(c.key)).res===w;
+      const appPieces=parts.every(p=>!XT[p.text]);
+      if(c.match&&appPieces&&!KNOWN.has(c.key)){addCustom(c.key,c.pos||'word',c.def||'A real English word.');c.added=true;}
+    }
+    splitCache[w]=c;store.set('splits',splitCache);
+    split={w,mode:'claude',c};
+  }catch(e){
+    if(['not_granted','sampling_disabled','not_declared','capability_disabled','capability_removed'].includes(e?.code))sampleOff=true;
+    split={w,mode:'err',msg:e?.code==='rate_limited'?'Too many questions for Claude right now. Try again in a little while.':e?.code==='not_granted'?'Asking Claude wasn’t allowed, so this word can’t be broken down here.':'Claude couldn’t answer this time. You can try again.'};
+  }
+  if(!document.getElementById('split').hidden)renderSplit();
+}
+const defBox=(w,pos,def)=>def?`<div class="verdict good"><p><b class="vw">${w}</b>${pos?` <span class="pos-inl">${pos}</span>`:''}<br>${def}</p></div>`:'';
+function partsList(items){return `<ul class="parts-list">${items.map(([s,t,m])=>`<li><span class="tile ${t}">${s}</span><span>${m||'<span class="meta">No meaning stored</span>'}</span></li>`).join('')}</ul>`;}
+function famBtn(key){const b=key.split('+').find(x=>MATRICES.some(m=>m.base===x));return b?`<button class="speak" data-gofam="${key}">Explore the ${b} family</button>`:'';}
+const askBtn=label=>sampleFn&&!sampleOff?`<button class="btn primary" data-splitask>${label}</button>`:'';
+const EXAMPLES=['hopelessly','interruption','carried','unstoppable','transformation','reliable'];
+function renderSplit(){
+  const sec=document.getElementById('split');
+  if(!document.getElementById('splitForm')){
+    sec.innerHTML=`<h2 class="sec-title">Break a word into parts</h2>
+     <form id="splitForm" class="split-form" autocomplete="off"><input id="splitInput" type="text" inputmode="text" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="go" placeholder="Type a word" aria-label="Word to break down" maxlength="30"><button class="btn primary" type="submit">Split</button></form>
+     <div id="splitOut" aria-live="polite"></div>`;
+    if(split===null){const last=store.get('splitLast','');if(last){const keys=decompose(last);split=keys.length?{w:last,mode:'local',keys,idx:0}:splitCache[last]?{w:last,mode:'claude',c:splitCache[last]}:{w:last,mode:'none'};}}
+    if(split)document.getElementById('splitInput').value=split.w;
+  }
+  const out=document.getElementById('splitOut');const S=split;let h='';
+  if(!S){h=`<p class="lede">Type any word to see the parts it’s built from: prefixes, base and suffixes.</p>
+     <div class="chips wrap">${EXAMPLES.map(x=>`<button class="chip" data-splitword="${x}">${x}</button>`).join('')}</div>`;}
+  else if(S.mode==='local'){
+    const key=S.keys[S.idx],w=S.w,known=KNOWN.has(key),one=!key.includes('+');
+    const tag=one&&BASES[key]?.bound?`<p class="stag info">‹${key}› is a base that needs a prefix or suffix. On its own it isn’t a word.</p>`
+      :known?`<p class="stag good">In the app’s word list</p>`:`<p class="stag info">Worked out from the app’s pieces. It may not be a real word.</p>`;
+    const d=DEFS[w]?DEFS[w].split('|'):null;
+    h=`${tag}<div class="panel">${animHTML(key,{play:!one,spell:true})}${d?defBox(w,d[0],d[1]):''}${ywhy(key)}
+      ${partsList(parse(key).map(p=>[p.s,p.t,meaningOf(p.s,p.t)]))}
+      <div class="row">${famBtn(key)}${!known&&!(one&&BASES[key]?.bound)?askBtn('Check with Claude'):''}</div></div>
+      ${S.keys.length>1?`<p class="meta">Other ways to split it:</p><div class="chips wrap">${S.keys.map((k,i)=>i===S.idx?'':`<button class="chip" data-splitalt="${i}">${k.split('+').join(' + ')}</button>`).join('')}</div>`:''}`;
+  }else if(S.mode==='none'){
+    h=`<div class="panel"><p>The app can’t split <b>${S.w}</b> with the pieces it knows.</p>
+      ${sampleFn&&!sampleOff?`<div class="row">${askBtn('Ask Claude to break it down')}</div><p class="meta">Uses your Claude account.</p>`:`<p class="meta">Try a word made from the app’s pieces, such as ${EXAMPLES.slice(0,3).join(', ')}.</p>`}</div>`;
+  }else if(S.mode==='asking'){
+    h=`<div class="panel"><p class="verdict info">Asking Claude to break down <b>${S.w}</b>…</p></div>`;
+  }else if(S.mode==='err'){
+    h=`<div class="panel"><p class="verdict info">${S.msg}</p>${!sampleOff?`<div class="row">${askBtn('Try again')}</div>`:''}</div>`;
+  }else if(S.mode==='claude'){
+    const c=S.c,w=S.w;
+    if(!c.isWord){
+      h=`<div class="panel">${c.spelling&&c.spelling!==w?`<p class="verdict bad">Claude doesn’t think <b>${w}</b> is spelled correctly.</p><div class="row"><span>Did you mean</span><button class="chip" data-splitword="${c.spelling}" data-auto="1">${c.spelling}</button>${spk(c.spelling)}</div>`
+        :`<p class="verdict bad">Claude doesn’t recognise <b>${w}</b> as an English word.</p>`}</div>`;
+    }else if(!c.key){
+      h=`<div class="panel">${defBox(w,c.pos,c.def)}<p class="meta">Claude didn’t give a breakdown for this word.</p></div>`;
+    }else{
+      const tag=`<p class="stag good">Broken down by Claude${c.added?' and added to your word list':''}</p>`;
+      const stat=`<div class="stage">${c.parts.map((p,i)=>`${i?'<span class="op" style="margin:0 .4em">+</span>':''}<span class="grp ${typeOf(p.text)}" data-morph="${p.text}">${p.text}</span>`).join('')}<span class="op" style="margin:0 .4em">→</span><span class="result">${w}</span></div><div class="ctl">${spk(w)}</div>`;
+      h=`${tag}<div class="panel">${c.match?animHTML(c.key,{play:c.parts.length>1,spell:true}):stat}
+        ${c.match?'':'<p class="meta">The app can’t show how these parts join to make this spelling, so they are shown without the animation.</p>'}
+        ${defBox(w,c.pos,c.def)}${partsList(c.parts.map(p=>[p.text,typeOf(p.text),meaningOf(p.text,typeOf(p.text))||p.meaning]))}
+        ${c.origin?`<p class="meta">Origin: ${c.origin}</p>`:''}<div class="row">${famBtn(c.key)}</div></div>`;
+    }
+  }
+  out.innerHTML=h;
+  const el=out.querySelector('.anim[data-play="1"]');if(el)playAnim(el,700);
+}
+document.addEventListener('submit',e=>{if(e.target.id==='splitForm'){e.preventDefault();doSplit(document.getElementById('splitInput').value);document.getElementById('splitInput').blur();}});
+
+
+/* ---------- progress report ---------- */
+let dlFn=null;try{window.claude?.use?.('downloads').then(f=>{dlFn=f;}).catch(()=>{});}catch(_){}
+const plainSum=k=>{const j=joinSum(parse(k));return j.toks.map(t=>t.dbl?`(${t.dbl})`:t.s+(t.mark||'')).join(' + ');};
+const RULE_SHORT={e:'dropping the final e',y:'y to i',d:'doubling',ds:'doubling in longer words',u:'doubling in longer words',le:'le + ly',ie:'ie to y',k:'keeping e for a soft c or g',ck:'c to ck',ll:'British l doubling'};
+function reportData(){
+  const mk=Object.entries(stats).filter(([k,v])=>v.c>=1&&(v.w===0||v.c>=2)&&!review[k]).map(([k])=>k);
+  const byYear={};mk.forEach(k=>{if(k.includes('+')){const y=yearOf(k).y;byYear[y]=(byYear[y]||0)+1;}});
+  const rv=Object.keys(review);const rules={};
+  rv.forEach(k=>joinSum(parse(k)).notes.forEach(n=>{const r=RULE_SHORT[n];if(r)rules[r]=(rules[r]||0)+1;}));
+  const comp=MATRICES.filter(m=>foundIn(m)===m.list.length).length,tf=MATRICES.reduce((a,m)=>a+foundIn(m),0),tn=MATRICES.reduce((a,m)=>a+m.list.length,0);
+  return {name:store.get('repName',''),date:new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}),
+    level,levelName:LEVELS[level-1].name,next:level<LEVELS.length?{name:LEVELS[level].name,got:Math.min(lvlCorrect[level]||0,UNLOCK_AT)}:null,
+    answers:totals.a,acc:totals.a?Math.round(totals.c/totals.a*100):null,best:store.get('best',0),mastered:mk.length,byYear,
+    review:rv.map(k=>({w:joinSum(parse(k)).res,sum:plainSum(k)})),rules:Object.entries(rules).sort((a,b)=>b[1]-a[1]),
+    comp,fams:MATRICES.length,tf,tn,bScore,bWords:bWords.size};
+}
+function reportText(){const D=reportData();const L=[];
+  L.push('Morpheme Workshop: progress report');
+  if(D.name)L.push('Learner: '+D.name);
+  L.push('Date: '+D.date,'');
+  L.push(`Level: ${D.level} of ${LEVELS.length} (${D.levelName})`+(D.next?`, ${D.next.got} of ${UNLOCK_AT} towards ${D.next.name}`:', all levels unlocked'));
+  L.push(`Practice: ${D.answers} answers`+(D.acc!==null?`, ${D.acc}% correct`:'')+`, best round ${D.best} out of 10`);
+  L.push(`Words mastered: ${D.mastered}`+(Object.keys(D.byYear).length?' ('+Object.entries(D.byYear).map(([y,n])=>`${YLABEL[y]}: ${n}`).join(', ')+')':''));
+  L.push(`Words to review: ${D.review.length}`);D.review.slice(0,30).forEach(r=>L.push(`  ${r.w}  (${r.sum})`));
+  if(D.rules.length)L.push('Changes to practise: '+D.rules.map(([r,n])=>`${r} (${n})`).join(', '));
+  L.push(`Word families: ${D.comp} of ${D.fams} complete, ${D.tf} of ${D.tn} words found`);
+  L.push(`Word sums built: ${D.bWords} words, ${D.bScore} points`);
+  const sgg=store.get('suggest',[]);if(sgg.length)L.push('Words the learner thinks are missing from the app: '+sgg.join(', '));
+  const cs=Object.entries(store.get('chstars',{})).map(([k,v])=>[skillOf(k).name,Object.values(v).reduce((a,b)=>a+b,0)]).filter(x=>x[1]);if(cs.length)L.push('Challenge stars: '+cs.map(([n,v])=>`${n} ${v}`).join(', '));
+  return L.join('\n');}
+function renderReport(){const D=reportData();const el=document.getElementById('reportIn');
+  el.innerHTML=`<div class="rep-head"><h2 style="font-size:1.3rem">Progress report</h2><button class="mpop-x" data-closereport aria-label="Close">✕</button></div>
+   <div class="setting"><label for="repName">Learner’s name (optional)</label></div>
+   <input id="repName" class="rep-name" type="text" maxlength="60" autocomplete="off" value="${D.name.replace(/"/g,'&quot;')}" placeholder="Add a name for the teacher">
+   <div class="pstats"><div><b>${D.level}</b><span>level of ${LEVELS.length}</span></div><div><b>${D.mastered}</b><span>words mastered</span></div><div><b>${D.acc!==null?D.acc+'%':'–'}</b><span>accuracy</span></div><div><b>${D.review.length}</b><span>to review</span></div></div>
+   <dl class="rep">
+    <dt>Level</dt><dd>${D.levelName}${D.next?` · ${D.next.got} of ${UNLOCK_AT} towards ${D.next.name}`:' · all unlocked'}</dd>
+    <dt>Practice</dt><dd>${D.answers} answers · best round ${D.best} out of 10</dd>
+    ${Object.keys(D.byYear).length?`<dt>Mastered by year</dt><dd>${Object.entries(D.byYear).map(([y,n])=>`<span class="ytag y${y}">${YSHORT[y]}</span> ${n}`).join(' &nbsp; ')}</dd>`:''}
+    ${D.rules.length?`<dt>Changes to practise</dt><dd>${D.rules.map(([r,n])=>`${r} (${n})`).join(', ')}</dd>`:''}
+    ${D.review.length?`<dt>Words to review</dt><dd>${D.review.slice(0,12).map(r=>`<b>${r.w}</b> <span class="meta">${r.sum}</span>`).join('<br>')}${D.review.length>12?`<br><span class="meta">and ${D.review.length-12} more in the copied report</span>`:''}</dd>`:''}
+    <dt>Word families</dt><dd>${D.comp} of ${D.fams} complete · ${D.tf} of ${D.tn} words found</dd>
+    <dt>Word sums</dt><dd>${D.bWords} words built · ${D.bScore} points</dd>
+    ${store.get('suggest',[]).length?`<dt>Suggested words</dt><dd>${store.get('suggest',[]).join(', ')}</dd>`:''}
+   </dl>
+   <div class="row"><button class="btn primary" data-copyreport>Copy report</button>${dlFn?'<button class="btn" data-savereport>Save as a file</button>':''}<span class="rep-status" id="repStatus" aria-live="polite"></span></div>
+   <textarea id="repText" class="rep-text" readonly hidden></textarea>
+   <p class="meta">Progress is saved only in this browser. Copy the report to send it to a teacher.</p>`;}
+async function copyReport(){const t=reportText(),st=document.getElementById('repStatus'),ta=document.getElementById('repText');
+  try{await navigator.clipboard.writeText(t);st.textContent='Copied';}
+  catch(e){ta.value=t;ta.hidden=false;ta.focus();ta.select();st.textContent='Select all and copy the text below';}}
+async function saveReport(){const st=document.getElementById('repStatus');const n=(store.get('repName','')||'learner').replace(/[^\w\- ]/g,'').trim()||'learner';
+  const d=new Date(),ds=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+  try{await dlFn.save({filename:`Morpheme Workshop progress - ${n} - ${ds}.txt`,data:reportText()});st.textContent='Saved';}
+  catch(e){st.textContent=e?.code==='declined'?'':'Saving isn’t available here. Use Copy report instead.';}}
+
 /* ---------- tabs, settings, events ---------- */
-const TABS=['learn','build','matrix','origins','practice'];
-const RENDER={learn:renderLearn,build:renderBuild,matrix:renderMatrix,origins:renderOrigins,practice:renderPractice};
+const TABS=['learn','build','split','matrix','origins','practice'];
+const RENDER={learn:renderLearn,build:renderBuild,split:renderSplit,matrix:renderMatrix,origins:renderOrigins,practice:renderPractice};
 function show(tab,scroll=true){
   TABS.forEach(t=>{document.getElementById(t).hidden=t!==tab;document.getElementById('tab-'+t).setAttribute('aria-selected',t===tab);});
   RENDER[tab]();store.set('tab',tab);if(scroll)window.scrollTo({top:0});
@@ -1427,15 +2326,19 @@ function applySettings(){
   document.documentElement.classList.toggle('large',s.size==='large');document.body.classList.toggle('spaced',s.space==='wide');
   document.querySelectorAll('#segSize button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===s.size));
   document.querySelectorAll('#segSpace button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===s.space));
+  const cl=store.get('classes',true)?'show':'hide';document.querySelectorAll('#segCls button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===cl));
+  const r=String(store.get('rate',1));document.querySelectorAll('#segRate button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===r));
 }
 document.addEventListener('click',e=>{
   const b=e.target.closest('button');
   if(!b){const mb=e.target.closest('.mx-base');if(mb){const m=morphFrom(mb);if(m)showPop(m);return;}
+    const pc=e.target.closest('#build .wordpanel .grp[data-g]');if(pc&&bMode!=='ch'){selectPiece(+pc.dataset.g);return;}
     const st=e.target.closest('.anim[data-play="1"] .stage');if(st)playAnim(st.closest('.anim'));return;}
   const d=b.dataset;
   if(d.tab)return show(d.tab);
   if(d.go)return show(d.go);
   if(d.spell!==undefined)return spellOut(d.spell);
+  if(d.cls){showClsPop(d.cls.split('|'));return;}
   if(d.popclose!==undefined){document.getElementById('mpop').hidden=true;return;}
   if(d.say!==undefined)return sayWord(d.say);
   if(d.sayw){if(b.closest('summary'))e.preventDefault();return speak(sayText(d.sayw),.8);}
@@ -1445,11 +2348,38 @@ document.addEventListener('click',e=>{
     if(s)s.run++;if(el.querySelector('.stage.done'))return resetAnim(el);return animStep(el);}
   if(d.vs){vsShown.add(d.vs);return renderLearn();}
   if(d.lesson!==undefined){const i=+d.lesson;if(i>=0&&i<LESSONS.length){lessonIdx=i;renderLearn();window.scrollTo({top:0});}return;}
-  if(d.add){if(buildDemo)endDemo();lastBuilt=null;holdWord=false;buildParts.push(d.add);store.set('build',buildParts);return renderBuild();}
+  if(d.add&&bMode==='guide'&&!gUnlock&&b.classList.contains('dim')){showAddOption(d.add);return;}
+  if(d.rm!==undefined){removeAt(+d.rm);swapIdx=null;lastBuilt=null;holdWord=false;store.set('build',buildParts);return renderBuild();}
+  if(d.swap!==undefined){swapIdx=swapIdx===+d.swap?null:+d.swap;return renderBuild();}
+  if(d.swapcancel!==undefined){swapIdx=0===swapIdx?0:swapIdx;selectPiece(swapIdx);return;}
+  if(d.add&&swapIdx!=null&&swapIdx<buildParts.length){swapAt(swapIdx,d.add);swapIdx=null;lastBuilt=null;holdWord=false;store.set('build',buildParts);return renderBuild();}
+  if(d.add&&!buildDemo&&buildParts.length&&suffixSwap(d.add)){lastBuilt=null;holdWord=false;swapIdx=null;store.set('build',buildParts);renderBuild();swapNote='';return;}
+  if(d.add){if(buildDemo)endDemo();lastBuilt=null;holdWord=false;swapIdx=null;if(bMode==='guide'){if(!buildParts.length)gTap=[];gTap.push(d.add);buildParts=arrange(gTap);}else buildParts.push(d.add);store.set('build',buildParts);return renderBuild();}
   if(d.challenge!==undefined){if(sampleFn&&!sampleOff)challenge(buildParts.join('+'));return;}
+  if(d.splitword){doSplit(d.splitword,d.auto==='1');return;}
+  if(d.splitalt!==undefined){split.idx=+d.splitalt;return renderSplit();}
+  if(d.splitask!==undefined){if(split&&sampleFn&&!sampleOff)askClaudeSplit(split.w);return;}
+  if(d.gofam){const k=d.gofam,b=k.split('+').find(x=>MATRICES.some(m=>m.base===x)),i=MATRICES.findIndex(m=>m.base===b);
+    if(i>=0){const m=MATRICES[i];mxIdx=i;store.set('mx',i);mxSel=selFromKey(m,m.list.includes(k)?k:m.start);mxNew='';reveal=false;}return show('matrix');}
+  if(d.bmode){bMode=d.bmode;store.set('bmode',bMode);gTap=[...buildParts];gUnlock=false;return renderBuild();}
+  if(d.chskill){chSkill=d.chskill;store.set('chskill',chSkill);return renderBuild();}
+  if(d.chtimer){chTimer=d.chtimer==='on';store.set('chtimer',chTimer);return renderBuild();}
+  if(d.chlevel){startChallenge(+d.chlevel);return window.scrollTo({top:0});}
+  if(d.chadd)return chAdd(d.chadd);
+  if(d.chundo!==undefined){if(ch){chTok++;ch.parts.pop();ch.msg='';renderBuild();}return;}
+  if(d.chclear!==undefined){if(ch){chTok++;ch.parts=[];ch.msg='';renderBuild();}return;}
+  if(d.chfinish!==undefined)return finishChallenge();
+  if(d.chnext!==undefined){startChallenge(ch.level+1);return window.scrollTo({top:0});}
+  if(d.chretry!==undefined){startChallenge(ch.level);return window.scrollTo({top:0});}
+  if(d.chquit!==undefined){clearInterval(chTick);ch=null;return renderBuild();}
+  if(d.addopt){const x=d.addopt;document.getElementById('mpop').hidden=true;gUnlock=true;lastBuilt=null;holdWord=false;swapIdx=null;
+    if(!buildParts.length)gTap=[];gTap.push(x);buildParts=arrange(gTap);store.set('build',buildParts);return renderBuild();}
+  if(d.gunlock!==undefined){gUnlock=true;return renderBuild();}
+  if(d.glock!==undefined){gUnlock=false;return renderBuild();}
+  if(d.suggest){const sg=store.get('suggest',[]);if(!sg.includes(d.suggest)){sg.push(d.suggest);store.set('suggest',sg);}holdWord=true;return renderBuild();}
   if(d.keep!==undefined){holdWord=true;b.closest('.clearbar')?.remove();return;}
-  if(d.undo!==undefined){if(buildDemo){endDemo();return renderBuild();}if(!buildParts.length&&lastBuilt){buildParts=lastBuilt;lastBuilt=null;holdWord=true;store.set('build',buildParts);return renderBuild();}buildParts.pop();store.set('build',buildParts);return renderBuild();}
-  if(d.clear!==undefined){if(buildDemo)endDemo();holdWord=false;buildParts=[];store.set('build',buildParts);return renderBuild();}
+  if(d.undo!==undefined){swapIdx=null;if(buildDemo){endDemo();return renderBuild();}if(!buildParts.length&&lastBuilt){buildParts=lastBuilt;gTap=[...buildParts];lastBuilt=null;holdWord=true;store.set('build',buildParts);return renderBuild();}if(bMode==='guide'){gTap.pop();buildParts=arrange(gTap);}else buildParts.pop();store.set('build',buildParts);return renderBuild();}
+  if(d.clear!==undefined){if(buildDemo)endDemo();holdWord=false;buildParts=[];gTap=[];swapIdx=null;gUnlock=false;store.set('build',buildParts);return renderBuild();}
   if(d.mx!==undefined){mxIdx=+d.mx;mxSel=null;reveal=false;mxNew='';store.set('mx',mxIdx);return renderMatrix();}
   if(d.k){const m=MATRICES[mxIdx],c=+d.c;mxSel[d.k][c]=mxSel[d.k][c]===d.x?null:d.x;
     const key=keyFromSel(m,mxSel);mxNew='';
@@ -1470,16 +2400,28 @@ document.addEventListener('click',e=>{
   if(d.wotdgo){const k=d.wotdgo,i=MATRICES.findIndex(m=>m.base===FAM[k]);if(i>=0){mxIdx=i;store.set('mx',i);mxSel=selFromKey(MATRICES[i],k);mxNew='';reveal=false;}return show('matrix');}
   if(d.newround!==undefined){newRound();return renderPractice();}
   if(d.listen!==undefined){listenMode=!listenMode;store.set('listen',listenMode);return renderPractice();}
-  if(d.pchooser!==undefined){pChooser=!pChooser;return renderPractice();}
+  if(d.pchooser!==undefined){pChooser=!pChooser;if(pChooser)pCurric=false;return renderPractice();}
+  if(d.pcurric!==undefined){pCurric=!pCurric;if(pCurric)pChooser=false;return renderPractice();}
+  if(d.pyear!==undefined){pYear=+d.pyear;store.set('pyear',pYear);return renderPractice();}
   if(d.pbase){if(d.pbase==='__all')pBases=[];else pBases=pBases.includes(d.pbase)?pBases.filter(x=>x!==d.pbase):[...pBases,d.pbase];store.set('pbases',pBases);return renderPractice();}
-  if(d.pstart!==undefined){pChooser=false;newRound();renderPractice();return window.scrollTo({top:0});}
-  if(b.id==='openSettings'){document.getElementById('settings').hidden=false;return;}
+  if(d.pstart!==undefined){pChooser=false;pCurric=false;newRound();renderPractice();return window.scrollTo({top:0});}
+  if(b.id==='openSettings'){loadVoices();document.getElementById('settings').hidden=false;return;}
+  if(b.id==='testVoice')return speak('interruption. i, n, t, e, r',.8);
+  if(b.id==='openReport'||d.openreport!==undefined){renderReport();document.getElementById('report').hidden=false;return;}
+  if(d.closereport!==undefined){document.getElementById('report').hidden=true;return;}
+  if(d.copyreport!==undefined)return copyReport(b);
+  if(d.savereport!==undefined)return saveReport(b);
   if(b.id==='closeSettings'){document.getElementById('settings').hidden=true;return;}
+  if(d.v&&b.closest('#segCls')){store.set('classes',d.v==='show');applySettings();const cur=TABS.find(t=>!document.getElementById(t).hidden);if(cur)RENDER[cur]();return;}
+  if(d.v&&b.closest('#segRate')){store.set('rate',+d.v);return applySettings();}
   if(d.v&&b.closest('.seg')){const s=store.get('settings',{size:'normal',space:'normal'});
     if(b.closest('#segSize'))s.size=d.v;else s.space=d.v;store.set('settings',s);applySettings();
     const cur=TABS.find(t=>!document.getElementById(t).hidden);if(cur)RENDER[cur]();}
 });
 document.getElementById('settings').addEventListener('click',e=>{if(e.target.id==='settings')e.target.hidden=true;});
+document.getElementById('report').addEventListener('click',e=>{if(e.target.id==='report')e.target.hidden=true;});
+document.addEventListener('change',e=>{if(e.target.id==='voiceSel'){store.set('voice',e.target.value);speak('interruption',.8);}});
+document.addEventListener('input',e=>{if(e.target.id==='repName'){store.set('repName',e.target.value.slice(0,60));const t=document.getElementById('repText');if(t)t.value=reportText();}});
 applySettings();
 const hash=(location.hash||'').slice(1);
 show(TABS.includes(hash)?hash:store.get('tab','learn'),false);
